@@ -6,11 +6,11 @@ var vAppFooter = new Vue({
     methods:{
         choiseLang: function(lang) {
             setCookie("lang", lang, "/", 5) 
-            window.location.href += "" 
+            location.reload()
         },
         choiseTheme: function(theme) {
             setCookie("theme", theme, "/", 300) 
-            window.location.href += ""
+            location.reload()
         },
     }
 })

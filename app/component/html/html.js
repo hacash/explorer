@@ -130,3 +130,11 @@ function formatDate(date, fmt) {
 function padLeftZero(str) {
     return ('00' + str).substr(str.length);
 }
+
+
+function toThousands(num) {
+    return num.toString().replace(/\d+/, function(n) {
+       return n.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+    });
+}
+ 

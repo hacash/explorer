@@ -13,6 +13,45 @@
 </script>
 
 
+<div id="supply">
+
+<div id="coin3" >
+    <div class="container">
+        <div class="flex">
+            <div class="mtable mbfix box b1"><div class="wrap">
+                <h1 class="tt">HAC</h1>
+                <div class="con">
+                    <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>/</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_current_circulation || "实时流通":]</label><b class="nn">{{current_circulation}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_burned_fee || "已销毁":]</label><b>{{burned_fee}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_block_reward || "区块奖励":]</label><b>{{block_reward}}</b></div>
+                    <!-- <div class="li"><label></label><b></b></div> -->
+                </div>
+            </div></div>
+            <div class="mtable mbfix box b2"><div class="wrap">
+                <h1 class="tt">HACD</h1>
+                <div class="con">
+                    <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>{{toThousands(16777216)}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_minted_diamond || "已挖出":]</label><b class="nn">{{minted_diamond}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_hacd_visualization || "可视化":]</label><b>{{3}}</b></div>
+                    
+                </div>
+            </div></div>
+            <div class="mtable mbfix box b3"><div class="wrap">
+                <h1 class="tt">BTC</h1>
+                <div class="con">                    
+                    <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>{{toThousands(21000000)}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_transferred_bitcoin || "已转移比特币":]</label><b class="nn">0</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_btcmove_subsidy || "HAC补偿":]</label><b>0.0</b></div>
+                    <div class="li"><label></label><b></b></div>
+                </div>
+            </div></div>
+        </div>
+    </div>
+</div>
+
+
+
 <div id="totalsupply" class="mtable mbfix">
     <div class="container">
         <div class="wrap">
@@ -32,6 +71,7 @@
     </div>
 </div>
 
+</div>
 
 <div id="dfcts"  class="mtable mbfix" >
     <div class="container">

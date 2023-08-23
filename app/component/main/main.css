@@ -228,8 +228,44 @@ div.pmore .button span {
   color: #fff;
   font-weight: bold;
 }
-#totalsupply {
-  margin-top: 20px;
+#coin3 {
+  padding-top: 12px;
+}
+#coin3 .flex {
+  display: flex;
+  justify-content: space-between;
+}
+#coin3 .box {
+  width: 31.6%;
+}
+#coin3 .con {
+  padding: 10px;
+  min-height: 130px;
+}
+#coin3 .li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+#coin3 .li label {
+  font-size: 14px;
+  color: #999;
+}
+#coin3 .li b {
+  font-size: 15px;
+}
+#coin3 .li .nn {
+  font-weight: bold;
+}
+#coin3 .b1 .nn {
+  color: #f7af34;
+}
+#coin3 .b2 .nn {
+  color: darkturquoise;
+}
+#coin3 .b3 .nn {
+  color: indianred;
 }
 #totalsupply .wrap .con {
   padding-bottom: 0;
