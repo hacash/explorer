@@ -1,3 +1,69 @@
+var rwdcis = [1,1,2,3,5,8,
+    8,8,8,8,8,8,8,8,8,8,
+    5,5,5,5,5,5,5,5,5,5,
+    3,3,3,3,3,3,3,3,3,3,
+    2,2,2,2,2,2,2,2,2,2,
+    1,1,1,1,1,1,1,1,1,1,
+    1,1,1,1,1,1,1,1,1,1,
+]
+
+var $blkrwd = $id('blkrwd')
+;
+
+function showCoinbasePace(cbh, rwd, circ, burn) {
+    // 112358
+    var $cblish = $clas($blkrwd, 'cblist')
+    , cbsw = parseInt($cblish.offsetWidth)
+    , cbsh = 128 //parseInt($cblish.offsetHeight)
+    , tlpis = []
+    ;
+    var chi = parseInt(cbh / (10*10000))
+    , cind = rwdcis[chi]
+    , ctrds = 0
+    , bs = []
+    ;
+    for(var i in rwdcis) {
+        var h = rwdcis[i]
+        , cla = ''
+        ctrds += h
+        if(i<chi) {
+            cla = ' ps'
+        }else if(i==chi) {
+            cla = ' cur'
+        }
+        bs.push('<b class="h'+h+cla+'"><i>'+h+'</i></b>')
+        // points
+        var x = cbsw / 66 * i + 5
+        , y = cbsh - (ctrds / 220.0 * cbsh)
+        // console.log(ctrds / 220.0 )
+        tlpis.push(x+','+y)
+    }
+
+    $cblish.innerHTML = bs.join('') + `<p class="tt">Block Reward in 66 Years</p><svg>  <polyline points="0,${cbsh} ${tlpis.join(' ')} 1000,0 1000,${cbsh}" stroke-width="1" stroke="#00880088" fill="#00880011" ></svg>`
+    // reward percent
+    var ttn = 2200*10000
+    var per = parseFloat(rwd) / ttn * 100
+    $clas($blkrwd, 'rwdper').innerHTML = `
+        <div class="bar">
+            <p class="tt">Mining Ratio</p>
+            <div class="sld" style="width: ${per}%"><p>${per.toFixed(2)}%</p></div>
+            <div class="num"><p>${rwd} / ${ttn}</p></div>
+        </div>
+    `
+    // burn percent
+    var ttcc = circ + burn
+    , bcp1 = circ / ttcc * 100
+    , bcp2 = burn / ttcc * 100
+    ;
+    $clas($blkrwd, 'burner').innerHTML = `
+    <div class="cp c1" style="width: ${bcp1}%"><b>${circ.toFixed(1)}</b><i>Circulation</i><p>${bcp1.toFixed(1)}%</p></div>
+    <div class="cp c2" style="width: ${bcp2}%"><div class="oo"></div><p>${bcp2.toFixed(1)}%</p><i>Burned</i><b>${burn.toFixed(1)}</b></div>
+    `
+}
+
+// test
+showCoinbasePace(471966, 1060604, 516253.9653, 544850.8617)
+
 
 
 var vAppTotalSupply = new Vue({

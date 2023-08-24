@@ -21,10 +21,10 @@
             <div class="mtable mbfix box b1"><div class="wrap">
                 <h1 class="tt">HAC</h1>
                 <div class="con">
-                    <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>/</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b class="gs">♾️</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_current_circulation || "实时流通":]</label><b class="nn">{{current_circulation}}</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_burned_fee || "已销毁":]</label><b>{{burned_fee}}</b></div>
-                    <div class="li"><label>[:=lang.main.ttspl_block_reward || "区块奖励":]</label><b>{{block_reward}}</b></div>
+                    <!-- <div class="li"><label>[:=lang.main.ttspl_block_reward || "区块奖励":]</label><b>{{block_reward}}</b></div> -->
                     <!-- <div class="li"><label></label><b></b></div> -->
                 </div>
             </div></div>
@@ -43,13 +43,25 @@
                     <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>{{toThousands(21000000)}}</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_transferred_bitcoin || "已转移比特币":]</label><b class="nn">0</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_btcmove_subsidy || "HAC补偿":]</label><b>0.0</b></div>
-                    <div class="li"><label></label><b></b></div>
+                    <!-- <div class="li"><label></label><b></b></div> -->
                 </div>
             </div></div>
         </div>
     </div>
 </div>
 
+<div id="blkrwd" class="mtable mbfix">
+    <div class="container">
+        <div class="wrap">
+            <h1 class="tt">HAC Statistical Chart</h1>
+            <div class="con">
+                <div class="cblist"></div>
+                <div class="rwdper"></div>
+                <div class="burner"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <div id="totalsupply" class="mtable mbfix">

@@ -46,9 +46,9 @@ module.exports = {
 
     ttspl_title: "Hacash Data Overview:",
     ttspl_total: "Total Max",
-    ttspl_block_reward: "Block Rewards",
+    ttspl_block_reward: "Block Reward",
     ttspl_channel_interest: "Channel Interests:",
-    ttspl_btcmove_subsidy: "HAC Rewards",
+    ttspl_btcmove_subsidy: "HAC Reward",
     ttspl_burned_fee: "Burned",
     ttspl_located_in_channel: "Deposited in Channel:",
     ttspl_channel_of_opening: "Opened Channels:",

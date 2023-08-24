@@ -5,6 +5,19 @@ function $id(id){
 }
 
 
+function $clas(a, n){
+    return $class(a, n)[0]
+}
+
+function $class(a, n){
+    if(!n){
+        n = a
+        a = document
+    }
+    return a.getElementsByClassName(n)
+}
+
+
 
 function getScrollTop() {  
     var scrollPos;  
