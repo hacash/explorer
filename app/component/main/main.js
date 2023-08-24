@@ -39,7 +39,7 @@ function showCoinbasePace(cbh, rwd, circ, burn) {
         tlpis.push(x+','+y)
     }
 
-    $cblish.innerHTML = bs.join('') + `<p class="tt">Block Reward in 66 Years</p><svg>  <polyline points="0,${cbsh} ${tlpis.join(' ')} 1000,0 1000,${cbsh}" stroke-width="1" stroke="#00880088" fill="#00880011" ></svg>`
+    $cblish.innerHTML = bs.join('') + `<p class="tt">Block Reward in 66 Years</p><svg>  <polyline points="2,${cbsh} ${tlpis.join(' ')} 2000,0 2000,${cbsh}" stroke-width="1" stroke="#00880088" fill="#00880011" ></svg>`
     // reward percent
     var ttn = 2200*10000
     var per = parseFloat(rwd) / ttn * 100
@@ -47,7 +47,7 @@ function showCoinbasePace(cbh, rwd, circ, burn) {
         <div class="bar">
             <p class="tt">Mining Ratio</p>
             <div class="sld" style="width: ${per}%"><p>${per.toFixed(2)}%</p></div>
-            <div class="num"><p>${rwd} / ${ttn}</p></div>
+            <div class="num"><p>${toThousands(rwd)} / ${toThousands(ttn)}</p></div>
         </div>
     `
     // burn percent
@@ -56,8 +56,8 @@ function showCoinbasePace(cbh, rwd, circ, burn) {
     , bcp2 = burn / ttcc * 100
     ;
     $clas($blkrwd, 'burner').innerHTML = `
-    <div class="cp c1" style="width: ${bcp1}%"><b>${circ.toFixed(1)}</b><i>Circulation</i><p>${bcp1.toFixed(1)}%</p></div>
-    <div class="cp c2" style="width: ${bcp2}%"><div class="oo"></div><p>${bcp2.toFixed(1)}%</p><i>Burned</i><b>${burn.toFixed(1)}</b></div>
+    <div class="cp c1" style="width: ${bcp1}%"><b>${toThousands(circ.toFixed(1))}</b><i>Circulation</i><p>${bcp1.toFixed(1)}%</p></div>
+    <div class="cp c2" style="width: ${bcp2}%"><div class="oo"></div><p>${bcp2.toFixed(1)}%</p><i>Burned</i><b>${toThousands(burn.toFixed(1))}</b></div>
     `
 }
 
@@ -86,15 +86,15 @@ var vAppTotalSupply = new Vue({
             }, function(data){
                 // console.log(data)
                 // console.log(that)
-                that.block_reward = toThousands(data.block_reward)
-                that.minted_diamond = toThousands(data.minted_diamond)
-                that.transferred_bitcoin = toThousands(data.transferred_bitcoin)
-                that.channel_interest = toThousands(data.channel_interest)
-                that.btcmove_subsidy = toThousands(data.btcmove_subsidy)
-                that.burned_fee = toThousands(data.burned_fee)
-                that.located_in_channel = toThousands(data.located_in_channel)
-                that.channel_of_opening = toThousands(data.channel_of_opening)
-                that.current_circulation = toThousands(data.current_circulation)
+                that.block_reward = data.block_reward
+                that.minted_diamond = data.minted_diamond
+                that.transferred_bitcoin = data.transferred_bitcoin
+                that.channel_interest = data.channel_interest
+                that.btcmove_subsidy = data.btcmove_subsidy
+                that.burned_fee = data.burned_fee
+                that.located_in_channel = data.located_in_channel
+                that.channel_of_opening = data.channel_of_opening
+                that.current_circulation = data.current_circulation
             })
         },
 

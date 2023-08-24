@@ -22,9 +22,10 @@
                 <h1 class="tt">HAC</h1>
                 <div class="con">
                     <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b class="gs">♾️</b></div>
-                    <div class="li"><label>[:=lang.main.ttspl_current_circulation || "实时流通":]</label><b class="nn">{{current_circulation}}</b></div>
-                    <div class="li"><label>[:=lang.main.ttspl_burned_fee || "已销毁":]</label><b>{{burned_fee}}</b></div>
-                    <!-- <div class="li"><label>[:=lang.main.ttspl_block_reward || "区块奖励":]</label><b>{{block_reward}}</b></div> -->
+                    <div class="li"><label>[:=lang.main.ttspl_current_circulation || "实时流通":]</label><b class="nn">{{toThousands(parseFloat(current_circulation).toFixed(1))}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_burned_fee || "已销毁":]</label><b>{{toThousands(parseFloat(burned_fee).toFixed(1))}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_block_reward || "区块奖励":]</label><b>{{toThousands(parseFloat(block_reward).toFixed(1))}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_channel_interest || "通道利息":]</label><b>{{toThousands(parseFloat(channel_interest).toFixed(1))}}</b></div>
                     <!-- <div class="li"><label></label><b></b></div> -->
                 </div>
             </div></div>
@@ -32,8 +33,10 @@
                 <h1 class="tt">HACD</h1>
                 <div class="con">
                     <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>{{toThousands(16777216)}}</b></div>
-                    <div class="li"><label>[:=lang.main.ttspl_minted_diamond || "已挖出":]</label><b class="nn">{{minted_diamond}}</b></div>
-                    <div class="li"><label>[:=lang.main.ttspl_hacd_visualization || "可视化":]</label><b>{{3}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_minted_diamond || "已挖出":]</label><b class="nn">{{toThousands(minted_diamond)}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_minted_hacdper || "流通比":]</label><b>{{(parseFloat(minted_diamond)/16777216*100).toFixed(2)}}%</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_hacd_average_bid || "平均竞价":]</label><b>ㄜ{{(parseFloat(burned_fee)/0.9/(parseInt(minted_diamond)-30000)).toFixed(2)}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_hacd_visualization || "可视化协议":]</label><b>{{3}}</b></div>
                     
                 </div>
             </div></div>
@@ -42,7 +45,7 @@
                 <div class="con">                    
                     <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>{{toThousands(21000000)}}</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_transferred_bitcoin || "已转移比特币":]</label><b class="nn">0</b></div>
-                    <div class="li"><label>[:=lang.main.ttspl_btcmove_subsidy || "HAC补偿":]</label><b>0.0</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_btcmove_subsidy || "HAC补偿":]</label><b>ㄜ0.0</b></div>
                     <!-- <div class="li"><label></label><b></b></div> -->
                 </div>
             </div></div>
@@ -55,7 +58,9 @@
         <div class="wrap">
             <h1 class="tt">HAC Statistical Chart</h1>
             <div class="con">
-                <div class="cblist"></div>
+                <div class="cbwrap">
+                    <div class="cblist"></div>
+                </div>
                 <div class="rwdper"></div>
                 <div class="burner"></div>
             </div>
@@ -64,20 +69,15 @@
 </div>
 
 
-<div id="totalsupply" class="mtable mbfix">
+<a name="ly2ch"></a>
+<div id="ly2ch" class="mtable mbfix">
     <div class="container">
         <div class="wrap">
-            <h1 class="tt">[:=lang.main.ttspl_title || "总供应量统计":]</h1>
+            <h1 class="tt">[:=lang.main.ttspl_ly2ch || "二层通道数据":]</h1>
             <div class="con">
-                <div class="num"><h6>[:=lang.main.ttspl_block_reward || "矿工区块奖励：":]</h6><b class="green">{{block_reward}}<i>HAC</i></b></div>
-                <div class="num"><h6>[:=lang.main.ttspl_channel_interest || "通道锁定已发放利息：":]</h6><b class="green">{{channel_interest}}<i>HAC</i></b></div>
-                <div class="num"><h6>[:=lang.main.ttspl_btcmove_subsidy || "比特币转移补偿已解锁：":]</h6><b class="green">{{btcmove_subsidy}}<i>HAC</i></b></div>
-                <div class="num"><h6>[:=lang.main.ttspl_transferred_bitcoin || "已转移过来的比特币：":]</h6><b class="orange">{{transferred_bitcoin}}<i>BTC</i></b></div>
                 <div class="num"><h6>[:=lang.main.ttspl_channel_of_opening || "已开启通道数：":]</h6><b>{{channel_of_opening}}</b></div>
-                <div class="num"><h6>[:=lang.main.ttspl_located_in_channel || "已存入通道链网络：":]</h6><b>{{located_in_channel}}<i>HAC</i></b></div>
-                <div class="num"><h6>[:=lang.main.ttspl_minted_diamond || "已挖出钻石数：":]</h6><b>{{minted_diamond}}<i>❂</i></b></div>
-                <div class="num"><h6>[:=lang.main.ttspl_burned_fee || "已销毁手续费：":]</h6><b class="red">{{burned_fee}}<i>HAC</i></b></div>
-                <div class="num"><h6>[:=lang.main.ttspl_current_circulation || "实时流通量统计：":]</h6><b>{{current_circulation}}<i>HAC</i></b></div>
+                <div class="num"><h6>[:=lang.main.ttspl_located_in_channel || "已存入通道链网络：":]</h6><b>{{toThousands(parseFloat(located_in_channel).toFixed(1))}}<i>HAC</i></b></div>
+                <div class="num"><h6>[:=lang.main.ttspl_channel_interest || "通道利息：":]</h6><b class="green">{{toThousands(parseFloat(channel_interest).toFixed(1))}}<i>HAC</i></b></div>
             </div>
         </div>
     </div>
@@ -104,7 +104,7 @@
     </div>
 </div>
 
-
+<a name="hacdvs"></a>
 <div id="diamondcreatetxs" class="mtable mbfix" >
     <div class="container">
         <div class="wrap">
@@ -284,6 +284,7 @@
 
 
 
+<a name="holders"></a>
 [: if(ranking_api_url){ :]
 <div id="ranking" class="mtable">
     <div class="container">
@@ -296,7 +297,7 @@
                         <table>
                             [: var rda = ranking_data.accounts; :]
                             <tr class="hd"><td>[:=lang.main.rk_accnum || "账户总计":]</td><td>HAC</td><td>HACD</td><td>BTC</td></tr>
-                            <tr><td class="l">[:=lang.main.rk_nonempty || "非零地址数":]:</td><td>[:=rda.hac:]</td><td>[:=rda.hacd:]</td><td>[:=rda.btc:]</td></tr>
+                            <tr><td class="ct">[:=lang.main.rk_nonempty || "非零地址数":]:</td><td>[:=rda.hac:]</td><td>[:=rda.hacd:]</td><td>[:=rda.btc:]</td></tr>
                         </table>
                     </div>
                     <div class="box t2">
@@ -306,7 +307,7 @@
                             :]
                             <tr class="hd"><td>[:=lang.main.rk_turnover|| "换手统计":]</td><td>HAC</td><td>HACD</td><td>BTC</td></tr>
                             [: for(var i in rdt.hac){ var showhei = frthei - (i*2000); :]
-                            <tr><td class="">[:=showhei:] ~ [:=showhei+2000:]</td><td>[:=rdt.hac[i]:]</td><td>[:=rdt.hacd[i]:]</td><td>[:=rdt.btc[i]:]</td></tr>
+                            <tr><td class="ct">[:=showhei:] ~ [:=showhei+2000:]</td><td>[:=rdt.hac[i]:]</td><td>[:=rdt.hacd[i]:]</td><td>[:=rdt.btc[i]:]</td></tr>
                             [: } :]
                         </table>
                     </div>

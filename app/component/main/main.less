@@ -2,6 +2,9 @@ html, body{
     background-color: #e6e9ee;
 }
 
+.container {
+    max-width: 960px;
+}
 
 
 .dfctshow{
@@ -172,25 +175,30 @@ div.pmore{
         table {
             display: table !important;
             width: 100% !important;
-            max-width: 500px !important;
+            // max-width: 500px !important;
             margin: auto;
             border-collapse:  collapse !important;
-            border: 1px solid lightblue !important; 
+            border: 1px solid #3299bb80 !important; 
             td {
-                border: 1px solid lightblue !important;
+                border: 1px solid #3299bb80 !important;
                 padding: 5px 10px;
-                color: #666;
+                color: #999;
                 font-size: 14px;
                 text-align: right;
+                width: 25%;
             }
             td.l {
                 text-align: left;
             }
+            td.ct {
+                text-align: center;
+                color: #999;
+            }
             tr.hd {
-                background-color: #c0e5f1;
+                background-color: #66c2e044;
                 td {
                     text-align: center;
-                    color: #999;
+                    color: #33788f;
                     font-weight: bold;
                     padding: 10px;
 
@@ -212,10 +220,12 @@ div.pmore{
         }
     }
     button.tab{
-        line-height: 26px;
-        height: 30px;
+        line-height: 34px;
+        height: 34px;
         margin: 10px;
         padding: 0 20px;
+        font-size: 15px;
+        font-weight: bold;
         border-radius: 6px;
         cursor: pointer;
         opacity: 0.8;
@@ -223,6 +233,7 @@ div.pmore{
         border: 1px #fff solid;
         &:hover{
             opacity: 1;
+            text-decoration: underline;
         }
         &.active{
             opacity: 1;
@@ -268,7 +279,7 @@ div.pmore{
     }
     .con {
         padding: 10px;
-        // min-height: 130px;
+        min-height: 164px;
     }
     .li {
         display: flex;
@@ -330,7 +341,8 @@ div.pmore{
         b.h5 { height: @hh * 5; }
         b.h8 { height: @hh * 8; }
         b.ps {
-            background: #76944c;
+            // background: #76944c;
+            background-image: linear-gradient(to top, #45750833, #467508ff);
         }
         @keyframes curbl {
             0% { box-shadow: 0 0 0px 0 green; }
@@ -482,7 +494,7 @@ div.pmore{
 }
 
 
-#totalsupply {
+#ly2ch {
     // margin-top: 20px;
     .wrap .con {
         padding-bottom: 0;
@@ -830,6 +842,48 @@ div.pmore{
     }
 }
 
+#coin3 {
+    padding: 0;
+    .container {
+        padding: 0;
+        margin: 0;
+        width: auto;
+    }
+    .wrap .tt {
+        padding-top: 20px;
+    }
+    .flex {
+        display: block;
+    }
+    .box, .con {
+        width: auto;
+        min-height: 0;
+    }
+}
+
+#blkrwd {
+    .rwdper {
+        .sld {
+            p {
+                right: -40px;
+                color: green;
+            }
+        }
+    }
+    .cbwrap {
+        overflow-x: scroll;
+    }
+    .cblist {
+        width: 1000px;
+    }
+    .con {
+        padding: 20px 5px;
+    }
+}
+
+
+
+
 #ranking {
     .dtshow {
         .box {
@@ -838,6 +892,7 @@ div.pmore{
         table {
             td {
                 padding: 5px !important;
+                width: auto !important;
             }
 
         }
@@ -852,7 +907,7 @@ div.pmore{
     }
 
 }
-#totalsupply {
+#ly2ch {
     margin: 0;
     .wrap{
         h1{

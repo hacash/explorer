@@ -2,7 +2,15 @@
 
 <div id="header" >
     <div class="container ">
-        <a href="/"><h1>[:=lang.header.title_big:]<span>[:=lang.header.title_small:]</span></h1></a>
+        <a class="lg" href="/">
+            <div class="pics">
+                <img class="j1" src="https://hacash.org/cssimg/hacash_btc.svg" />
+                <img class="j2" src="https://hacash.org/cssimg/hacash_hacd.svg" />
+                <img class="j3" src="https://hacash.org/cssimg/hacash_logo.svg" />
+            </div>
+            <h1>[:=lang.header.title_big:]
+            <!-- <span>[:=lang.header.title_small:]</span> -->
+        </h1></a>
         <div class="search">
             <input class="input" @keyup="keyEnterSearch" v-model="search_str" placeholder="[:=lang.header.search_input_placeholder:]" />
             <button @click="clickSearch">[:=lang.header.search:]</button>
