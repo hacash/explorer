@@ -21,15 +21,19 @@ function showCoinbasePace(cbh, rwd, circ, burn) {
     , cind = rwdcis[chi]
     , ctrds = 0
     , bs = []
+    , increase_days = '*'
     ;
     for(var i in rwdcis) {
         var h = rwdcis[i]
         , cla = ''
+        , spxd = 10*10000*(parseInt(i)+1)
         ctrds += h
         if(i<chi) {
             cla = ' ps'
         }else if(i==chi) {
             cla = ' cur'
+            // console.log(spxd, cbh)
+            increase_days = parseInt((spxd - cbh) / 288)
         }
         bs.push('<b class="h'+h+cla+'"><i>'+h+'</i></b>')
         // points
@@ -39,13 +43,13 @@ function showCoinbasePace(cbh, rwd, circ, burn) {
         tlpis.push(x+','+y)
     }
 
-    $cblish.innerHTML = bs.join('') + `<p class="tt">Block Reward in 66 Years</p><svg>  <polyline points="2,${cbsh} ${tlpis.join(' ')} 2000,0 2000,${cbsh}" stroke-width="1" stroke="#00880088" fill="#00880011" ></svg>`
+    $cblish.innerHTML = bs.join('') + `<p class="tt">Block Reward in 66 Years<br/>After ${increase_days} Days Increase to 8 HAC</p><svg>  <polyline points="2,${cbsh} ${tlpis.join(' ')} 2000,0 2000,${cbsh}" stroke-width="1" stroke="#00880088" fill="#00880011" ></svg>`
     // reward percent
     var ttn = 2200*10000
     var per = parseFloat(rwd) / ttn * 100
     $clas($blkrwd, 'rwdper').innerHTML = `
         <div class="bar">
-            <p class="tt">Mining Ratio</p>
+            <p class="tt">Mined Ratio</p>
             <div class="sld" style="width: ${per}%"><p>${per.toFixed(2)}%</p></div>
             <div class="num"><p>${toThousands(rwd)} / ${toThousands(ttn)}</p></div>
         </div>
@@ -56,13 +60,38 @@ function showCoinbasePace(cbh, rwd, circ, burn) {
     , bcp2 = burn / ttcc * 100
     ;
     $clas($blkrwd, 'burner').innerHTML = `
-    <div class="cp c1" style="width: ${bcp1}%"><b>${toThousands(circ.toFixed(1))}</b><i>Circulation</i><p>${bcp1.toFixed(1)}%</p></div>
-    <div class="cp c2" style="width: ${bcp2}%"><div class="oo"></div><p>${bcp2.toFixed(1)}%</p><i>Burned</i><b>${toThousands(burn.toFixed(1))}</b></div>
+    <div class="cp c1" style="width: ${bcp1}%"><b>${toThousands(circ.toFixed(1))}</b><i class="tt">Circulation</i><p>${bcp1.toFixed(1)}%</p></div>
+    <div class="cp c2" style="width: ${bcp2}%"><div class="oo"></div><p>${bcp2.toFixed(1)}%</p><i class="tt">Burned</i><b>${toThousands(burn.toFixed(1))}</b></div>
     `
 }
 
 // test
 showCoinbasePace(471966, 1060604, 516253.9653, 544850.8617)
+
+
+
+var vAppTopSearch = new Vue({
+    el: '#topsc',
+    data: {
+        search_str: "",
+    },
+    methods:{
+        keyEnterSearch: function(e){
+            if(e.key=="Enter"){
+                this.clickSearch()
+            }
+        },
+        clickSearch: function(){
+            var that = this,
+            ss = that.search_str
+            doHeaderSearch(ss)
+        }
+    },
+})
+
+
+
+
 
 
 

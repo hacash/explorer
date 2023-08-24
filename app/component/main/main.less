@@ -6,6 +6,19 @@ html, body{
     max-width: 960px;
 }
 
+#header {
+    .tbwp {
+        display: none;
+    }
+    .navs {
+        background-image: linear-gradient(to bottom, #ffffff66, #00000033);
+        border: none;
+    }
+    .nvs {
+        justify-content: space-between;
+    }
+
+}
 
 .dfctshow{
     display: block;
@@ -18,9 +31,83 @@ html, body{
 }
 
 
+#topsc {
+    padding: 30px 0;
+    background-color: #44648a;
+    border-top: 1px solid #00000033;
+    * {
+        text-shadow: 1px 1px 1px #00000066;
+        color: #ffffffdd;
+    }
+    .wrap {
+        display: flex;
+        justify-content: left;
+    }
+    .grow {
+        flex-grow: 1;
+    }
+    .lg {
+        height: 64px;
+        padding: 20px;
+        background: #ffffff2f;
+        border-radius: 100px;
+        // box-shadow: 4px 4px 2px #0000001f, 0 0 20px 0 #ffffff99 inset, 0 0 30px #00000066;
+        filter: grayscale(1);
+        transform: rotate(0deg);
+        margin-right: 60px;
+        border: 5px solid #ffffff33;
+        box-shadow: 0 0 50px #ffffff88;
+    }
+    .pttl {
+        font-size: 32px;
+        font-weight: 900;
+        text-shadow: 0 0 30px #ffffffbb;
+    }
+    .search{ 
+        margin-top: 12px;
+        position: relative;
+        height: 42px;
+        // width: 100%;
+        background-color: #ffffffdd;
+        border-radius: 7px;
+        input {
+            display: block;
+            width: 100%;
+            height: 42px;
+            padding: 0 12px;
+            background: none;
+            color: #000;
+            font-size: 15px;
+            text-shadow: none;
+        }
+        button {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            border-radius: 5px;
+            height: 38px;
+            line-height: 38px;
+            padding: 0 20px;
+            background: #55afff;
+            font-size: 16px;
+            font-weight: 900;
+            background-image: linear-gradient(45deg, #f1aa40, #00b0ff);
+        }
+        button:hover {
+            cursor: pointer;
+            box-shadow: 1px 1px 2px 1px #00000099;
+        }
+        button:active {
+            box-shadow: none;
+        }
+    }
+
+}
+
 #dfcts{
     .wrap{
         position: relative;
+        border-bottom: 1px solid #ddd;
         .tt{
             display: block;
             // position: absolute;
@@ -30,7 +117,6 @@ html, body{
             font-size: 12px;
             // background: #ffffff99;
             // border: 1px solid #ffffff22;
-            // border-bottom-color: #eee;
             width: 100%;
             p{
                 display: block;
@@ -82,6 +168,8 @@ div.pmore{
             font-size: 14px;
             line-height: 17px;
             padding: 10px 16px;
+            position: relative;
+            
             span.tv{
                 padding-top: 2px;
                 float: right;
@@ -281,6 +369,14 @@ div.pmore{
         padding: 10px;
         min-height: 164px;
     }
+    .lg {
+        height: 28px;
+        filter: grayscale(0.5);
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        transform: rotate(15deg);
+    }
     .li {
         display: flex;
         justify-content: space-between;
@@ -319,7 +415,7 @@ div.pmore{
         align-items: end;
         @hh: 16px;
         .tt {
-
+            text-align: right;
             position: absolute;
             top: 20px;
             right: 10px;
@@ -806,6 +902,7 @@ div.pmore{
     }
     .wrap{
         h1{
+            display: block;
             padding-top: 40px;
             color: #566;
         }
@@ -859,6 +956,10 @@ div.pmore{
         width: auto;
         min-height: 0;
     }
+    .lg {
+        top: 18px;
+        height: 22px;
+    }
 }
 
 #blkrwd {
@@ -881,6 +982,26 @@ div.pmore{
     }
 }
 
+
+#topsc {
+    padding: 10px 0 10px 0;
+    text-align: center;
+    .wrap {
+        display: block;
+    }
+    .logo {
+        display: none;
+    }
+    .pttl {
+        font-size: 22px;
+    }
+    .search {
+        margin: 10px 30px 0;
+        input, button {
+            font-size: 14px !important;
+        }
+    }
+}
 
 
 

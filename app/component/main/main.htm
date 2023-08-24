@@ -12,6 +12,23 @@
       , ranking_api_url = "[:=ranking_api_url:]";
 </script>
 
+<div id="topsc">
+    <div class="container">
+        <div class="wrap">
+            <div class="logo">
+                <img class="lg" src="https://hacash.org/cssimg/hacash_sign.svg" />
+            </div>
+            <div class="grow">
+                <h1 class="pttl">[:=lang.main.pttl:]</h1>
+                <div class="search">
+                    <input class="input" @keyup="keyEnterSearch" v-model="search_str" placeholder="Search by [:=lang.header.search_input_placeholder:]" />
+                    <button @click="clickSearch">[:=lang.header.search:]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div id="supply">
 
@@ -19,29 +36,38 @@
     <div class="container">
         <div class="flex">
             <div class="mtable mbfix box b1"><div class="wrap">
-                <h1 class="tt">HAC</h1>
+                <h1 class="tt">
+                    HAC
+                    <img class="lg" src="https://hacash.org/cssimg/hacash_logo.svg" />
+                </h1>
                 <div class="con">
                     <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b class="gs">♾️</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_current_circulation || "实时流通":]</label><b class="nn">{{toThousands(parseFloat(current_circulation).toFixed(1))}}</b></div>
-                    <div class="li"><label>[:=lang.main.ttspl_burned_fee || "已销毁":]</label><b>{{toThousands(parseFloat(burned_fee).toFixed(1))}}</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_block_reward || "区块奖励":]</label><b>{{toThousands(parseFloat(block_reward).toFixed(1))}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_burned_fee || "已销毁":]</label><b>{{toThousands(parseFloat(burned_fee).toFixed(1))}}</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_channel_interest || "通道利息":]</label><b>{{toThousands(parseFloat(channel_interest).toFixed(1))}}</b></div>
                     <!-- <div class="li"><label></label><b></b></div> -->
                 </div>
             </div></div>
             <div class="mtable mbfix box b2"><div class="wrap">
-                <h1 class="tt">HACD</h1>
+                <h1 class="tt">
+                    HACD
+                    <img class="lg" src="https://hacash.org/cssimg/hacash_hacd.svg" />
+                </h1>
                 <div class="con">
                     <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>{{toThousands(16777216)}}</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_minted_diamond || "已挖出":]</label><b class="nn">{{toThousands(minted_diamond)}}</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_minted_hacdper || "流通比":]</label><b>{{(parseFloat(minted_diamond)/16777216*100).toFixed(2)}}%</b></div>
-                    <div class="li"><label>[:=lang.main.ttspl_hacd_average_bid || "平均竞价":]</label><b>ㄜ{{(parseFloat(burned_fee)/0.9/(parseInt(minted_diamond)-30000)).toFixed(2)}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_hacd_average_bid || "平均HAC竞价":]</label><b>ㄜ{{(parseFloat(burned_fee)/0.9/(parseInt(minted_diamond)-30000)).toFixed(2)}}</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_hacd_visualization || "可视化协议":]</label><b>{{3}}</b></div>
                     
                 </div>
             </div></div>
             <div class="mtable mbfix box b3"><div class="wrap">
-                <h1 class="tt">BTC</h1>
+                <h1 class="tt">
+                    BTC
+                    <img class="lg" src="https://hacash.org/cssimg/hacash_btc.svg" />
+                </h1>
                 <div class="con">                    
                     <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>{{toThousands(21000000)}}</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_transferred_bitcoin || "已转移比特币":]</label><b class="nn">0</b></div>
@@ -56,7 +82,7 @@
 <div id="blkrwd" class="mtable mbfix">
     <div class="container">
         <div class="wrap">
-            <h1 class="tt">HAC Statistical Chart</h1>
+            <h1 class="tt">[:=lang.main.ttspl_hac_chart || "HAC统计图" :]</h1>
             <div class="con">
                 <div class="cbwrap">
                     <div class="cblist"></div>
@@ -97,6 +123,9 @@
             <canvas class="dfctshow" id="dfcts_canvas">
                 Your browser does not support canvas tag.
             </canvas>
+        </div>
+        <div class="wrap">
+            <div class="tt">[:=lang.main.hash_power_title_all || "历史总波动曲线" :]</div>
             <canvas class="dfctshow" id="dfcts_canvas_all">
                 Your browser does not support canvas tag.
             </canvas>

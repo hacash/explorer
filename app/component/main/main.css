@@ -5,14 +5,94 @@ body {
 .container {
   max-width: 960px;
 }
+#header .tbwp {
+  display: none;
+}
+#header .navs {
+  background-image: linear-gradient(to bottom, #ffffff66, #00000033);
+  border: none;
+}
+#header .nvs {
+  justify-content: space-between;
+}
 .dfctshow {
   display: block;
   height: 100px;
   width: 100%;
   border-top: 1px solid #88888844;
 }
+#topsc {
+  padding: 30px 0;
+  background-color: #44648a;
+  border-top: 1px solid #00000033;
+}
+#topsc * {
+  text-shadow: 1px 1px 1px #00000066;
+  color: #ffffffdd;
+}
+#topsc .wrap {
+  display: flex;
+  justify-content: left;
+}
+#topsc .grow {
+  flex-grow: 1;
+}
+#topsc .lg {
+  height: 64px;
+  padding: 20px;
+  background: #ffffff2f;
+  border-radius: 100px;
+  filter: grayscale(1);
+  transform: rotate(0deg);
+  margin-right: 60px;
+  border: 5px solid #ffffff33;
+  box-shadow: 0 0 50px #ffffff88;
+}
+#topsc .pttl {
+  font-size: 32px;
+  font-weight: 900;
+  text-shadow: 0 0 30px #ffffffbb;
+}
+#topsc .search {
+  margin-top: 12px;
+  position: relative;
+  height: 42px;
+  background-color: #ffffffdd;
+  border-radius: 7px;
+}
+#topsc .search input {
+  display: block;
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  background: none;
+  color: #000;
+  font-size: 15px;
+  text-shadow: none;
+}
+#topsc .search button {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  border-radius: 5px;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 20px;
+  background: #55afff;
+  font-size: 16px;
+  font-weight: 900;
+  background-image: linear-gradient(45deg, #f1aa40, #00b0ff);
+}
+#topsc .search button:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 2px 1px #00000099;
+}
+#topsc .search button:active {
+  box-shadow: none;
+}
 #dfcts .wrap {
   position: relative;
+  border-bottom: 1px solid #ddd;
 }
 #dfcts .wrap .tt {
   display: block;
@@ -63,6 +143,7 @@ div.pmore .button span {
   font-size: 14px;
   line-height: 17px;
   padding: 10px 16px;
+  position: relative;
 }
 .mtable .wrap h1 span.tv {
   padding-top: 2px;
@@ -252,6 +333,14 @@ div.pmore .button span {
   padding: 10px;
   min-height: 164px;
 }
+#coin3 .lg {
+  height: 28px;
+  filter: grayscale(0.5);
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  transform: rotate(15deg);
+}
 #coin3 .li {
   display: flex;
   justify-content: space-between;
@@ -290,6 +379,7 @@ div.pmore .button span {
   align-items: end;
 }
 #blkrwd .cblist .tt {
+  text-align: right;
   position: absolute;
   top: 20px;
   right: 10px;
@@ -726,6 +816,7 @@ div.pmore .button span {
     width: 100%;
   }
   .mtable.mbfix .wrap h1 {
+    display: block;
     padding-top: 40px;
     color: #566;
   }
@@ -775,6 +866,10 @@ div.pmore .button span {
     width: auto;
     min-height: 0;
   }
+  #coin3 .lg {
+    top: 18px;
+    height: 22px;
+  }
   #blkrwd .rwdper .sld p {
     right: -40px;
     color: green;
@@ -787,6 +882,26 @@ div.pmore .button span {
   }
   #blkrwd .con {
     padding: 20px 5px;
+  }
+  #topsc {
+    padding: 10px 0 10px 0;
+    text-align: center;
+  }
+  #topsc .wrap {
+    display: block;
+  }
+  #topsc .logo {
+    display: none;
+  }
+  #topsc .pttl {
+    font-size: 22px;
+  }
+  #topsc .search {
+    margin: 10px 30px 0;
+  }
+  #topsc .search input,
+  #topsc .search button {
+    font-size: 14px !important;
   }
   #ranking .dtshow .box {
     margin: 0 5px 20px;

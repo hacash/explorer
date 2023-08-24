@@ -1,7 +1,10 @@
 module.exports = {
 
-    hash_power_title: "<p>全网最近目标哈希率：<b>{{target_hashpower}}</b>， 实时哈希率：<b>{{current_hashpower}}</b>，近300天算力波动和全部历史算力曲线：</p>",
-    diamond_mining_period: "周期 {{period}} 序号 {{number}} 最新挖出待确认钻石手续费竞价排序表：",
+    pttl: "Hacash 区块链浏览器",
+
+    hash_power_title: "<p>全网最近目标哈希率：<b>{{target_hashpower}}</b>， 实时哈希率：<b>{{current_hashpower}}</b>，近300天算力波动曲线</p>",
+    hash_power_title_all: "<p>总历史算力波动曲线</p>",
+    diamond_mining_period: "周期 {{period}} 序号 {{number}} 最新挖出待确认钻石手续费竞价排序表",
 
     diamond_value: "钻石字面值",
     diamond_tx_hx: "交易哈希",
@@ -45,6 +48,7 @@ module.exports = {
     oal_show_more: "查看更多",
 
     ttspl_title: "总供应量统计",
+    ttspl_hac_chart: "HAC统计图表",
     ttspl_total: "总量上限",
     ttspl_miner_reward: "区块奖励",
     ttspl_channel_interest: "二层通道利息",
@@ -57,7 +61,7 @@ module.exports = {
     ttspl_current_circulation: "实时流通",
     ttspl_hacd_visualization: "可视化协议",
     ttspl_minted_hacdper: "开采率",
-    ttspl_hacd_average_bid: "平均竞价",
+    ttspl_hacd_average_bid: "平均竞价HAC",
     ttspl_ly2ch: "二层通道统计",
 
     rk_title: "链上统计",

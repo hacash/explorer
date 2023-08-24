@@ -1,7 +1,10 @@
 module.exports = {
 
-    hash_power_title: "<p>Latest wholel network target hash rate: <b>{{target_hashpower}}</b>. Real-time hash rate: <b>{{current_hashpower}}</b>. Last 300 days and all past hash rate fluctuation graph:</p>",
-    diamond_mining_period: "The ranking table of diamond fees waiting for confirm period {{period}}, number {{number}} :",
+    pttl: "The Hacash Blockchain Explorer",
+
+    hash_power_title: "<p>Latest target hashrates: <b>{{target_hashpower}}</b>. Real-time hashrates: <b>{{current_hashpower}}</b>. Last 300 days hashrates fluctuation graph</p>",
+    hash_power_title_all: "<p>Overall hashrates fluctuation graph</p>",
+    diamond_mining_period: "The ranking table of diamond fees waiting for confirm period {{period}}, number {{number}} ",
     
     diamond_value: "Diamond Name",
     diamond_tx_hx: "Tx Hash",
@@ -45,6 +48,7 @@ module.exports = {
     oal_show_more: "Show More",
 
     ttspl_title: "Hacash Data Overview",
+    ttspl_hac_chart: "HAC Statistical Chart",
     ttspl_total: "Total Max",
     ttspl_block_reward: "Block Reward",
     ttspl_channel_interest: "Channel Interests",
@@ -52,12 +56,12 @@ module.exports = {
     ttspl_burned_fee: "Burned",
     ttspl_located_in_channel: "Deposited in Channel",
     ttspl_channel_of_opening: "Opened Channels",
-    ttspl_minted_diamond: "Minted",
+    ttspl_minted_diamond: "Circulation",
     ttspl_transferred_bitcoin: "Transferred",
     ttspl_current_circulation: "Circulation",
     ttspl_hacd_visualization: "Visualization",
-    ttspl_minted_hacdper: "Minted Ratio",
-    ttspl_hacd_average_bid: "Average Bid",
+    ttspl_minted_hacdper: "Mined Ratio",
+    ttspl_hacd_average_bid: "HAC Average Bid",
     ttspl_ly2ch: "Layer2 Channel statistics",
 
     rk_title: "On-chain statistics",
