@@ -10,11 +10,11 @@ var rwdcis = [1,1,2,3,5,8,
 var $blkrwd = $id('blkrwd')
 ;
 
-function showCoinbasePaceChart(cbh, rwd, circ, burn) {
-    console.log(cbh, rwd, circ, burn)
+function showCoinbasePaceChart(that, cbh, rwd, circ, burn) {
+    // console.log(cbh, rwd, circ, burn)
     // 112358
     var $cblish = $clas($blkrwd, 'cblist')
-    , cbsw = parseInt($cblish.offsetWidth)
+    , cbsw = 930 // parseInt($cblish.offsetWidth)
     , cbsh = 128 //parseInt($cblish.offsetHeight)
     , tlpis = []
     ;
@@ -44,11 +44,11 @@ function showCoinbasePaceChart(cbh, rwd, circ, burn) {
         tlpis.push(x+','+y)
     }
 
-    $cblish.innerHTML = bs.join('') + `<p class="tt">Block Reward in 66 Years<br/>After ${increase_days} Days Increase to 8 HAC</p><svg>  <polyline points="2,${cbsh} ${tlpis.join(' ')} 2000,0 2000,${cbsh}" stroke-width="1" stroke="#00880088" fill="#00880011" ></svg>`
+    that.cblist = bs.join('') + `<p class="tt">Block Reward in 66 Years<br/>After ${increase_days} Days Increase to 8 HAC</p><svg>  <polyline points="2,${cbsh} ${tlpis.join(' ')} 2000,0 2000,${cbsh}" stroke-width="1" stroke="#00880088" fill="#00880011" ></svg>`
     // reward percent
     var ttn = 2200*10000
     var per = parseFloat(rwd) / ttn * 100
-    $clas($blkrwd, 'rwdper').innerHTML = `
+    that.rwdper = `
         <div class="bar">
             <p class="tt">Mined Ratio</p>
             <div class="sld" style="width: ${per}%"><p>${per.toFixed(2)}%</p></div>
@@ -60,7 +60,7 @@ function showCoinbasePaceChart(cbh, rwd, circ, burn) {
     , bcp1 = circ / ttcc * 100
     , bcp2 = burn / ttcc * 100
     ;
-    $clas($blkrwd, 'burner').innerHTML = `
+    that.burner = `
     <div class="cp c1" style="width: ${bcp1}%"><b>${toThousands(circ.toFixed(1))}</b><i class="tt">Circulation</i><p>${bcp1.toFixed(1)}%</p></div>
     <div class="cp c2" style="width: ${bcp2}%"><div class="oo"></div><p>${bcp2.toFixed(1)}%</p><i class="tt">Burned</i><b>${toThousands(burn.toFixed(1))}</b></div>
     `
@@ -99,6 +99,10 @@ var vAppTopSearch = new Vue({
 var vAppTotalSupply = new Vue({
     el: '#supply',
     data: {
+        cblist: '',
+        rwdper: '',
+        burner: '',
+
         minted_diamond: "-", // The number of diamonds that have been minted successfully
         transferred_bitcoin: "-",
         block_reward: "-", // Block reward HAC accumulation
@@ -127,7 +131,7 @@ var vAppTotalSupply = new Vue({
                 that.channel_of_opening = data.channel_of_opening
                 that.current_circulation = data.current_circulation
                 // show Chart
-                showCoinbasePaceChart(parseInt(that.lastest_block_height), 
+                showCoinbasePaceChart(that, parseInt(that.lastest_block_height), 
                     parseInt(that.block_reward), 
                     parseFloat(that.current_circulation), 
                     parseFloat(that.burned_fee))         
