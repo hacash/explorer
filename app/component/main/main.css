@@ -807,9 +807,15 @@ div.pmore .button span {
   background-color: #00000011;
 }
 @media screen and (max-width: 512px) {
+  #dfcts {
+    margin-top: 20px;
+  }
+  #dfcts .wrap {
+    background-color: #fff;
+  }
   #dfcts .wrap .tt p,
-  #dfcts .wrap .tt p b {
-    font-size: 12px;
+  #dfcts .wrap .tt b {
+    font-size: 14px;
   }
   .mtable.mbfix .container {
     padding: 0%;
@@ -931,10 +937,10 @@ div.pmore .button span {
     margin-bottom: 10px;
   }
   #ly2ch div.num h6 {
-    font-size: 12px;
+    font-size: 14px;
   }
   #ly2ch div.num b {
-    font-size: 14px;
+    font-size: 16px;
   }
   #ly2ch div.num b i {
     margin-left: 3px;
@@ -942,6 +948,9 @@ div.pmore .button span {
   }
   #dfcts_canvas {
     border: none;
+  }
+  #diamondcreatetxs {
+    margin-top: 22px;
   }
   #diamondcreatetxs .wrap h1 {
     padding-top: 10px;
