@@ -91,7 +91,7 @@ function doHeaderSearch(ss) {
     var as = ds.getElementsByClassName('hipit');
     // console.log(as)
     for(var i=0; i<as.length; i++){
-        console.log(as[i])
+        // console.log(as[i])
         as[i].onclick = toggle
     }
     // chrome tip
@@ -105,7 +105,7 @@ function doHeaderSearch(ss) {
         var si = bnn + bn.length + 1
         , vi = parseFloat(ua.slice(si, si+3))
         ;
-        console.log(vi)
+        // console.log(vi)
         if(vi < 100) {
             isOk = false //not ok
         }

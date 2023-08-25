@@ -10,7 +10,7 @@ var rwdcis = [1,1,2,3,5,8,
 var $blkrwd = $id('blkrwd')
 ;
 
-function showCoinbasePace(cbh, rwd, circ, burn) {
+function showCoinbasePaceChart(cbh, rwd, circ, burn) {
     // 112358
     var $cblish = $clas($blkrwd, 'cblist')
     , cbsw = parseInt($cblish.offsetWidth)
@@ -66,7 +66,7 @@ function showCoinbasePace(cbh, rwd, circ, burn) {
 }
 
 // test
-showCoinbasePace(471966, 1060604, 516253.9653, 544850.8617)
+showCoinbasePaceChart(471966, 1060604, 516253.9653, 544850.8617)
 
 
 
@@ -115,6 +115,7 @@ var vAppTotalSupply = new Vue({
             }, function(data){
                 // console.log(data)
                 // console.log(that)
+                that.lastest_block_height = data.lastest_block_height
                 that.block_reward = data.block_reward
                 that.minted_diamond = data.minted_diamond
                 that.transferred_bitcoin = data.transferred_bitcoin
@@ -124,6 +125,11 @@ var vAppTotalSupply = new Vue({
                 that.located_in_channel = data.located_in_channel
                 that.channel_of_opening = data.channel_of_opening
                 that.current_circulation = data.current_circulation
+                // show Chart
+                showCoinbasePaceChart(parseInt(that.lastest_block_height), 
+                    parseInt(that.block_reward), 
+                    parseFloat(that.current_circulation), 
+                    parseFloat(that.burned_fee))         
             })
         },
 
