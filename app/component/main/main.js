@@ -11,6 +11,7 @@ var $blkrwd = $id('blkrwd')
 ;
 
 function showCoinbasePaceChart(cbh, rwd, circ, burn) {
+    console.log(cbh, rwd, circ, burn)
     // 112358
     var $cblish = $clas($blkrwd, 'cblist')
     , cbsw = parseInt($cblish.offsetWidth)
@@ -66,7 +67,7 @@ function showCoinbasePaceChart(cbh, rwd, circ, burn) {
 }
 
 // test
-showCoinbasePaceChart(471966, 1060604, 516253.9653, 544850.8617)
+// showCoinbasePaceChart(471966, 1060604, 516253.9653, 544850.8617)
 
 
 
