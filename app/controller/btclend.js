@@ -2,10 +2,11 @@
  * 
  */
 const viewer = appload('viewer')
+const config = appload('config')
 
 
 
 module.exports = function(req, res)
 {
-    viewer.render('btclend', {}, req, res)
+    viewer.render('btclend', config, {}, req, res)
 }

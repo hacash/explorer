@@ -48,7 +48,7 @@ exports.compile = function(conf)
 }
 
 
-exports.render = function(vname, query, req, res)
+exports.render = function(vname, config, query, req, res)
 {
     const view = tplCache[vname]
     // console.log(view)
@@ -67,6 +67,7 @@ exports.render = function(vname, query, req, res)
             lang: res.lang, // 语言
             theme: res.theme, // 主题
             page_vname: vname,
+            page_version: config.page_version||1,
         }, data)
         res.end( view.tplfunc(datas) )
     }, req, res)
