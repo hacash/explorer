@@ -16,6 +16,7 @@ module.exports = {
 
     diamond_status_invalid_1: "balance low",
 
+    block_forks: "Block Fork Monitoring",
     block_last: "Latest Blocks",
     block_auto_update: "Auto update",
     

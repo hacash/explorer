@@ -16,6 +16,7 @@ module.exports = {
 
     diamond_status_invalid_1: "余额不足",
 
+    block_forks: "实时区块监测",
     block_last: "最新出块",
     block_auto_update: "自动更新",
     
