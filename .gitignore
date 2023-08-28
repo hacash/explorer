@@ -19,6 +19,10 @@ config.use.js
 *_test.*
 
 
+app/datas/*.log
+static/datas/*.log
+
+
 
 
 

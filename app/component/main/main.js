@@ -145,6 +145,77 @@ var vAppTotalSupply = new Vue({
 vAppTotalSupply.queryDatas()
 
 
+
+///////////////////////////////
+
+function rctblkpsrli(rct) {
+    var right = '';
+    if(rct.nexts&&rct.nexts.length){
+        right = `<div class="right">${rctblkpsrloopary(rct.nexts)}</div>`
+    }
+    return `<div class="itwp"><div class="left"><div id="${rct.hx}" class="blk  h${rct.hi} ${!right?'leaf':''}"><div class="rect h${rct.hi} ">
+            <p class="">${rct.height}</p>
+            <!--<p>${rct.hx}</p>
+            <p>${rct.txs}</p>-->
+            <p class="b">${rct.msg}</p>
+            <p class="m">${rct.miner}</p>
+            <p class="t">${formatDate(new Date(rct.arrive*1000), 'hh:mm:ss')}</p>
+        </div></div></div>${right}</div>`;
+};
+
+function rctblkpsrloopary(list) {
+    var ary = []
+    for(var i in list) {
+        ary.push( rctblkpsrli(list[i]) )
+    }
+    return ary.join('')
+};
+var rctblks = $id('rctblks')
+, rctblks_con = $clas(rctblks, 'con')
+;
+rctblks_con.innerHTML = '<div class="box"><svg class="lines"></svg>'+rctblkpsrloopary(recent_blocks)+'</div>'
+function rctblksdrawlines() {
+    var $blks = $class(rctblks, 'blk')
+    , $svg =  $clas(rctblks, 'lines')
+    , svgxy = $svg.getBoundingClientRect()
+    , xleft = svgxy.left
+    , xtop =  svgxy.top
+    ;
+    for(var i=0; i<$blks.length; i++) {
+        var li = $blks[i]
+        , rect = li.getBoundingClientRect()
+        li.setAttribute('x', rect.left - xleft)
+        li.setAttribute('y', rect.top - xtop)
+    }
+    // 
+    var draw_lines = [`<rect width="49.8%" height="100%" style="fill: #0000000f;" />`]
+    function xy(e, n) {
+        return parseInt(e.getAttribute(n))
+    }
+    function drawgroup(blk) {
+        var $div = $id(blk.hx)
+        var x1 = xy($div, 'x') + 50
+        , y1 = xy($div, 'y') + 50
+        ;
+        // nexts
+        for(var i in blk.nexts) {
+            var one = blk.nexts[i]
+            , $chd =  $id(one.hx)
+            , x2 = xy($chd, 'x') + 50
+            , y2 = xy($chd, 'y') + 50
+            , line = `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"></line>`
+            draw_lines.push(line)
+            drawgroup(one) // draw child
+        }
+    }
+    for(var i in recent_blocks) {
+        drawgroup(recent_blocks[i])
+    }
+    $svg.innerHTML = draw_lines.join('')
+}
+setTimeout(rctblksdrawlines, 50)
+
+
 ///////////////////////////////
 
 

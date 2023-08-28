@@ -9,7 +9,10 @@
     var dvhip = [:=this.dvhip||5:] 
       , theme = [:=this.theme||1:]
       , last_height = [:=last_height:]
-      , ranking_api_url = "[:=ranking_api_url:]";
+      , ranking_api_url = "[:=ranking_api_url:]"
+      , recent_blocks = [:=JSON.stringify(recent_blocks):]
+      ;
+      console.log(recent_blocks)
 </script>
 
 <div id="topsc">
@@ -237,6 +240,21 @@
 
         </div>
 
+    </div>
+</div>
+
+
+
+<div id="rctblks" class="mtable mbfix" >
+    <div class="container">
+        <div class="wrap">
+            <h1 class="pt">
+                Recent Blocks
+            </h1>
+            <div class="con">
+                
+            </div>
+        </div>
     </div>
 </div>
 
