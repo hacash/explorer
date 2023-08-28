@@ -18,7 +18,7 @@ module.exports = {
 
     block_forks: "Block Fork Monitoring",
     block_last: "Latest Blocks",
-    block_auto_update: "Auto update",
+    block_auto_update: "Auto Update",
     
     block_height: "Height",
     block_hash: "Hash",
