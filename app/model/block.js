@@ -144,7 +144,7 @@ async function getBlocks(last, limit) {
 }
 
 
-async function getRecentBlocks() {
+async function queryRecentBlocks() {
     var blocks = []
     try{
         // console.log("await http_tool.json(config.miner_api_url", "end_height:", last, "start_height:", start_height, "limit:", last-start_height+1)
@@ -242,12 +242,19 @@ async function getRecentBlocks() {
     storeBlockForksLog(recentblockscahce)
 
     // 定时清除缓存
-    setTimeout(function(){
-        recentblockscahce = []
-    }, 1000*77)
+    // if(!not_clean_cache) {
+    //     setTimeout(function(){
+    //         recentblockscahce = []
+    //     }, 1000*77)
+    // }
 
+    // 缓存写入并返回
     return recentblockscahce
 }
+
+
+// 定时清除缓存
+setInterval(queryRecentBlocks, 1000*17)
 
 
 
@@ -284,7 +291,7 @@ exports.getRecentBlocks = async function(clean_cache){
     if(recentblockscahce.length){
         return recentblockscahce // 返回缓存
     }
-    return await getRecentBlocks()
+    return await queryRecentBlocks()
 }
 
 ////////////////////////////////////////////////
