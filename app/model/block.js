@@ -164,6 +164,10 @@ async function queryRecentBlocks() {
     if(!blocks.length) {
         return []
     }
+
+    // clear cache
+    recentblockscahce = []
+
     // insert
     function havchilds(list, blk) {
         if(!list) return false
