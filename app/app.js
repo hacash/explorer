@@ -27,6 +27,7 @@ module.exports = function(app)
             }
         }
         res.lang = loadLanguage(ty)
+        res.lang.useset = ty
         res.lang_manual_selection = langset // 表示手动选择的语言设定
         // console.log(res.lang)
         next()

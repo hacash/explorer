@@ -64,6 +64,7 @@ module.exports = {
     ttspl_minted_hacdper: "Mined Ratio",
     ttspl_hacd_average_bid: "HAC Average Bid",
     ttspl_ly2ch: "Layer2 Channel Statistics",
+    ttspl_mintstart: "Start",
 
     rk_title: "On-chain Statistics",
     rk_accnum: "Total Addresses",

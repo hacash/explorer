@@ -64,6 +64,7 @@ module.exports = {
     ttspl_minted_hacdper: "开采率",
     ttspl_hacd_average_bid: "平均竞价HAC",
     ttspl_ly2ch: "二层通道统计",
+    ttspl_mintstart: "开始时间",
 
     rk_title: "链上统计",
     rk_accnum: "账户总计",
