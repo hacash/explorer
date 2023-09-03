@@ -647,9 +647,9 @@ div.pmore .button span {
   animation: blkanim 2.4s infinite;
 }
 #rctblks .blk {
-  margin: 8px;
-  width: 100px;
-  height: 100px;
+  margin: 13px;
+  width: 90px;
+  height: 90px;
   background-color: #eee;
   box-shadow: 3px 3px 2px #00000033;
   border-radius: 33.33%;
@@ -695,8 +695,8 @@ div.pmore .button span {
   padding: 5%;
 }
 #rctblks .rect p {
-  line-height: 22.5px;
-  height: 22.5px;
+  line-height: 20px;
+  height: 20px;
   word-break: keep-all;
   color: #333;
 }
@@ -714,28 +714,28 @@ div.pmore .button span {
   color: #fff !important;
 }
 #rctblks .leaf .rect.h0 {
-  background-color: #8097b311;
+  background-color: #53a78111;
 }
 #rctblks .leaf .rect.h1 {
-  background-color: #8097b333;
+  background-color: #53a78133;
 }
 #rctblks .leaf .rect.h2 {
-  background-color: #8097b355;
+  background-color: #53a78155;
 }
 #rctblks .leaf .rect.h3 {
-  background-color: #8097b377;
+  background-color: #53a78177;
 }
 #rctblks .leaf .rect.h4 {
-  background-color: #8097b399;
+  background-color: #53a78199;
 }
 #rctblks .leaf .rect.h5 {
-  background-color: #8097b3bb;
+  background-color: #53a781bb;
 }
 #rctblks .leaf .rect.h6 {
-  background-color: #8097b3dd;
+  background-color: #53a781dd;
 }
 #rctblks .leaf .rect.h7 {
-  background-color: #8097b3ff;
+  background-color: #53a781ff;
 }
 #diamondcreatetxs .wrap .notyet {
   text-align: center;

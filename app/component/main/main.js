@@ -193,16 +193,17 @@ function rctblksdrawlines() {
         return parseInt(e.getAttribute(n))
     }
     function drawgroup(blk) {
-        var $div = $id(blk.hx)
-        var x1 = xy($div, 'x') + 50
-        , y1 = xy($div, 'y') + 50
+        var blkhw = 46
+        , $div = $id(blk.hx)
+        , x1 = xy($div, 'x') + blkhw
+        , y1 = xy($div, 'y') + blkhw
         ;
         // nexts
         for(var i in blk.nexts) {
             var one = blk.nexts[i]
             , $chd =  $id(one.hx)
-            , x2 = xy($chd, 'x') + 50
-            , y2 = xy($chd, 'y') + 50
+            , x2 = xy($chd, 'x') + blkhw
+            , y2 = xy($chd, 'y') + blkhw
             , line = `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"></line>`
             draw_lines.push(line)
             drawgroup(one) // draw child
