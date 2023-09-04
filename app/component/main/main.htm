@@ -77,8 +77,8 @@
                 </h1>
                 <div class="con">                    
                     <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>{{toThousands(21000000)}}</b></div>
-                    <div class="li"><label>[:=lang.main.ttspl_transferred_bitcoin || "已转移比特币":]</label><b class="nn">0</b></div>
-                    <div class="li"><label>[:=lang.main.ttspl_btcmove_subsidy || "HAC补偿":]</label><b>ㄜ0.0</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_transferred_bitcoin || "已转移比特币":]</label><b class="nn">{{toThousands(transferred_bitcoin)}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_btcmove_subsidy || "HAC补偿":]</label><b>ㄜ{{toThousands(parseFloat(btcmove_subsidy).toFixed(1))}}</b></div>
                     <div class="li no"><label>-</label><b>-</b></div>
                     <div class="li no"><label>-</label><b>-</b></div>
                     <div class="li time"><label>[:=lang.main.ttspl_mintstart || "开始时间":]</label><b>[:=iscn?'未开始':'Coming soon':]</b></div>
