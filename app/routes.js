@@ -40,6 +40,7 @@ module.exports = {
     '/api/total/supply': 'api/total/supply',
     '/api/total/current_circulation_number': 'api/total/current_circulation_number',
     '/api/total/total_reward_number': 'api/total/total_reward_number',
+    '/api/total/hacd_circulation_number': 'api/total/hacd_circulation_number',
 
     '/api/diamond/visual_gene_list': 'api/diamond/visual_gene_list',
     
