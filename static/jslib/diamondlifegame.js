@@ -109,8 +109,11 @@ function CreateLifeGameInitialSVG(lifegenehex, wide, bkclr, notborder, nobkclr) 
         irregular = true
     }
 
-    var border = notborder ? 0 : 10
-    backcolor = nobkclr ? "none" : backcolor
+    var border = notborder ? 0 : 10;
+    backcolor = nobkclr ? "none" : backcolor;
+    if(irregular){
+        backcolor = bkclr || "#fff";
+    }
 
     // draw SVG
     var ptdraws = []
@@ -210,7 +213,7 @@ function CreateLifeGameInitialSVG(lifegenehex, wide, bkclr, notborder, nobkclr) 
             irrbackground += drawone(rr, cl)
         }
         rr -= 7
-        irrbackground += drawone(rr, bkclr) + '</g>'
+        irrbackground += drawone(rr, backcolor) + '</g>'
     }
 
 
@@ -225,7 +228,11 @@ function CreateLifeGameInitialSVG(lifegenehex, wide, bkclr, notborder, nobkclr) 
         colorful = 'full'
     }
     var vnw = notborder ? 180 : 200
-    return ['<svg class="dvhip9" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+vnw+' '+vnw+'" width="'+wide+'" height="'+wide+'">'+irrbackground+'<g '+irrstyle+'>'+ptdraws.join('')+'</g></svg>',
+    if(irregular){
+        bkclr = "#fff";
+    }
+    var rainbow_bgc = irregular ? backcolor : 'none'
+    return ['<svg class="dvhip9" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+vnw+' '+vnw+'" width="'+wide+'" height="'+wide+'" style="background: '+rainbow_bgc+';">'+irrbackground+'<g '+irrstyle+'>'+ptdraws.join('')+'</g></svg>',
     // config parkage
     {
         gene: gene,

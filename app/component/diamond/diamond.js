@@ -75,7 +75,7 @@ var lgene = $attr(diamond, "life_gene")
         for(var i=0;i<15;i++){
             var l = i*(100/16)
             , k = i
-            sts.push(`var(--dccr-${k+1}) ${l}%,transparent ${l}%,transparent ${l+1}%,var(--dccr-${k+2}) ${l+1}%`)
+            sts.push(`var(--diacl-${k+1}) ${l}%,transparent ${l}%,transparent ${l+1}%,var(--diacl-${k+2}) ${l+1}%`)
         }
         return "linear-gradient(-21deg,"+sts.join(',')+")"
     })();
@@ -102,7 +102,7 @@ var lgene = $attr(diamond, "life_gene")
         for(var i=0;i<15;i++){
             var l = i*(100/16)+6
             , k = i
-            sts.push(`var(--diacl-${k+1}) ${l}%,transparent ${l}%,transparent ${l+1}%,var(--diacl-${k+2}) ${l+1}%`)
+            sts.push(`var(--diacl2-${k+1}) ${l}%,transparent ${l}%,transparent ${l+1}%,var(--diacl2-${k+2}) ${l+1}%`)
         }
         return "linear-gradient(135deg,"+sts.join(',')+")"
     })();
