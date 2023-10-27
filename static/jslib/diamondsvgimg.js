@@ -582,9 +582,18 @@ var hex2nums = function(hex) {
 /**
  * 获取主色
  */
-window.GetDiamondMainColor = function(imgstuffhex) {
-    var idx = hex2nums(imgstuffhex)[2]
-    return DiamondImageColorListDefs[idx];
+window.GetDiamondMainColor = function(imgstuffhex, gn) {
+    gn = gn || 1
+    var ds = DiamondImageColorListDefs
+    , hxs = hex2nums(imgstuffhex)
+    if(gn==1){
+        return ds[hxs[2]]
+    }
+    var rs = []
+    for(var i=2; i<gn+2; i++){
+        rs.push(ds[hxs[i]])
+    }
+    return rs
 }
 
 /**

@@ -41,6 +41,16 @@ var lgene = $attr(diamond, "life_gene")
             cls[i+16] = `--dccr-${k+16}:#${c[1]}`
         }
         return `<style>:root{${cls.join(';')};}</style>`
+    })() + (function(){
+        var cls = GetDiamondMainColor(vgstr, 16)
+        for(var i=0;i<16;i++){
+            var c = cls[i]
+            , k = i+1
+            cls[i] = `--diacl-${k}:#${c[0]};`
+                + `--diacl2-${k}:#${c[1]}`
+        }
+        return `<style>:root{${cls.join(';')};}</style>`
+
     })();
     img.innerHTML = imgsvg
 
@@ -75,29 +85,49 @@ var lgene = $attr(diamond, "life_gene")
     , vg = $clas(card, 'vg')
     vg.innerHTML = vvg  
 
+    // dn 
+    var dn = $clas(card, 'dn')
+    dn.style.backgroundImage = `linear-gradient(90deg,
+        var(--diacl-15), var(--diacl2-15), 
+        var(--diacl-13), var(--diacl2-13), 
+        var(--diacl-14), var(--diacl2-14), 
+        var(--diacl-16), var(--diacl2-16) 
+        )`
+
+
     // clb 
     var clb = $clas(card, 'clb')
     clb.style.backgroundImage = (function(){
         var sts = []
         for(var i=0;i<15;i++){
             var l = i*(100/16)+6
-            , k = i+16
-            sts.push(`var(--dccr-${k+1}) ${l}%,transparent ${l}%,transparent ${l+1}%,var(--dccr-${k+2}) ${l+1}%`)
+            , k = i
+            sts.push(`var(--diacl-${k+1}) ${l}%,transparent ${l}%,transparent ${l+1}%,var(--diacl-${k+2}) ${l+1}%`)
         }
-        return "linear-gradient(-42deg,"+sts.join(',')+")"
+        return "linear-gradient(135deg,"+sts.join(',')+")"
     })();
+
+    // cll
+    var cll = $clas(card, 'cll')
+    cll.style.backgroundImage = `linear-gradient(0deg,
+        var(--diacl-15), var(--diacl2-15), 
+        var(--diacl-13), var(--diacl2-13), 
+        var(--diacl-14), var(--diacl2-14), 
+        var(--diacl-16), var(--diacl2-16) 
+        )`
 
 
 
     // font
+    /*
     setTimeout(function(){
         var ftst = document.createElement('div')
         ftst.innerHTML = `
-        <link href="https://fonts.googlefonts.cn/css?family=Share+Tech+Mono|Space+Mono|VT323" rel="stylesheet" />
-
+        <link href="https://fonts.googlefonts.cn/css?family=Share+Tech+Mono|VT323" rel="stylesheet" />
         `
         document.body.appendChild(ftst)
-    }, 25);
+    }, 12);
+    */
 
 })();
 
