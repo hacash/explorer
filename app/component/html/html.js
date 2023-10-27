@@ -17,6 +17,9 @@ function $class(a, n){
     return a.getElementsByClassName(n)
 }
 
+function $attr(a, n){
+    return a.getAttribute(n)
+}
 
 
 function getScrollTop() {  

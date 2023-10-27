@@ -1,9 +1,9 @@
 
 <script src="/jslib/diamondgene.min.js?v=1"></script>
-<script src="/jslib/diamondsvgimg.min.js?v=1"></script>
+<script src="/jslib/diamondsvgimg.js?v=1"></script>
 <script src="/jslib/sha3.min.js?v=1"></script>
 <script src="/jslib/diamondbrilliance.min.js?v=1"></script>
-<script src="/jslib/diamondlifegame.min.js?v=1"></script>
+<script src="/jslib/diamondlifegame.js?v=1"></script>
 
 <script>
     var dvhip = [:=this.dvhip||5:] 
@@ -11,11 +11,31 @@
     ;
 </script>
 
-
-<div id="diamond" class="ppage" ref="diamond" data-address="[:=name:]" >
+<div id="diamond" class="ppage" ref="diamond" data-address="[:=name:]" life_gene="[:=diamond.life_gene:]" dia_name="[:=diamond.name:]"  >
     <div class="container">
         <p class="crumb"><a href="/">[:=lang.common.index_page || "首页":]</a><i>/</i><span>[:=lang.diamond.diamond || "钻石":] - [:=name:]</span></p>
         [:if(this.diamond){:]
+        
+        <div id="card">
+
+            <div class="cdit">
+                <div class="cdcon">
+                    <div class="ibg"></div>
+                    <div class="img"></div>
+                    <div class="oh h8"></div>
+                    <div class="oh h9"></div>
+                    <div class="meta">
+                        <div class="clb"></div>
+                        <div class="dn">[:=diamond.name:]</div>
+                        <p class="lgn">LIFE GENES:</p>
+                        <p class="lg"></p>
+                        <div class="vg"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <div class="pcard info">
             <h3 class="hdtt">❂ [:=lang.diamond.diamond_info || "钻石详情":]</h3>
             <div class="content">

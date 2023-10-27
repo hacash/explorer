@@ -1,3 +1,106 @@
+
+var diamond = $id("diamond")
+
+var lgene = $attr(diamond, "life_gene")
+, dianm = $attr(diamond, "dia_name")
+, vgstr = DiamondLifeGeneConvertVisualGene(lgene, dianm)
+;
+
+// card
+(function(){
+
+    var ista = function(str, a,  xs) {
+        var s = []
+        var k=0
+        for(var i=0; i<str.length; i++){
+            s.push(str.substr(i,1))
+            if(i==xs[k]-1) {
+                s.push(a)
+                k++
+            }
+        }
+        return s.join('')
+    }
+
+    var card = $id('card')
+    , cdcon = $clas(card, 'cdcon')
+    , ibg = $clas(card, 'ibg')
+    , img = $clas(card, 'img')
+    , ch = parseInt(cdcon.offsetHeight)
+    , mcl = GetDiamondMainColor(vgstr)
+    , imgsvg = CreateDiamondImageTagSVG(vgstr, ch)
+    , bgc = "linear-gradient(to right bottom, #"+mcl[0]+"99, #"+mcl[1]+")"
+    cdcon.style.backgroundImage = bgc
+
+    ibg.innerHTML = imgsvg + (function(){
+        var cls = new Array(32);
+        for(var i=0;i<16;i++){
+            var c = DiamondImageColorListDefs[i]
+            , k = i+1
+            cls[i] = `--dccr-${k}:#${c[0]}`
+            cls[i+16] = `--dccr-${k+16}:#${c[1]}`
+        }
+        return `<style>:root{${cls.join(';')};}</style>`
+    })();
+    img.innerHTML = imgsvg
+
+    // hip8
+    var h8w = $clas(card, 'h8')
+    , h8svg = CreateDiamondBrillianceSVG(vgstr, ch/4, "#ffffff66")
+    h8w.innerHTML = h8svg
+
+    // hip9
+    var h9w = $clas(card, 'h9')
+    , h9svg = CreateLifeGameInitialSVG(lgene, ch/5, null, true, true)[0]
+    h9w.innerHTML = h9svg
+
+    // meta
+
+    // lg
+    var vlg = ista(lgene, '<br>', [8,16,24,32,40,48,56])
+    , lg = $clas(card, 'lg')
+    lg.innerHTML = vlg  
+    lg.style.backgroundImage = (function(){
+        var sts = []
+        for(var i=0;i<15;i++){
+            var l = i*(100/16)
+            , k = i
+            sts.push(`var(--dccr-${k+1}) ${l}%,transparent ${l}%,transparent ${l+1}%,var(--dccr-${k+2}) ${l+1}%`)
+        }
+        return "linear-gradient(-21deg,"+sts.join(',')+")"
+    })();
+
+    // vg
+    var vvg = ista(vgstr, ' ', [2,6,10,14,18]).toUpperCase()
+    , vg = $clas(card, 'vg')
+    vg.innerHTML = vvg  
+
+    // clb 
+    var clb = $clas(card, 'clb')
+    clb.style.backgroundImage = (function(){
+        var sts = []
+        for(var i=0;i<15;i++){
+            var l = i*(100/16)+6
+            , k = i+16
+            sts.push(`var(--dccr-${k+1}) ${l}%,transparent ${l}%,transparent ${l+1}%,var(--dccr-${k+2}) ${l+1}%`)
+        }
+        return "linear-gradient(-42deg,"+sts.join(',')+")"
+    })();
+
+
+
+    // font
+    setTimeout(function(){
+        var ftst = document.createElement('div')
+        ftst.innerHTML = `
+        <link href="https://fonts.googlefonts.cn/css?family=Share+Tech+Mono|Space+Mono|VT323" rel="stylesheet" />
+
+        `
+        document.body.appendChild(ftst)
+    }, 25);
+
+})();
+
 function doSaveFile(value, type, name) {
     var blob;
     if (typeof window.Blob == "function") {

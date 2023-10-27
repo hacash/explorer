@@ -1,4 +1,176 @@
 
+:root {
+    --color-1:  #041B2D;
+    --color-2:  #004E9A;
+    --color-3:  #8A5082;
+    --color-4:  #6F5F90;
+    --color-5:  #8A5082;
+    --color-6:  #FF7B89;
+    --color-7:  #F7D6E0;
+    --color-8:  #E5C1CD;
+    --color-9:  #EFF7F6;
+    --color-10: #F3DBCF;
+    --color-11: #AAC9CE;
+    --color-12: #F2B5D4;
+    --color-13: #7BDFF2;
+    --color-14: #85CBCC;
+    --color-15: #daad7b;
+    --color-16: #F9E2AE;
+  }
+
+.colortitlefont {
+
+            
+    color: #fff;
+    text-transform: uppercase;
+    background: linear-gradient(
+      -21deg,
+      var(--color-1) 19%,
+      transparent 19%,
+      transparent 20%,
+      var(--color-2) 20%,
+      var(--color-2) 39%,
+      transparent 39%,
+      transparent 40%,
+      var(--color-3) 40%,
+      var(--color-3) 59%,
+      transparent 59%,
+      transparent 60%,
+      var(--color-4) 60%,
+      var(--color-4) 79%,
+      transparent 79%,
+      transparent 80%,
+      var(--color-5) 80%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-color: #fff;
+    text-shadow: 1px 1px 1px #00000022;
+}
+
+#card {
+    padding: 30px 0 20px 0; 
+    .cdit {
+    }
+
+    @gh: 500px;
+    .cdcon {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        margin: 20px auto;
+        width: 800px;
+        height: @gh;
+        border-radius:  30px;
+        background-color: #fff;
+        box-shadow: 1px 1px 1px #00000066, 3px 3px 6px #ffffff99 inset, -3px -3px 6px #00000022 inset, 0 0 30px #00000066;
+    }
+
+    .meta {
+        z-index: 5;
+        position: absolute;
+        top: 8%;
+        left: 5%;
+        display: block;
+        width: 90%;
+        height: 84%;
+        // border: 1px dashed #00000011;
+        &>div, &>p {
+            position: absolute;
+            font-family: monospace;
+        }     
+        .clb {
+            width: 50px;
+            height: 220px;
+            left: 40px;
+            top: 70px;
+            border-radius: 0 100px;
+            overflow: hidden;
+        }
+        .dn {
+
+            font-size: 50px;
+            line-height: 50px;
+            font-family: 'VT323', monospace;
+            font-size: 55px;
+            line-height: 55px;
+            font-family: 'VT323', monospace;
+            top: -11px;
+
+            .colortitlefont;
+        }
+        .vg {    
+            width: 100%;
+            bottom: -8px;
+            color: #fff;
+            font-size: 24px;
+            line-height: 24px;
+            text-align: center;
+            transform: scaleY(1.6);
+            text-shadow: 1px 1px 1px #00000066, 1px 1px 10px #000000bb;
+            font-family: 'Share Tech Mono', monospace;
+        
+        }
+        .lgn {
+            writing-mode: tb-rl;
+            right: 42px;
+            top: 151px;
+            font-size: 14px;
+            color: #ffffff88;
+            transform: scaleY(1);
+            transform-origin: top;
+            letter-spacing: 10px;
+            font-weight: bold;
+        }
+        .lg {
+            line-height: 25px;
+            font-size: 25px;
+            top: 150px;
+            right: -50px;
+            transform: scaleX(0.3333);
+            transform-origin: top;
+
+            .colortitlefont;
+        }
+    }
+
+    .oh {
+        @op: @gh*0.06;
+        z-index: 4;
+        position: absolute;
+        overflow: hidden;
+        &.h8 {
+            border-radius: 1000px;
+            top: @op;
+            right: @op;
+        }
+        &.h9 {
+            background-color: #ffffff66;
+            left: @op;
+            bottom: @op;
+        }
+    }
+
+    .ibg, .img {
+        position: relative;
+        width: @gh;
+        height: @gh;
+    }
+    .ibg {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: scale(2);
+        filter: blur(30px);
+    }
+    .img {
+        z-index: 2;
+        margin: auto;
+
+    }
+}
 
 #diamond{
 

@@ -1,7 +1,7 @@
 /* HACD Game of life */
 
 
-function CreateLifeGameInitialSVG(lifegenehex, wide, bkclr, notborder) {
+function CreateLifeGameInitialSVG(lifegenehex, wide, bkclr, notborder, nobkclr) {
     var gene = HEX_TO_U8ARY(lifegenehex)
     , points = U8ARY_TO_BITS(gene)
     ;
@@ -110,6 +110,7 @@ function CreateLifeGameInitialSVG(lifegenehex, wide, bkclr, notborder) {
     }
 
     var border = notborder ? 0 : 10
+    backcolor = nobkclr ? "none" : backcolor
 
     // draw SVG
     var ptdraws = []

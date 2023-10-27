@@ -19,6 +19,7 @@ var DiamondImageColorListDefs = [
     ['daad7b', 'F9E2AE'], // daad7b 土豪金
     ['F9E2AE', 'A8DEE0'],
 ]
+window.DiamondImageColorListDefs = DiamondImageColorListDefs;
 
 
 var DiamondImageTagSvgPointStuffDatas = [
@@ -544,6 +545,47 @@ var DiamondImageTagSvgPointStuffDatas = [
 ]
 
 
+var hex2nums = function(hex) {
+    var size = hex.length;
+    var nums = new Array(size);
+    for(var i=0; i<size; i++){
+        var n = 0
+        switch(hex[i]){
+            case '0': n = 0; break;
+            case '1': n = 1; break;
+            case '2': n = 2; break;
+            case '3': n = 3; break;
+            case '4': n = 4; break;
+            case '5': n = 5; break;
+            case '6': n = 6; break;
+            case '7': n = 7; break;
+            case '8': n = 8; break;
+            case '9': n = 9; break;
+            case 'A': n = 10; break;
+            case 'a': n = 10; break;
+            case 'B': n = 11; break;
+            case 'b': n = 11; break;
+            case 'C': n = 12; break;
+            case 'c': n = 12; break;
+            case 'D': n = 13; break;
+            case 'd': n = 13; break;
+            case 'E': n = 14; break;
+            case 'e': n = 14; break;
+            case 'F': n = 15; break;
+            case 'f': n = 15; break;
+        }
+        nums[i] = n;
+    }
+    return nums
+}
+
+/**
+ * 获取主色
+ */
+window.GetDiamondMainColor = function(imgstuffhex) {
+    var idx = hex2nums(imgstuffhex)[2]
+    return DiamondImageColorListDefs[idx];
+}
 
 /**
  * 创建 HACD 的可视化svg 图片
@@ -555,40 +597,6 @@ var isFirstCreateDiamondImageTagSVG = true
 var diaimgsvgidx = 0
 function CreateDiamondImageTagSVG(imgstuffhex, wdsize) {
     diaimgsvgidx++;
-    var hex2nums = function(hex) {
-        var size = imgstuffhex.length;
-        var nums = new Array(size);
-        for(var i=0; i<size; i++){
-            var n = 0
-            switch(hex[i]){
-                case '0': n = 0; break;
-                case '1': n = 1; break;
-                case '2': n = 2; break;
-                case '3': n = 3; break;
-                case '4': n = 4; break;
-                case '5': n = 5; break;
-                case '6': n = 6; break;
-                case '7': n = 7; break;
-                case '8': n = 8; break;
-                case '9': n = 9; break;
-                case 'A': n = 10; break;
-                case 'a': n = 10; break;
-                case 'B': n = 11; break;
-                case 'b': n = 11; break;
-                case 'C': n = 12; break;
-                case 'c': n = 12; break;
-                case 'D': n = 13; break;
-                case 'd': n = 13; break;
-                case 'E': n = 14; break;
-                case 'e': n = 14; break;
-                case 'F': n = 15; break;
-                case 'f': n = 15; break;
-            }
-            nums[i] = n;
-        }
-        return nums
-    }
-
     var getcolorstops = function(idx) {
         var cls = DiamondImageColorListDefs[idx]
         return `
