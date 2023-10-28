@@ -207,14 +207,15 @@
   overflow: hidden;
 }
 #card .oh.h8 {
-  border-radius: 1000px;
   top: 30px;
   right: 30px;
+  border-radius: 1000px;
+  box-shadow: 0 0 10px #fff;
 }
 #card .oh.h9 {
-  background-color: #ffffff66;
   left: 30px;
   bottom: 30px;
+  background-color: #ffffff66;
 }
 #card .ibg,
 #card .img {
