@@ -3,6 +3,7 @@ var diamond = $id("diamond")
 
 var lgene = $attr(diamond, "life_gene")
 , dianm = $attr(diamond, "dia_name")
+, dianb = parseInt($attr(diamond, "dia_number"))
 , vgstr = DiamondLifeGeneConvertVisualGene(lgene, dianm)
 ;
 
@@ -83,17 +84,30 @@ var lgene = $attr(diamond, "life_gene")
     // vg
     var vvg = ista(vgstr, ' ', [2,6,10,14,18]).toUpperCase()
     , vg = $clas(card, 'vg')
-    vg.innerHTML = vvg  
+    , vgsx = vvg.split('')
+    if(vgsx[0]==0 && vgsx[1]>=1 && vgsx[1]<=8) {
+        vgsx[0] = `<span style="color:#${mcl[0]};">${vgsx[0]}</span>`
+        vgsx[1] = `<span style="color:#${mcl[1]};">${vgsx[1]}</span>`
+    }
+    vgsx[23] = `<span style="color:#ffffff33;">${vgsx[23]}${vgsx[24]}</span>`
+    vgsx[24] = '' // delete
+    vg.innerHTML = vgsx.join('')
 
     // dn 
     var dn = $clas(card, 'dn')
     dn.style.backgroundImage = `linear-gradient(90deg,
-        var(--diacl-15), var(--diacl2-15), 
-        var(--diacl-13), var(--diacl2-13), 
-        var(--diacl-14), var(--diacl2-14), 
-        var(--diacl-16), var(--diacl2-16) 
+        var(--diacl-1), var(--diacl2-1), 
+        var(--diacl-2), var(--diacl2-2), 
+        var(--diacl-3), var(--diacl2-3), 
+        var(--diacl-4), var(--diacl2-4),
+        var(--diacl-5), var(--diacl2-5),
+        var(--diacl-6), var(--diacl2-6)
         )`
 
+    // ldz 
+    var ldz = $clas(card, 'ldz')
+    , ldzbsz = 48.0 * ((100001.0 - dianb) / 100000.0)
+    ldz.style.backgroundSize = `${ldzbsz}px ${ldzbsz}px`
 
     // clb 
     var clb = $clas(card, 'clb')

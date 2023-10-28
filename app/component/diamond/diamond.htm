@@ -11,7 +11,7 @@
     ;
 </script>
 
-<div id="diamond" class="ppage" ref="diamond" data-address="[:=name:]" life_gene="[:=diamond.life_gene:]" dia_name="[:=diamond.name:]"  >
+<div id="diamond" class="ppage" ref="diamond" data-address="[:=name:]" life_gene="[:=diamond.life_gene:]" dia_name="[:=diamond.name:]" dia_number = "[:=diamond.number:]" >
     <div class="container">
         <p class="crumb"><a href="/">[:=lang.common.index_page || "首页":]</a><i>/</i><span>[:=lang.diamond.diamond || "钻石":] - [:=name:]</span></p>
         [:if(this.diamond){:]
@@ -21,6 +21,7 @@
             <div class="cdit">
                 <div class="cdcon">
                     <div class="ibg"></div>
+                    <div class="ldz"></div>
                     <div class="img"></div>
                     <div class="oh h8"></div>
                     <div class="oh h9"></div>
