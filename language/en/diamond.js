@@ -22,6 +22,9 @@ module.exports = {
     downloadsvg: "Download SVG format picture",
     playlifegame: "Play game of life",
 
+    cdttl: "Metadata Card:",
+    cdtip: "If you need to focus on the various characteristics and information of HACD, here is a metadata card.",
+
     notfind: "Sorry, Not find.",
 
 

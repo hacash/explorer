@@ -105,7 +105,7 @@
   top: 0px;
   font-size: 26px;
   line-height: 26px;
-  color: transparent;
+  color: #ffffff66;
   text-shadow: 0 0 20px #fff, 0 0 3px #fff, 0 0 10px #fff;
   width: 100%;
   text-align: center;
@@ -453,6 +453,12 @@
 }
 .hip9wrap:hover .pbtn {
   display: block;
+}
+.cdtip {
+  margin: 20px;
+  text-align: center;
+  color: #666;
+  font-size: 18px;
 }
 @media screen and (max-width: 512px) {
   #card {

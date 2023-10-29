@@ -16,32 +16,6 @@
         <p class="crumb"><a href="/">[:=lang.common.index_page || "首页":]</a><i>/</i><span>[:=lang.diamond.diamond || "钻石":] - [:=name:]</span></p>
         [:if(this.diamond){:]
         
-        <div id="card">
-
-            <div class="cdit">
-                <div class="cdcon">
-                    <div class="ibg"></div>
-                    <div class="ldz"></div>
-                    <div class="img"></div>
-                    <div class="oh h8"></div>
-                    <div class="oh h9"></div>
-                    <div class="meta">
-                        <div class="blk">···[:=diamond.current_block_hash.slice(-20):]<br/>BORN BLOCK: <b>[:=diamond.block_height:]</b></div>
-                        <div class="clb"></div>
-                        <div class="num">[:=diamond.number:]</div>
-                        <div class="dn">[:=diamond.name:]</div>
-                        <p class="lgn">LIFE GENES</p>
-                        <p class="lg"></p>
-                        <div class="vg"></div>
-                        <p class="gmn">LIFE GAME CODE</p>
-                        <p class="bid">BID: [:=diamond.approx_fee_offer:]<br/>[:=diamond.miner_address.substr(0, 12):]···</p>
-                        <div class="cll"></div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
         <div class="pcard info">
             <h3 class="hdtt">❂ [:=lang.diamond.diamond_info || "钻石详情":]</h3>
             <div class="content">
@@ -98,6 +72,38 @@
                         <div id="playlg" class="pbtn" title="[:=lang.diamond.playlifegame:]">▶</div>
                     </div>
                     <div id="playlgbtn" class="vbtn"><b>▶ [:=lang.diamond.playlifegame || "开始生命游戏":]</b><div></div></div>
+                </div>
+
+                <div class="row">
+                    <label>[:=lang.diamond.cdttl:]</label>
+                    <div id="card">
+
+                        <div class="cdit">
+                            <div class="cdcon">
+                                <div class="ibg"></div>
+                                <div class="ldz"></div>
+                                <div class="img"></div>
+                                <div class="oh h8"></div>
+                                <div class="oh h9"></div>
+                                <div class="meta">
+                                    <div class="blk">···[:=diamond.current_block_hash.slice(-20):]<br/>BORN BLOCK: <b>[:=diamond.block_height:]</b></div>
+                                    <div class="clb"></div>
+                                    <div class="num">[:=diamond.number:]</div>
+                                    <div class="dn">[:=diamond.name:]</div>
+                                    <p class="lgn">LIFE GENES</p>
+                                    <p class="lg"></p>
+                                    <div class="vg"></div>
+                                    <p class="gmn">LIFE GAME CODE</p>
+                                    <p class="bid">BID: [:=diamond.approx_fee_offer:]<br/>[:=diamond.miner_address.substr(0, 12):]···</p>
+                                    <div class="cll"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <p class="cdtip">[:=lang.diamond.cdtip:]</p>
+
                 </div>
 
             </div>

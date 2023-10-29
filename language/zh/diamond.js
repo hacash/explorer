@@ -22,6 +22,9 @@ module.exports = {
     downloadsvg: "下载SVG格式矢量高清图片",
     playlifegame: "开始生命游戏",
 
+    cdttl: "元数据卡:",
+    cdtip: "如果您需要集中查看HACD的各种特性和信息，上面是一张可用的元数据卡。",
+
     notfind: "对不起，钻石暂不存在",
 
 
