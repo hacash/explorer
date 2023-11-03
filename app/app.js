@@ -7,29 +7,40 @@ const path = require('path')
 
 const mysql = require('mysql');
 
+const cookieParser = require('cookie-parser');
+
 const routes = require('./routes.js');
 const viewer = require('./viewer.js');
 const config = require('../config.js');
 
 const toolfs = require('./tool/fs.js')
 
+const langDefs = ['en_US', 'zh_CN']
 
 module.exports = function(app)
 {
+    var scklg = function(res, ty){
+        res.cookie("lang", ty, {path:"/", maxAge:1000*60*60*24,})
+    }
+
+    app.use(cookieParser()); 
+
     // lang
     app.use(function(req, res, next){
-        let ty = config.lang || 'en'
-          , langset
-        if(req.cookies){
-            ty = res.lang_type = req.cookies.lang || ty
-            if(req.cookies.lang) {
-                langset = req.cookies.lang
-            }
+        let ty = config.lang || langDefs[0]
+          , q = req.query 
+          , cks = req.cookies
+        if(q.lang) {
+            ty = q.lang
+        }else if(cks.lang){
+            ty = cks.lang
         }
+        if(langDefs.indexOf(ty)==-1) {
+            ty = langDefs[0]
+        }
+        scklg(res, ty)
         res.lang = loadLanguage(ty)
         res.lang.useset = ty
-        res.lang_manual_selection = langset // 表示手动选择的语言设定
-        // console.log(res.lang)
         next()
     })
     // theme
@@ -63,8 +74,8 @@ module.exports = function(app)
 
 
 // 加载语言
-const languageDefType = "en"
-const languageSupport = {'en':true,'zh':true}
+const languageDefType = "en_US"
+const languageSupport = {'en_US':true,'zh_CN':true}
 const loadLanguageCache = {}
 function loadLanguage(type) {
     if(!languageSupport[type]) {

@@ -1,6 +1,3 @@
-const { time } = require("../../../../language/zh/address")
-
-
 /**
  * 
  */

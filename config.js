@@ -1,7 +1,7 @@
 const config = {
     http_port: 8000,
     watch_restart_timeout: 7,
-    lang: 'zh', // 默认语言
+    lang: 'zh_CN', // 默认语言
 
     // 使用的 mysql 数据库
     mysqldb: {
