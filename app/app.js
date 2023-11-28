@@ -15,7 +15,7 @@ const config = require('../config.js');
 
 const toolfs = require('./tool/fs.js')
 
-const langDefs = ['en_US', 'zh_CN']
+const langDefs = ['en', 'zh']
 
 module.exports = function(app)
 {
@@ -74,8 +74,8 @@ module.exports = function(app)
 
 
 // 加载语言
-const languageDefType = "en_US"
-const languageSupport = {'en_US':true,'zh_CN':true}
+const languageDefType = "en"
+const languageSupport = {'en':true,'zh':true}
 const loadLanguageCache = {}
 function loadLanguage(type) {
     if(!languageSupport[type]) {
