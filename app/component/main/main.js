@@ -34,7 +34,7 @@ function showCoinbasePaceChart(that, cbh, rwd, circ, burn) {
         }else if(i==chi) {
             cla = ' cur'
             // console.log(spxd, cbh)
-            increase_days = parseInt((spxd - cbh) / 288)
+            increase_days = parseInt((spxd - cbh) / 288) + 1
         }
         bs.push('<b class="h'+h+cla+'"><i>'+h+'</i></b>')
         // points
