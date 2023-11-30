@@ -27,13 +27,13 @@ function showCoinbasePaceChart(that, cbh, rwd, circ, burn) {
     for(var i in rwdcis) {
         var h = rwdcis[i]
         , cla = ''
-        , spxd = 10*10000*(parseInt(i)+1)
         ctrds += h
         if(i<chi) {
             cla = ' ps'
         }else if(i==chi) {
             cla = ' cur'
-            // console.log(spxd, cbh)
+            // console.log("spxd:", i)
+            var spxd = 100*10000*(parseInt(i)-4) + 600000
             increase_days = parseInt((spxd - cbh) / 288) + 1
         }
         bs.push('<b class="h'+h+cla+'"><i>'+h+'</i></b>')
@@ -44,7 +44,7 @@ function showCoinbasePaceChart(that, cbh, rwd, circ, burn) {
         tlpis.push(x+','+y)
     }
 
-    that.cblist = bs.join('') + `<p class="tt">Block Reward in 66 Years<br/>After ${increase_days} Days Increase to 8 HAC</p><svg>  <polyline points="2,${cbsh} ${tlpis.join(' ')} 2000,0 2000,${cbsh}" stroke-width="1" stroke="#00880088" fill="#00880011" ></svg>`
+    that.cblist = bs.join('') + `<p class="tt">Block Reward in 66 Years<br/>After ${increase_days} Days Reduce to 5 HAC</p><svg>  <polyline points="2,${cbsh} ${tlpis.join(' ')} 2000,0 2000,${cbsh}" stroke-width="1" stroke="#00880088" fill="#00880011" ></svg>`
     // reward percent
     var ttn = 2200*10000
     var per = parseFloat(rwd) / ttn * 100
