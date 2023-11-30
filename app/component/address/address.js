@@ -20,6 +20,7 @@ var vAppAddress = new Vue({
         collimit: 15,
         colifmore: false, // 是否显示更多 
         colfirstbtn: true, // 首次显示
+        ckvdmnas: '', // 查看钻石可视化
     },
     methods:{
         // 加载余额
@@ -104,6 +105,12 @@ var vAppAddress = new Vue({
                     that.all_diamond_names = "-"
                 }
             })
+        },
+        // 查看钻石可视化
+        chdmsvsl: function(){
+            var dms = this.ckvdmnas.replace(/[^WTYUIAHXVMEKBSZN\,]+/ig, "")
+            dms = dms.replace(/^\,+|\,+$/ig, '')
+            window.open('/diaviews?dianames='+dms)
         },
         // 查看金融操作记录
         getDataJumpRoute: function(tystr) {

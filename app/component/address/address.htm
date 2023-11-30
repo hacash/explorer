@@ -48,8 +48,14 @@ var ranking_api_url = "[:=ranking_api_url:]";
         <div class="pcard diamond" v-if="ranking_api_url">
             <h3 class="hdtt">❂ [:=lang.address.dia_check || "钻石":]</h3>
             <div class="content">
+                <div class="ckdms" v-if="all_diamond_names">
+                    <label>[:=lang.address.check_diamonds_visual || "查看钻石可视化":]:</label>
+                    <input v-model="ckvdmnas" placeholder="HACD Names with comma separated, max 200" />
+                    <button @click="chdmsvsl">[:=lang.address.check || "查看":]</button>
+                </div>
                 <button @click="alldiamondnames" class="btn" v-if="all_diamond_names==''">[:=lang.address.check_all_diamond_names || "查看所有钻石名称":]</button>
                 <p class="alldmdns" v-if="all_diamond_names" style="word-break: break-all;" v-html="all_diamond_names"></p>
+            
             </div>
         </div>
         [: } :]

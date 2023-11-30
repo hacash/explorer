@@ -24,6 +24,8 @@ module.exports = {
 
     dia_check: "Diamonds",
     check_all_diamond_names: "Check all diamond names",
+    check_diamonds_visual: "View HACD visualizations by name",
+    check: "Check",
 
     cha_check: "Operate action logs",
     cha_time: "Time",

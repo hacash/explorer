@@ -25,6 +25,8 @@ module.exports = {
 
     dia_check: "钻石",
     check_all_diamond_names: "查看所有钻石名称",
+    check_diamonds_visual: "通过钻石名称查看钻石可视化",
+    check: "查看",
 
     cha_check: "金融操作记录",
     cha_time: "操作时间",
