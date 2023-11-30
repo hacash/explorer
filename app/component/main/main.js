@@ -17,12 +17,15 @@ function showCoinbasePaceChart(that, cbh, rwd, circ, burn) {
     , cbsw = 930 // parseInt($cblish.offsetWidth)
     , cbsh = 128 //parseInt($cblish.offsetHeight)
     , tlpis = []
+    , tzlpt = []
     ;
     var chi = parseInt(cbh / (10*10000))
     , cind = rwdcis[chi]
     , ctrds = 0
     , bs = []
-    , increase_days = '*'
+    , reduce_days = '*'
+    , ch = 0
+    , chtt = 0
     ;
     for(var i in rwdcis) {
         var h = rwdcis[i]
@@ -30,21 +33,33 @@ function showCoinbasePaceChart(that, cbh, rwd, circ, burn) {
         ctrds += h
         if(i<chi) {
             cla = ' ps'
+            chtt += h
         }else if(i==chi) {
             cla = ' cur'
+            ch = h
+            chtt += h
             // console.log("spxd:", i)
             var spxd = 100*10000*(parseInt(i)-4) + 600000
-            increase_days = parseInt((spxd - cbh) / 288) + 1
+            reduce_days = parseInt((spxd - cbh) / 288) + 1
         }
         bs.push('<b class="h'+h+cla+'"><i>'+h+'</i></b>')
         // points
-        var x = cbsw / 66 * i + 5
+        var x = cbsw / 66 * i + 13
         , y = cbsh - (ctrds / 220.0 * cbsh)
         // console.log(ctrds / 220.0 )
         tlpis.push(x+','+y)
+        // console.log(h/ctrds,cbsh )
+        var tzl = cbsh - (parseFloat(h) / parseFloat(ctrds)) * cbsh
+        tzlpt.push(x+','+tzl)
     }
-
-    that.cblist = bs.join('') + `<p class="tt">Block Reward in 66 Years<br/>After ${increase_days} Days Reduce to 5 HAC</p><svg>  <polyline points="2,${cbsh} ${tlpis.join(' ')} 2000,0 2000,${cbsh}" stroke-width="1" stroke="#00880088" fill="#00880011" ></svg>`
+    console.log(parseFloat(ch) , chtt)
+    var rdcyear = reduce_days<366 ? '' : ( ' ('+(reduce_days/365).toFixed(2)+' Years)')
+    that.cblist = bs.join('') + `<p class="tt">Block Reward in 66 Years<br/>
+        After ${reduce_days} Days${rdcyear} Reduce to 5 HAC<br/>
+        Current Annual Inflation Ratio: ${(parseFloat(ch)/chtt*100).toFixed(2)}%</p><svg>  
+        <polyline points="2,${cbsh} ${tlpis.join(' ')} 2000,0 2000,${cbsh}" stroke-width="1" stroke="#00880088" fill="#00880011" />
+        <polyline points="${tzlpt.join(' ')}" stroke-width="1" stroke-dasharray="2 2" stroke="#99440066" fill="none"/>
+        </svg>`
     // reward percent
     var ttn = 2200*10000
     var per = parseFloat(rwd) / ttn * 100
