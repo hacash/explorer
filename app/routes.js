@@ -35,7 +35,7 @@ module.exports = {
     '/api/difficulty/chartsv3': 'api/difficulty/chartsv3',
     '/api/difficulty/powpower': 'api/difficulty/powpower',
 
-    '/api/address/amount': 'api/address/amount',
+    '/api/address/balance': 'api/address/balance',
 
     '/api/total/supply': 'api/total/supply',
     '/api/total/current_circulation_number': 'api/total/current_circulation_number',

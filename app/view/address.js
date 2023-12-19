@@ -34,7 +34,7 @@ exports.datas = async function(query, callback, req, res)
         // let datas = jsonobj.datas
         // console.log(jsonobj)
         hacash = jsonobj.total
-        satoshi = jsonobj.satoshis
+        satoshi = jsonobj.satoshi
         diamond = jsonobj.diamond
     }catch(e){
         console.log(e)
