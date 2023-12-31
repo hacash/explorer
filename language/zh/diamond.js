@@ -15,6 +15,7 @@ module.exports = {
     burn_price: "平均销毁",
     life_gene: "生命基因",
     visual_gene: "可视化基因",
+    inscription: "铭文",
     visual_hip5: "HIP-5 展示",
     visual_hip8: "HIP-8 展示",
     visual_hip9: "HIP-9 展示",

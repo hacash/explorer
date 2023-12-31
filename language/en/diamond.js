@@ -15,6 +15,7 @@ module.exports = {
     burn_price: "Average Burning",
     life_gene: "Life Gene",
     visual_gene: "Visual Gene",
+    inscription: "Inscriptions",
     visual_hip5: "HIP-5 Visualization",
     visual_hip8: "HIP-8 Visualization",
     visual_hip9: "HIP-9 Visualization",

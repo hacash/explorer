@@ -401,6 +401,36 @@
 
 }
 
+#inswrap {
+    position: relative;
+    margin-left: 150px;
+    li {
+        position: relative;
+        margin-top: 5px;
+        top: -22px;
+        // background: #0001;
+        background-image: linear-gradient(to right, #0001, #0000);
+        display: flex;
+    }
+    li:hover {
+        background: #0001;
+    }
+    i,b {
+        padding: 5px;
+        height: 20px;
+        line-height: 20px;
+    }
+    i {
+        background-color: #0001;
+        color: #fff;
+        font-weight: bold;
+    }
+    b {
+        flex: 1;
+        text-decoration: none;
+        color: #000;
+    }
+}
 
 .vbtn {
     padding-bottom: 20px;
@@ -521,10 +551,34 @@
 
 @media screen and (max-width: 512px) {
 
+#inswrap {
+    margin: 0;
+    li {
+        top: 0;
+    }
+    i, b {
+        height: auto;
+    }
+    b {
+        word-break: break-all;
+        font-size: 13px !important;
+    }
+}
+
 #card {
     transform: scale(0.7) rotate(-90deg) translateX(-280px);
     padding: 0;
     margin-bottom: 150px;
+}
+
+#diamond {
+    .pcard {
+        .row {
+            label {
+                // display: block !important;
+            }
+        }
+    }
 }
 
 .diapicwrap {

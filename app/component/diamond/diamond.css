@@ -357,6 +357,36 @@
   font-size: 34px;
   margin-left: 0px;
 }
+#inswrap {
+  position: relative;
+  margin-left: 150px;
+}
+#inswrap li {
+  position: relative;
+  margin-top: 5px;
+  top: -22px;
+  background-image: linear-gradient(to right, #0001, #0000);
+  display: flex;
+}
+#inswrap li:hover {
+  background: #0001;
+}
+#inswrap i,
+#inswrap b {
+  padding: 5px;
+  height: 20px;
+  line-height: 20px;
+}
+#inswrap i {
+  background-color: #0001;
+  color: #fff;
+  font-weight: bold;
+}
+#inswrap b {
+  flex: 1;
+  text-decoration: none;
+  color: #000;
+}
 .vbtn {
   padding-bottom: 20px;
   text-align: center;
@@ -461,6 +491,20 @@
   font-size: 18px;
 }
 @media screen and (max-width: 512px) {
+  #inswrap {
+    margin: 0;
+  }
+  #inswrap li {
+    top: 0;
+  }
+  #inswrap i,
+  #inswrap b {
+    height: auto;
+  }
+  #inswrap b {
+    word-break: break-all;
+    font-size: 13px !important;
+  }
   #card {
     transform: scale(0.7) rotate(-90deg) translateX(-280px);
     padding: 0;

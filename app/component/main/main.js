@@ -52,7 +52,7 @@ function showCoinbasePaceChart(that, cbh, rwd, circ, burn) {
         var tzl = cbsh - (parseFloat(h) / parseFloat(ctrds)) * cbsh
         tzlpt.push(x+','+tzl)
     }
-    console.log(parseFloat(ch) , chtt)
+    // console.log(parseFloat(ch) , chtt)
     var rdcyear = reduce_days<366 ? '' : ( ' ('+(reduce_days/365).toFixed(2)+' Years)')
     that.cblist = bs.join('') + `<p class="tt">Block Reward in 66 Years<br/>
         After ${reduce_days} Days${rdcyear} Reduce to 5 HAC<br/>
@@ -142,6 +142,7 @@ var vAppTotalSupply = new Vue({
                 that.channel_interest = data.channel_interest
                 that.btcmove_subsidy = data.btcmove_subsidy
                 that.burned_fee = data.burned_fee
+                that.burned_hacd_bid = data.burned_hacd_bid
                 that.located_in_channel = data.located_in_channel
                 that.channel_of_opening = data.channel_of_opening
                 that.current_circulation = data.current_circulation
