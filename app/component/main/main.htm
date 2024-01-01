@@ -64,8 +64,8 @@
                 <div class="con">
                     <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>{{toThousands(16777216)}}</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_minted_diamond || "已挖出":]</label><b class="nn">{{toThousands(minted_diamond)}}</b></div>
-                    <div class="li"><label>[:=lang.main.ttspl_minted_hacdper || "流通比":]</label><b>{{(parseFloat(minted_diamond)/16777216*100).toFixed(2)}}%</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_hacd_average_bid || "平均HAC竞价":]</label><b>ㄜ{{(parseFloat(burned_fee)/0.9/(parseInt(minted_diamond)-30000)).toFixed(2)}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_hacd_inscription || "累计铭刻":]</label><b>{{hacd_inscription}}</b></div>
                     <div class="li"><label>[:=lang.main.ttspl_hacd_visualization || "可视化协议":]</label><b>{{3}}</b></div>
                     <div class="li time"><label>[:=lang.main.ttspl_mintstart || "开始时间":]</label><b>[:=iscn?'2019-5-16':'May 16, 2019':]</b></div>
                 </div>

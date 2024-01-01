@@ -60,6 +60,7 @@ module.exports = {
     ttspl_minted_diamond: "Circulation",
     ttspl_transferred_bitcoin: "Transferred",
     ttspl_current_circulation: "Circulation",
+    ttspl_hacd_inscription: "Inscription",
     ttspl_hacd_visualization: "Visualization",
     ttspl_minted_hacdper: "Mined Ratio",
     ttspl_hacd_average_bid: "HAC Average Bid",

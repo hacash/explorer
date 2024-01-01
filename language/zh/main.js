@@ -60,9 +60,10 @@ module.exports = {
     ttspl_minted_diamond: "已挖出",
     ttspl_transferred_bitcoin: "已转移比特币",
     ttspl_current_circulation: "实时流通",
+    ttspl_hacd_inscription: "累计铭刻",
     ttspl_hacd_visualization: "可视化协议",
     ttspl_minted_hacdper: "开采率",
-    ttspl_hacd_average_bid: "平均竞价HAC",
+    ttspl_hacd_average_bid: "平均竞价",
     ttspl_ly2ch: "二层通道统计",
     ttspl_mintstart: "开始时间",
 

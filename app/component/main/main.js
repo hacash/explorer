@@ -127,6 +127,7 @@ var vAppTotalSupply = new Vue({
         current_circulation: "-", // Current circulation supply
         located_in_channel: "-", // Real time statistics of HAc located in channel chain
         channel_of_opening: "-",
+        hacd_inscription: "-",
     },
     methods:{
         queryDatas: function(){
@@ -143,6 +144,7 @@ var vAppTotalSupply = new Vue({
                 that.btcmove_subsidy = data.btcmove_subsidy
                 that.burned_fee = data.burned_fee
                 that.burned_hacd_bid = data.burned_hacd_bid
+                that.hacd_inscription = data.hacd_inscription
                 that.located_in_channel = data.located_in_channel
                 that.channel_of_opening = data.channel_of_opening
                 that.current_circulation = data.current_circulation
