@@ -54,7 +54,7 @@ module.exports = {
     ttspl_block_reward: "Block Reward",
     ttspl_channel_interest: "Channel Interests",
     ttspl_btcmove_subsidy: "HAC Reward",
-    ttspl_burned_fee: "Burned",
+    ttspl_burned_total: "Burned",
     ttspl_located_in_channel: "Deposited in Channel",
     ttspl_channel_of_opening: "Opened Channels",
     ttspl_minted_diamond: "Circulation",

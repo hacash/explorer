@@ -54,7 +54,7 @@ module.exports = {
     ttspl_miner_reward: "区块奖励",
     ttspl_channel_interest: "二层通道利息",
     ttspl_btcmove_subsidy: "HAC补偿",
-    ttspl_burned_fee: "已销毁",
+    ttspl_burned_total: "已销毁",
     ttspl_located_in_channel: "已存入通道链网络",
     ttspl_channel_of_opening: "已开启通道数",
     ttspl_minted_diamond: "已挖出",

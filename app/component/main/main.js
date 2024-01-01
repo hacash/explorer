@@ -123,7 +123,7 @@ var vAppTotalSupply = new Vue({
         block_reward: "-", // Block reward HAC accumulation
         channel_interest: "-", // Channel interest HAC accumulation
         btcmove_subsidy: "-", // BTC transfer and additional issuance of HAC
-        burned_fee: "-", // tx fee by burning
+        burned_total: "-", //  all HAC burning
         current_circulation: "-", // Current circulation supply
         located_in_channel: "-", // Real time statistics of HAc located in channel chain
         channel_of_opening: "-",
@@ -142,7 +142,7 @@ var vAppTotalSupply = new Vue({
                 that.transferred_bitcoin = data.transferred_bitcoin
                 that.channel_interest = data.channel_interest
                 that.btcmove_subsidy = data.btcmove_subsidy
-                that.burned_fee = data.burned_fee
+                that.burned_total = data.burned_total
                 that.burned_hacd_bid = data.burned_hacd_bid
                 that.hacd_inscription = data.hacd_inscription
                 that.located_in_channel = data.located_in_channel
@@ -152,7 +152,7 @@ var vAppTotalSupply = new Vue({
                 showCoinbasePaceChart(that, parseInt(that.lastest_block_height), 
                     parseInt(that.block_reward), 
                     parseFloat(that.current_circulation), 
-                    parseFloat(that.burned_fee))         
+                    parseFloat(that.burned_total))         
             })
         },
 
