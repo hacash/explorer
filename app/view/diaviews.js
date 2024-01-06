@@ -22,9 +22,9 @@ exports.datas = async function(query, callback, req, res)
     // console.log(req.params)
     // 查询钻石可视化列表
     let page = parseInt(req.params.page)
-    , limit = 50
+    , limit = 200
     , curdianum = parseInt(req.query.curdianum)
-    , maxpage =  parseInt(curdianum / 50) + 1
+    , maxpage =  parseInt(curdianum / limit) + 1
     , dianames = req.query.dianames || ""
     ;
     if(isNaN(page)){
@@ -42,13 +42,21 @@ exports.datas = async function(query, callback, req, res)
             dianames: dianames,
             start_number: start,
             limit: limit,
+            compress: 1,
         })
         let datas = jsonobj.list
         , len = datas.length
         , datalist = new Array(len)
+        // console.log(JSON.stringify(jsonobj))
         // 倒序
         for(let i=0, k=len-1; i<len; i++, k--){
-            datalist[k] = datas[i]
+            let one = datas[i].split(",")
+            datalist[k] = {
+                "name": one[0],
+                "number": one[1],
+                "life_gene": one[2],
+                "bid_fee": one[3],
+            }
         }
         // console.log(jsonobj)
         diamond_view_gene_list = datalist
