@@ -26,7 +26,7 @@ module.exports = {
     block_difficulty_target: "难度目标",
     block_miner_name: "播报方",
     block_reward_amt: "区块奖励",
-    block_reward_address: "哈希",
+    block_reward_address: "奖励地址",
     block_time: "时间",
     block_show_more: "查看更多",
 
