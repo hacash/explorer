@@ -135,7 +135,7 @@ async function getBlocks(last, limit) {
                 delete blockdatacache_maps[k]
             }
             // console.log("delete blocks cache key", delete_keys.join(','))
-        }, 1000*60*24*3) // 保存三天内的数据 288*3
+        }, 1000*60*24) // 保存一天内的数据 288blk
         // 再次从缓存取数据
         return getBlocksFromCache(last, limit)
     }catch(e){
