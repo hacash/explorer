@@ -50,7 +50,7 @@ exports.datas = async function(query, callback, req, res)
         // console.log(JSON.stringify(jsonobj))
         // 倒序
         for(let i=0, k=len-1; i<len; i++, k--){
-            let one = datas[i].split(",")
+            let one = datas[i].split("|")
             datalist[k] = {
                 "name": one[0],
                 "number": one[1],
