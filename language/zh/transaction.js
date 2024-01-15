@@ -49,6 +49,10 @@ module.exports = {
     act_lockbls_create: "HAC 线性锁仓合约创建",
     act_lockbls_create_amount: "总锁入金额",
 
+    inscription_opt: "HACD 铭文操作",
+    inscription_opt_write: "铭刻",
+    inscription_opt_clean: "擦除",
+
     notfind: "对不起，找不到要查询的交易",
     
 

@@ -138,6 +138,16 @@
                     <label>[:=lang.transaction.act_chanassert_addr || "主张地址":]: </label><a target="_blank" href="/address/[:=one.assert_address:]">[:=one.assert_address:]</a> 
                     <label>[:=lang.transaction.act_chanassert_billno || "对账序号":]: </label><b>[:=one.bill_number:]</b>
                 </p>
+            [: }else if(one.k==32 || one.k==33){ :]
+                <p class="row r[:=(++i):]">
+                    <span class="kind">[[:=lang.transaction.inscription_opt || "HACD 铭文操作":]] kn: [:=one.k:]</span>
+                    [: if(one.k == 32) { :]
+                        <label>[:=lang.transaction.inscription_opt_write || "铭刻":]: </label><b>[:=one.channel_id:]</b>
+                    [: }else{ :]
+                        <label>[:=lang.transaction.inscription_opt_clean || "清除":]: </label><b>[:=one.channel_id:]</b>
+                    [: } :]
+                    <label>HACD: </label>[:=one.names:]
+                </p>
             [: }else{ :]
                 <p class="row r[:=(++i):] other">[kind=[:=one.k:]] [:=lang.transaction.act_other || "其它种类":] action</p>
             [: } :]
