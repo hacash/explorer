@@ -30,7 +30,7 @@
                 <p class="row"><label>[:=lang.diamond.prev_block_hash || "上次区块哈希":]: </label><a target="_blank" href="/block/[:=diamond.prev_block_hash:]"><b class="hx">[:=diamond.prev_block_hash:]</b></a></p>
                 <p class="row"><label>[:=lang.diamond.life_gene || "生命基因":]: </label>[:=diamond.life_gene:]</p>
                 <p class="row"><label>[:=lang.diamond.visual_gene || "可视化基因":]: </label>[:=diamond.visual_gene:]</p>
-                <div class="row" style="display: none;"><label>[:=lang.diamond.inscription || "铭文":]: </label>
+                <div class="row"><label>[:=lang.diamond.inscription || "铭文":]: </label>
                     [:if(diamond.inscriptions){:]
                     [:var insary = diamond.inscriptions.split('@#$'); var inslen = insary.length;:]
                     <ul id="inswrap">
