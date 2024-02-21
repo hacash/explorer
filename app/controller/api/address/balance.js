@@ -20,7 +20,7 @@ module.exports = async function(req, res)
 
     try{
         let jsonobj = await http_tool.json(config.miner_api_url+"/query", params)
-        console.log(jsonobj)
+        // console.log(jsonobj)
         api.success(res, {
             hacash: jsonobj.total,
             satoshi: jsonobj.satoshi,
