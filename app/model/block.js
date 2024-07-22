@@ -10,6 +10,12 @@ setTimeout(function(){
 
 ///////////////////////////////////////////////
 
+function sleep(ms) {
+    return new Promise(resolve=>setTimeout(resolve, ms))
+}
+
+///////////////////////////////////////////////
+
 
 let lastblockdata = {}
 
@@ -277,6 +283,9 @@ function getDealBitStr(bits) {
 
 exports.getLastBlock = async function()
 {
+    if(!lastblockdata.height) {
+        await sleep(1300)
+    }
     return lastblockdata
 }
 

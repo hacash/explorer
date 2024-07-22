@@ -416,10 +416,53 @@ var vAppTransfers = new Vue({
 
 
 // 请求数据
-vAppTransfers.queryTransferDatas()
+vAppTransfers.queryTransferDatas();
 
 
 
+
+//////////////////////////////////////
+
+
+var vAppPoolPercent = new Vue({
+    el: '#poolct',
+    data: {
+        percts: [],
+    },
+    methods:{
+        queryData: function(){
+            let t = this;
+            apiget("/api/pools/percent", {}, function(data){
+                let percts = [];
+                for(var i in data.last_week) {
+                    let ks = i.split(':')
+                    let n1 = data.last_week[i];
+                    let n2 = data.prev_week[i] || 0;
+                    percts.push({
+                        name: ks[0],
+                        adr: ks[1]||'',
+                        n1, n2,
+                        count: n1+n2,
+                        per:(parseFloat(n1+n2) / 4032.0 * 100).toFixed(2),
+                        chgp: ((parseFloat(n1-n2)/2016.0) * 100).toFixed(2)
+                    })
+                }
+                percts.sort(function(a,b){
+                    return b.count - a.count
+                })
+                let maxw = parseFloat((percts[0]||{}).count||100)
+                for(var i in percts) {
+                    let li = percts[i];
+                    li.width = parseFloat(li.count) / maxw
+                }
+                // console.log(percts)
+                t.percts = percts
+            })
+        }
+    }
+});
+
+vAppPoolPercent.queryData();
 
 
 //////////////////////////////////////////////////////////////////

@@ -80,4 +80,12 @@ module.exports = {
     ldv_check_input_tip: "View diamonds image, names separated by commas, max 50",
     ldv_more: "Show More",
 
+
+    plct_ttl:  "Ranking of Miner Hashrate in the Last Two Weeks",
+    plct_name: "Miner",
+    plct_adr:  "Address",
+    plct_blkn: "Block Count",
+    plct_hsrt: "Hashrate Share",
+    plct_chg:  "Change",
+
 }

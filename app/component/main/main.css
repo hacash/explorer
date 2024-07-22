@@ -859,6 +859,50 @@ div.pmore .button span {
 #lastdiampics .viewdias button:hover {
   background-color: #5079bb;
 }
+#poolct .name {
+  font-weight: bold;
+}
+#poolct .pcbar {
+  min-width: 300px;
+}
+#poolct .pcbar,
+#poolct .pcbar * {
+  height: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+}
+#poolct .pcbar span {
+  margin-left: 5px;
+}
+#poolct .pcbar b {
+  display: inline-block;
+  padding: 0 5px;
+  background-color: #82c3d866;
+  border-radius: 3px;
+  text-align: right;
+}
+#poolct .ukn .pcbar b {
+  background-color: #8886;
+}
+#poolct .ukn .name {
+  color: #888;
+}
+#poolct .i {
+  color: #888;
+}
+#poolct .adr {
+  color: #666;
+  font-size: 12px;
+}
+#poolct .per {
+  font-size: 14px;
+}
+#poolct .padd {
+  color: green;
+}
+#poolct .psub {
+  color: #d37b10;
+}
 #operateactionlogs tr .t0 a {
   color: steelblue;
 }

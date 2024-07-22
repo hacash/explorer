@@ -80,4 +80,11 @@ module.exports = {
     ldv_check_input_tip: "查看指定钻石图像，名称逗号隔开，最多50枚",
     ldv_more: "查看更多钻石图像",
 
+    plct_ttl:  "近两周区块播报方排名",
+    plct_name: "播报方",
+    plct_adr:  "地址",
+    plct_blkn: "挖出区块数",
+    plct_hsrt: "算力占比",
+    plct_chg:  "升降变化",
+
 }

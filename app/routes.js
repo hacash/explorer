@@ -29,6 +29,7 @@ module.exports = {
 
     '/api/ranking/top': 'api/ranking/top',
     '/api/ranking/diamonds': 'api/ranking/diamonds',
+    '/api/pools/percent': 'api/pools/percent',
 
     '/api/difficulty/charts': 'api/difficulty/charts',
     '/api/difficulty/chartsv2': 'api/difficulty/chartsv2',
