@@ -1,0 +1,28 @@
+#footer {
+  margin-top: 50px;
+  background-color: #3c78c2;
+}
+#footer .lang {
+  background-color: #00000022;
+  color: #ffffff66;
+}
+#footer .lang .container {
+  text-align: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+#footer .lang a {
+  display: inline-block;
+  padding: 3px 5px;
+  color: #ffffff99;
+  cursor: pointer;
+}
+#footer .lang a:hover {
+  color: #ffffff;
+  cursor: pointer;
+}
+#footer .cprt {
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
