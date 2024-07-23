@@ -1279,6 +1279,42 @@ div.pmore .button span {
     left: auto;
     right: 15px;
   }
+  #poolct .con table,
+  #poolct .con thead,
+  #poolct .con tbody,
+  #poolct .con tr {
+    display: block !important;
+    position: static !important;
+    height: auto !important;
+  }
+  #poolct .con tr {
+    padding: 15px !important;
+  }
+  #poolct .con tr.hd {
+    padding: 10px 0 !important;
+    text-align: center;
+  }
+  #poolct .con tr.hd th {
+    display: inline-block !important;
+  }
+  #poolct .con th,
+  #poolct .con td {
+    display: inline-block !important;
+    position: static !important;
+    height: auto !important;
+  }
+  #poolct .con td {
+    margin-right: 10px !important;
+  }
+  #poolct .con .pbw {
+    display: block !important;
+    margin: 4px 0 !important;
+  }
+  #poolct .con .pcbar {
+    min-width: auto !important;
+    width: 98%;
+    margin: 0;
+  }
   #operateactionlogs .wrap .con table tr.row {
     min-height: 115px;
     height: auto;
