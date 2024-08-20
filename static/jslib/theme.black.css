@@ -1,0 +1,85 @@
+html, body {
+    background-color: #000;
+}
+
+#header, #footer {
+    background-color: #333;
+}
+
+/* main */
+
+#topsc {
+    background-color: #ffffff1f;
+}
+
+#coin3 .li b {
+    color: #fff;
+}
+
+
+#blkrwd .cblist b {
+    background-image: linear-gradient(to top, #ffffff06, #ffffff2f);
+}
+#blkrwd .cblist i {
+    color: #ffffff66;
+}
+#blkrwd .tt  {
+    color: #ffffff99 !important;
+}
+#blkrwd .rwdper .bar {
+    background-image: linear-gradient(to right bottom, #ffffff0f, #ffffff33);
+}
+#blkrwd .burner .cp b,
+#blkrwd .burner .cp p {
+    opacity: 1;
+    color: #fff !important;
+}
+
+/* main */
+
+.mtable {
+
+}
+.mtable .wrap {
+    background-color: #222;
+}
+.mtable .wrap h1 {
+    color: #a8cfcf;
+}
+
+.mtable .wrap .con {
+    background-color: #333;
+}
+
+.mtable .wrap .con table th {
+    background: none;
+}
+
+.mtable .wrap .con table td {
+    color: #888;
+}
+
+/* page */
+
+
+.ppage .crumb span {
+    color: #999;
+}
+
+.pcard .row {
+    color: #ddd;
+}
+
+/* address */
+
+#address .info .li b {
+    color: #fff;
+}
+
+#address .alldmdns {
+    color: #fff;
+}
+
+#address .transfers .datas b, #address .channel .datas b {
+    color: #fff;
+}

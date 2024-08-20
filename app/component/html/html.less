@@ -1,0 +1,81 @@
+
+/*
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/font/montserrat.woff2?1');
+}
+*/
+
+*{
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: 12px/1.6 tahoma,arial,'Hiragino Sans GB', '微软雅黑', 'sans-serif'; 
+    // font-family: 'Rubik', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    outline: none; 
+}
+
+html {
+    background-color: lightslategrey;
+}
+body {
+    background-color: #fff;
+}
+
+html, body, ol, ul{
+    margin: 0; padding: 0;
+}
+
+.clear{
+    clear: both;
+    float: none;
+}
+
+.none{
+    display: none;
+}
+
+
+/////////////////////////////////////////////////
+
+input, textarea {
+    display: block;
+    padding: 10px;
+    border: 1px solid #bbb;
+    margin: 0;
+    box-sizing: border-box;
+}
+textarea {
+    width: 600px;
+    height: 100px;
+}
+button {
+    padding: 10px 15px;
+    background-color: salmon;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    &.blue {
+        background-color: rgb(58, 112, 211);
+    }
+    &.red {
+        background-color: rgb(211, 60, 22);
+    }
+}
+    
+
+/////////////////////////////    
+
+.container{
+    display: block;
+    margin: 0 auto;
+    padding: 1%;
+    width: 98%;
+    max-width: 900px;
+}
+
+
+@mobile_width: 512px;
+

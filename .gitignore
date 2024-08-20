@@ -1,3 +1,23 @@
+
+*.use.*
+*.dev.*
+*.loc.*
+*.test.*
+
+static/jscss/*.js
+static/jscss/*.css
+
+app/datas/*.*
+static/datas/*.*
+
+*_bnk/
+
+
+# Node
+
+node_modules/
+package-lock.json
+
 # Logs
 logs
 *.log
