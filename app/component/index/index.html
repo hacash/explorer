@@ -2,7 +2,14 @@
     var iscn = lang.useset == 'zh';
 :]
 
+<script src="/jslib/diamondgene.min.js?v=1"></script>
+<script src="/jslib/diamondsvgimg.min.js?v=1"></script>
+<script src="/jslib/sha3.min.js?v=1"></script>
+<script src="/jslib/diamondbrilliance.min.js?v=1"></script>
+<script src="/jslib/diamondlifegame.min.js?v=1"></script>
 
+
+<!----------- top search ------------->
 
 <div id="topsc">
     <div class="container">
@@ -22,6 +29,7 @@
 </div>
 
 
+<!----------- supply ------------->
 
 
 <div id="supply">
@@ -105,4 +113,143 @@
     </div>
 </div>
 
+</div>
+
+
+<!----------- hashtate ------------->
+
+
+<div id="dfcts"  class="mtable mbfix" >
+    <div class="container">
+        <div class="wrap">
+            <div class="tt">
+                [:=
+                    lang.main.hash_power_title || 
+                    "<p>全网目标哈希率：<b>{{tg_hs}}</b>， 实时哈希率：<b>{{rt_hs}}</b>，近200天算力相对波动：</p>"
+                :]
+            </div>
+            <canvas class="dfctshow" id="dfcts_canvas">
+                Your browser does not support canvas tag.
+            </canvas>
+        </div>
+        <div class="wrap">
+            <div class="tt">[:=lang.main.hash_power_title_all || "历史总波动曲线" :]</div>
+            <canvas class="dfctshow" id="dfcts_canvas_all">
+                Your browser does not support canvas tag.
+            </canvas>
+        </div>
+    </div>
+</div>
+
+
+<!----------- diamond bidding ------------->
+
+<a name="hacdvs"></a>
+<div id="diabid" class="mtable mbfix" >
+    <div class="container">
+        <div class="wrap">
+            <h1 class="pt">
+                [:=
+                    lang.main.diamond_mining_period ||
+                    "序号 {{number}} 钻石实时竞价："
+                :]
+            </h1>
+            <div class="con" v-if="txs.length>0">
+                <table>
+                    <tr class="hd">
+                        <th class="">#</th>
+                        <th>[:=lang.main.diamond_value || "钻石字面值":]</th>
+                        <th class="hd">[:=lang.main.diamond_reward_address || "奖励地址":]</th>
+                        <th>[:=lang.main.diamond_tx_hx || "交易哈希":]</th>
+                        <th>[:=lang.main.diamond_fee_address || "竞价地址":]</th>
+                        <th>[:=lang.main.diamond_fee_up || "当前出价":]</th>
+                    </tr>
+                    
+                    <tr class="row" v-if="txs.length" v-for="(li, i) in txs">
+                        <td class="t1 i">{{i+1}}</td>
+                        <td class="t2 diamond">{{li.name}}</td>
+                        <td class="t3 addr hd"><a target="_blank" :title="li.belong" :href="'/address/'+li.belong">{{li.belong.substring(0,13)}}...</a></td>
+                        <td class="t4 hx">{{li.tx}}</td>
+                        <td class="t6 addr f"><a target="_blank" :title="li.bid" :href="'/address/'+li.bid">{{li.bid.substring(0,9)}}...</a></td>
+                        <td class="t5 fee">ㄜ{{li.fee}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div v-if="txs.length===0">
+                <p class="notyet">[:=lang.main.diamond_none || "暂无 ~":]</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!----------- latest diamond minted ------------->
+
+<div id="ltsdias" class="mtable mbfix" >
+    <div class="container">
+        <div class="wrap">
+            <h1 class="pt">
+                [:=
+                    lang.main.ldv_title || "最近6枚钻石视觉图"
+                :]
+                <a class="more" target="_blank" href="/diamond/views?page=1&limit=50&desc=true">[:=lang.main.ldv_more:]</a>
+            </h1>
+            <div class="con">
+
+                <div class="dvhipck">
+                    <div class="btns" title="Toggle HACD visualization standard">
+                        <a dvhip="5" class="hipit h5 f [:=(!this.dvhip || this.dvhip==5)?'active':'':]">HIP-5</a>
+                        <a dvhip="8" class="hipit h8   [:=this.dvhip==8?'active':'':]">HIP-8</a>
+                        <a dvhip="9" class="hipit h9 e [:=this.dvhip==9?'active':'':]">HIP-9</a>
+                    </div>
+                    [:if(this.dvhip==8){:]
+                    <div class="browsertip">
+                        <p>[:=lang.common.hip8drawtip:]</p>
+                    </div>    
+                    [:}:]
+                </div>
+
+                <div id="diapic6">
+
+                    <a class="diapic" target="_blank"></a>
+                    <a class="diapic" target="_blank"></a>
+                    <a class="diapic" target="_blank"></a>
+                    <a class="diapic" target="_blank"></a>
+                    <a class="diapic" target="_blank"></a>
+                    <a class="diapic" target="_blank"></a>
+    
+                    <div class="viewdias">
+                        <div class="vdbox">
+                            <input v-model="scdiastr" placeholder="[:=lang.main.ldv_check_input_tip:]"  />
+                            <button @click="checkDias">[:=lang.main.ldv_check:]</button>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!----------- block fork check ------------->
+
+
+<a name="blks"></a>
+<div id="rctblks" class="mtable mbfix" >
+    <div class="container">
+        <div class="wrap">
+            <h1 class="pt">
+                [:=lang.main.block_forks || "区块监测":]
+                <a class="more" target="_blank" href="/datas/forkblocks.log">Check Fork Log</a>
+            </h1>
+            <div class="con">
+
+            </div>
+        </div>
+    </div>
 </div>

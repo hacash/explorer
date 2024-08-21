@@ -510,23 +510,320 @@ div.pmore{
 
 
 
+/* hashrate charts */
+
+
+#dfcts{
+    .wrap{
+        position: relative;
+        border-bottom: 1px solid #ddd;
+        .tt{
+            display: block;
+            // position: absolute;
+            // top: 10px; left: 10px;
+            padding: 5px 0;
+            color: #aaa;
+            font-size: 12px;
+            // background: #ffffff99;
+            // border: 1px solid #ffffff22;
+            width: 100%;
+            p{
+                display: block;
+                padding: 2px 5px;
+                padding-left: 15px;
+                b{
+                    color: goldenrod;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+
+/* diamond bidding */
+
+#diabid {
+    .wrap{
+        .notyet {
+            text-align: center;
+            padding: 16px 0;
+            color: #999;
+        }
+        .con{
+            table{
+                td{
+                    border-bottom: none;
+                    border-top: 1px solid #00000011;
+                }
+                td.i {
+                    color: gray;
+                }
+                td.diamond {
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: cadetblue;
+                    font-family: monospace;
+                }
+                td.addr a{
+                    display: inline-block;
+                    word-break: break-all;
+                    color: darkseagreen;
+                    font-size: 12px;
+                    line-height: 14px;
+                }
+                td.addr.f a{
+                    display: inline-block;
+                    color: darkgrey;
+                }
+                td.hx {
+                    text-align: left;
+                    display: inline-block;
+                    word-break: break-all;
+                    width: 200px;
+                    font-size: 10px;
+                    color: darkgrey;
+                    line-height: 14px;
+                    font-family: monospace;
+                }
+                td.fee {
+                    color: cadetblue;
+                    font-weight: bold;
+                    font-size: 13px;
+
+                }
+                td.stat {
+                    max-width: 70px;
+                    i.ok {
+                        color: forestgreen;
+                    }
+                    i.err {
+                        color: #fff;
+                        background-color: peru;
+                    }
+                    u{
+                        font-size: 12px;
+                        color: #666;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+
+
+/* latest diamond minted */
+
+
+#ltsdias {
+
+    .pt {
+        .more {
+            float: right;
+            text-decoration: underline;
+            color: cornflowerblue;
+        }
+    }
+    .diapic {
+        display: inline-block;
+        // margin-bottom: 20px;
+        svg.dvhip8 {
+            margin: 20px 0;
+            width: 140px;
+            height: 140px;
+        }
+        svg.dvhip9 {
+            margin: 20px 5px;
+        }
+        .name {
+            font-size: 13px;
+            font-weight: bold;
+            color: cadetblue;
+        }
+        .num {
+            font-size: 12px;
+            color: #999;
+        }
+        &:hover{
+            // background-color: #ffffff11;
+            .name {
+                text-decoration: underline;
+            }
+        } 
+
+    }
+    .viewdias {
+        margin-top: 20px;
+        padding: 5px 0 5px 0;
+        width: 100%;
+        height: 36px;
+        .vdbox {
+            position: relative;
+            width: 94%;
+            height: 36px;
+            margin: auto;
+        }
+        input {
+            display: block;
+            width: 100%;
+            border: 1px solid #00000022;
+            border-radius: 4px;
+            height: 36px;
+            line-height: 36px;
+            background-color: #ffffff44;
+            &::placeholder{
+                color: #aaa;
+            }
+        }
+        button {
+            display: block;
+            height: 36px;
+            line-height: 36px;
+            padding: 0 10px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 0 4px 4px 0;
+            background-color: #8097b3;
+            font-size: 13px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            &:hover{
+                background-color: #5079bb;
+            }
+        }
+    }
+}
+
+
+/* recent blocks */
+
+#rctblks {
+    overflow: hidden;
+    .pt {
+        .more {
+            float: right;
+            text-decoration: underline;
+            color: cornflowerblue;
+        }
+    }
+    .con {
+        // min-height: 500px;
+        position: relative;
+        overflow-x: auto;
+        padding: 0;
+    }
+    .box {
+        min-width: 932px;
+        padding: 14px 0 14px 14px;
+    }
+    svg {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width:960px;
+        width: 100%;
+        height: 100%;
+        // background-color: #009a0033;
+        line {
+            stroke: #999;
+            stroke-width: 8px;
+        }
+    }
+    .itwp {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        // background-color: #00000022;
+        // border-top: #000 solid 2px;
+    }
+
+    @keyframes blkanim {
+        0% { border-radius: 0%; transform: scale(1); }
+        30% { border-radius: 33.33%; transform: scale(1.16); }
+        100% { border-radius: 0%; transform: scale(1); }
+    }
+    .blk.leaf.h7 {
+        animation: blkanim 2.4s infinite;
+    }
+    .blk {
+        margin: 13px;
+        width: 90px;
+        height: 90px;
+        background-color: #eee;
+        box-shadow: 3px 3px 2px #00000033;
+        border-radius: 33.33%;
+        overflow: hidden;
+    }
+    .blk {
+        &.h0, &.h1, &.h2, &.h3 {
+            box-shadow: none;
+            background-color: #ddd;
+            border-radius: 12px;
+            box-shadow: 1px 1px 1px #fff, 1px 1px 2px #00000022 inset;  
+            p.b, p.t {
+                color: #666;
+            }      
+        }
+        &.h4 { box-shadow: 3px 3px 2px #00000033; }
+        &.h5 { box-shadow: 4px 4px 4px #00000044; }
+        &.h6 { box-shadow: 5px 5px 8px #00000055; }
+        &.h7 { box-shadow: 6px 6px 12px #00000066; }
+    }
+    .leaf {
+        border-radius: 0px;
+    }
+    .rect {
+        width: 90%;
+        height: 90%;
+        padding: 5%;
+        p {
+            line-height: 20px;
+            height: 20px;
+            word-break: keep-all;
+            color: #333;
+            // text-shadow: 2px 2px 2px #fff;
+        }
+        p.m {
+            color: #999;
+        }
+        p.b {
+            color: sienna;
+        }
+    }
+    .leaf .rect {
+        background-color: #009a00;
+        box-shadow: 2px 2px 2px #009a0077;
+        p {
+            color: #fff !important;
+        }
+        &.h0 { background-color: #669b6611; }
+        &.h1 { background-color: #669b6633; }
+        &.h2 { background-color: #669b6655; }
+        &.h3 { background-color: #669b6677; }
+        &.h4 { background-color: #669b6699; }
+        &.h5 { background-color: #669b66bb; }
+        &.h6 { background-color: #669b66dd; }
+        &.h7 { background-color: #669b66ff; }
+    }
+}
+
+
+
+
+
 
 
 @media screen and (max-width: @mobile_width) {
 
 
-    #dfcts {
-        margin-top: 20px;
-        .wrap {
-            background-color: #fff;
-            .tt p, .tt b {
-                font-size: 14px;
-            }
-        }   
-    }
-    
-    
-    
     .mtable.mbfix {
         .container{
             padding: 0%;
@@ -638,8 +935,6 @@ div.pmore{
         }
     }
     
-    
-    
     #ly2ch {
         margin: 0;
         .wrap{
@@ -667,5 +962,70 @@ div.pmore{
         }
     }
 
+    #dfcts {
+        margin-top: 20px;
+        .wrap {
+            background-color: #fff;
+            .tt p, .tt b {
+                font-size: 14px;
+            }
+        }   
+    }
+
+
+    #dfcts_canvas {
+        border: none;
+    }
+    
+    #diabid {
+        margin-top: 22px;
+        .wrap{
+            h1{
+                padding-top: 10px;
+            }
+            .con{
+                table{
+                    .row td, .row td a{
+                        display: block;
+                        height: 20px;
+                        line-height: 20px;
+                        max-width: 120px;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        word-break: break-all;
+                        text-overflow: ellipsis;
+                    }
+                    td.fee {
+                        color: rosybrown;
+                        font-weight: normal;
+                    }
+                    td.i {
+                        color: #888;
+                    }
+                    .t1{ top: 10px; left: 5px; }
+                    .t2{ top: 10px; left: 30px; }
+                    .t3{ top: 10px; left: 110px; }
+                    .t4{ top: 10px; left: auto; right: 0px; }
+                    .t5{ top: 30px; left: 30px; }
+                    .t6{ top: 30px; left: 110px; }
+                    .t7{ top: 30px; left: auto; right: 10px; }
+                }
+            }
+        }
+    }
+    
+    #ltsdias {
+        .wrap{
+            .con {
+                padding-top: 20px;
+            }
+        }
+
+    }
+
+
+
     
 }
+
+

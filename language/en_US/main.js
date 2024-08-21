@@ -2,15 +2,15 @@ module.exports = {
 
     pttl: "The Hacash Blockchain Explorer",
 
-    hash_power_title: "<p>Latest target hashrates: <b>{{target_hashpower}}</b>. Real-time hashrates: <b>{{current_hashpower}}</b>. Last 300 days hashrates fluctuation graph</p>",
+    hash_power_title: "<p>Latest target hashrates: <b>{{tg_hs}}</b>. Real-time hashrates: <b>{{rt_hs}}</b>. Last 200 days hashrates fluctuation graph</p>",
     hash_power_title_all: "<p>Overall hashrates fluctuation graph</p>",
-    diamond_mining_period: "The ranking table of diamond fees waiting for confirm period {{period}}, number {{number}} ",
+    diamond_mining_period: "Diamond {{number}} Bidding:",
     
-    diamond_value: "Diamond Name",
+    diamond_value: "HACD Name",
     diamond_tx_hx: "Tx Hash",
     diamond_reward_address: "Reward Address",
-    diamond_fee_address: "Fee Address",
-    diamond_fee_up: "Fee Offer",
+    diamond_fee_address: "Bid Address",
+    diamond_fee_up: "Bid Offer",
     diamond_status: "Status",
     diamond_none: "Not have in this period",
 

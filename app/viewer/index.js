@@ -14,7 +14,8 @@ exports.components = [
 exports.datas = async function(cnf, ctx)
 {
     return {
-        title: "Hacash explorer"
+        dvhip: ctx.cookies.get("dvhip")||undefined,
+        title: "Hacash Blockchain Explorer"
     }
 }
 

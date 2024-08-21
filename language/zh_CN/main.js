@@ -2,15 +2,15 @@ module.exports = {
 
     pttl: "Hacash 区块链浏览器",
 
-    hash_power_title: "<p>全网最近目标哈希率：<b>{{target_hashpower}}</b>， 实时哈希率：<b>{{current_hashpower}}</b>，近300天算力波动曲线</p>",
+    hash_power_title: "<p>全网最近目标哈希率：<b>{{tg_hs}}</b>， 实时哈希率：<b>{{rt_hs}}</b>，近200天算力波动曲线</p>",
     hash_power_title_all: "<p>总历史算力波动曲线</p>",
-    diamond_mining_period: "周期 {{period}} 序号 {{number}} 最新挖出待确认钻石手续费竞价排序表",
+    diamond_mining_period: "序号 {{number}} 钻石实时竞价：",
 
-    diamond_value: "钻石字面值",
+    diamond_value: "HACD字面值",
     diamond_tx_hx: "交易哈希",
     diamond_reward_address: "奖励地址",
-    diamond_fee_address: "手续费地址",
-    diamond_fee_up: "手续费出价",
+    diamond_fee_address: "竞价地址",
+    diamond_fee_up: "当前出价",
     diamond_status: "状态",
     diamond_none: "本周期暂无 ~",
 

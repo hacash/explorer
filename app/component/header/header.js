@@ -83,7 +83,7 @@ function doHeaderSearch(ss) {
         location.reload()
     }
     // console.log(ds)
-    var as = $clas(ds, 'hipit');
+    var as = $class(ds, 'hipit');
     // console.log(as)
     for(var i=0; i<as.length; i++){
         // console.log(as[i])
@@ -106,9 +106,9 @@ function doHeaderSearch(ss) {
         }
     }
     if(!isOk) {
-        var ts = $clas(ds, 'browsertip')
-        if(ts.length){
-            ts[0].style.display = 'block';
+        var t = $clas(ds, 'browsertip')
+        if(t){
+            t.style.display = 'block';
         }
     }
 
