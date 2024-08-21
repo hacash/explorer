@@ -217,10 +217,28 @@ function padLeftZero(str) {
     return ('00' + str).substr(str.length);
 }
 
-
+//       toThousands
 function toThousands(num) {
-    return num.toString().replace(/\d+/, function(n) {
+    return (num+'').replace(/\d+/, function(n) {
        return n.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
     });
 }
  
+
+
+////////////////////////////////
+
+
+const VueCreateAppCommon = function(id, data, methods, mounted) {
+    let app = Vue.createApp({
+        data() {
+            return data
+        },
+        methods,
+        mounted: mounted || function(){},
+    });
+    app.mount('#'+id);
+    return app
+};
+
+

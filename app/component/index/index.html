@@ -1,1 +1,108 @@
-<div>koappx index</div>
+[:
+    var iscn = lang.useset == 'zh';
+:]
+
+
+
+<div id="topsc">
+    <div class="container">
+        <div class="wrap">
+            <div class="logo">
+                <img class="lg" src="https://hacash.org/cssimg/hacash_sign.svg" />
+            </div>
+            <div class="grow">
+                <h1 class="pttl">[:=lang.main.pttl:]</h1>
+                <div class="search">
+                    <input class="input" @keyup="keyEnterSearch" v-model="search_str" placeholder="Search by [:=lang.header.search_input_placeholder:]" />
+                    <button @click="clickSearch">[:=lang.header.search:]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="supply">
+
+<div id="coin3" >
+    <div class="container">
+        <div class="flex">
+            <div class="mtable mbfix box b1"><div class="wrap">
+                <h1 class="tt">
+                    HAC
+                    <img class="lg" src="https://hacash.org/cssimg/hacash_logo.svg" />
+                </h1>
+                <div class="con">
+                    <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b class="gs">♾️</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_current_circulation || "实时流通":]</label><b class="nn">{{toThousands(parseFloat(d.current_circulation).toFixed(1))}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_block_reward || "区块奖励":]</label><b>{{toThousands(parseFloat(d.block_reward).toFixed(1))}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_burned_total || "已销毁":]</label><b>{{toThousands(parseFloat(d.burned_fee).toFixed(1))}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_channel_interest || "通道利息":]</label><b>{{toThousands(parseFloat(d.channel_interest).toFixed(1))}}</b></div>
+                    <div class="li time"><label>[:=lang.main.ttspl_mintstart || "开始时间":]</label><b>[:=iscn?'2019-2-4':'Feb 4, 2019':]</b></div>
+                </div>
+            </div></div>
+            <div class="mtable mbfix box b2"><div class="wrap">
+                <h1 class="tt">
+                    HACD
+                    <img class="lg" src="https://hacash.org/cssimg/hacash_hacd.svg" />
+                </h1>
+                <div class="con">
+                    <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>{{toThousands(16777216)}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_minted_diamond || "已挖出":]</label><b class="nn">{{toThousands(d.minted_diamond)}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_hacd_average_bid || "平均HAC竞价":]</label><b>ㄜ{{(parseFloat(d.burned_diamond_bid)/0.9/(parseInt(d.minted_diamond)-30000)).toFixed(2)}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_hacd_inscription || "累计铭刻":]</label><b>{{d.diamond_engraved}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_hacd_visualization || "可视化协议":]</label><b>{{3}}</b></div>
+                    <div class="li time"><label>[:=lang.main.ttspl_mintstart || "开始时间":]</label><b>[:=iscn?'2019-5-16':'May 16, 2019':]</b></div>
+                </div>
+            </div></div>
+            <div class="mtable mbfix box b3"><div class="wrap">
+                <h1 class="tt">
+                    BTC
+                    <img class="lg" src="https://hacash.org/cssimg/hacash_btc.svg" />
+                </h1>
+                <div class="con">                    
+                    <div class="li"><label>[:=lang.main.ttspl_total || "总量":]</label><b>{{toThousands(21000000)}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_transferred_bitcoin || "已转移比特币":]</label><b class="nn">{{toThousands(d.transferred_bitcoin)}}</b></div>
+                    <div class="li"><label>[:=lang.main.ttspl_btcmove_subsidy || "HAC补偿":]</label><b>ㄜ{{toThousands(parseFloat(d.trsbtc_subsidy).toFixed(1))}}</b></div>
+                    <div class="li no"><label>-</label><b>-</b></div>
+                    <div class="li no"><label>-</label><b>-</b></div>
+                    <div class="li time"><label>[:=lang.main.ttspl_mintstart || "开始时间":]</label><b>[:=iscn?'未开始':'Coming soon':]</b></div>
+                </div>
+            </div></div>
+        </div>
+    </div>
+</div>
+
+<div id="blkrwd" class="mtable mbfix">
+    <div class="container">
+        <div class="wrap">
+            <h1 class="tt">[:=lang.main.ttspl_hac_chart || "HAC统计图" :]</h1>
+            <div class="con">
+                <div class="cbwrap">
+                    <div class="cblist" v-html="cblist"></div>
+                </div>
+                <div class="rwdper" v-html="rwdper"></div>
+                <div class="burner" v-html="burner"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<a name="ly2ch"></a>
+<div id="ly2ch" class="mtable mbfix">
+    <div class="container">
+        <div class="wrap">
+            <h1 class="tt">[:=lang.main.ttspl_ly2ch || "二层通道数据":]</h1>
+            <div class="con">
+                <div class="num"><h6>[:=lang.main.ttspl_channel_of_opening || "已开启通道数：":]</h6><b>{{d.channel_opening}}</b></div>
+                <div class="num"><h6>[:=lang.main.ttspl_located_in_channel || "已存入通道链网络：":]</h6><b>{{toThousands(parseFloat(d.channel_deposit).toFixed(1))}}<i>HAC</i></b></div>
+                <div class="num"><h6>[:=lang.main.ttspl_channel_interest || "通道利息：":]</h6><b class="green">{{toThousands(parseFloat(d.channel_interest).toFixed(1))}}<i>HAC</i></b></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

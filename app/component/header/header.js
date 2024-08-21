@@ -1,25 +1,22 @@
 
-Vue.createApp({
-    data(){ return {
-        search_str: "",
-    }},
-    methods: {
-        choiseLang(lang) {
-            setCookie("lang", lang, "/", 1000) 
-            window.location.href += "" 
-        },
-        keyEnterSearch(e) {
-            if(e.key=="Enter"){
-                this.clickSearch()
-            }
-        },
-        clickSearch() {
-            var t = this,
-            ss = t.search_str
-            doHeaderSearch(ss)
+;VueCreateAppCommon('header', {
+    search_str: "",
+},{
+    choiseLang(lang) {
+        setCookie("lang", lang, "/", 1000) 
+        window.location.href += "" 
+    },
+    keyEnterSearch(e) {
+        if(e.key=="Enter"){
+            this.clickSearch()
         }
     },
-}).mount('#header');
+    clickSearch() {
+        let t = this
+        , ss = t.search_str
+        doHeaderSearch(ss)
+    }
+});
 
 
 function doHeaderSearch(ss) {

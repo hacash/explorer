@@ -25,8 +25,14 @@
     [: if(this.theme && this.theme=='2'){ :]
         <link rel="stylesheet" href="/jslib/theme.black.css?v=[:=this.page.version:]">
     [: } :]
-        
+    
+    
+    [: if(this.config && this.config.debug){ :]
+    <script src="https://unpkg.com/vue@3.4.38/dist/vue.global.js"></script><!--for debug-->
+    [: }else{ :]
     <script src="https://unpkg.com/vue@3.4.38/dist/vue.global.prod.js"></script>
+    [: } :]
+
     <script src="https://unpkg.com/axios@1.7.4/dist/axios.min.js"></script>
 
 </head>
