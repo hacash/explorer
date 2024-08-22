@@ -9,7 +9,6 @@ global.koappx = require('../koappx')
 */
 koappx.run()
 
-
 /*
 * genesis_init
 * koappx.genesis_init()

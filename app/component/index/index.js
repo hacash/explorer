@@ -322,11 +322,12 @@ function drawHashrateCharts(idname, data, theme){
 
 
 
+/********************** recent fork blocks **********************/
 
 
-;(function(){
+function drawRecentBlocks(recent_blocks){
 
-    function rctblkpsrli(rct) {
+    const rctblkpsrli = function(rct) {
         var right = '';
         if(rct.nexts&&rct.nexts.length){
             right = `<div class="right">${rctblkpsrloopary(rct.nexts)}</div>`
@@ -341,18 +342,22 @@ function drawHashrateCharts(idname, data, theme){
             </div></div></div>${right}</div>`;
     };
 
-    function rctblkpsrloopary(list) {
+    const rctblkpsrloopary = function(list) {
         var ary = []
         for(var i in list) {
             ary.push( rctblkpsrli(list[i]) )
         }
         return ary.join('')
     };
+
+
     var rctblks = $id('rctblks')
     , rctblks_con = $clas(rctblks, 'con')
     ;
     rctblks_con.innerHTML = '<div class="box"><svg class="lines"></svg>'+rctblkpsrloopary(recent_blocks)+'</div>'
-    function rctblksdrawlines() {
+
+
+    const rctblksdrawlines = function() {
         var $blks = $class(rctblks, 'blk')
         , $svg =  $clas(rctblks, 'lines')
         , svgxy = $svg.getBoundingClientRect()
@@ -394,6 +399,91 @@ function drawHashrateCharts(idname, data, theme){
     }
 
     setTimeout(rctblksdrawlines, 50)
+}
 
-})();
 
+apiget("/api/block/recents", {}, function(data){
+    drawRecentBlocks(data.list)
+})
+
+
+
+/********************** all blocks **********************/
+
+
+
+;VueCreateAppCommon('blocks', {
+    blocks: [],
+    page: 0,
+    limit: 15,
+},{
+    formatDate,
+    queryBlks: function(){
+        let t = this;
+        t.page += 1;
+        let params = {
+            desc: true,
+            page: t.page,
+            limit: t.limit,
+        }
+        if(t.page == 1) {
+            params.page1 = true // use cache
+        }
+        apiget("/api/block/views", params, function(data){
+            let list = table_to_list(data)
+            t.blocks = t.blocks.concat(list)
+        })
+    }
+}, function() {
+    // auto load first page
+    this.queryBlks()
+})
+
+
+
+/********************** miner pool stats **********************/
+
+
+
+;VueCreateAppCommon('poolct', {
+    percts: [],
+},{
+    queryStats() {
+        let t = this;
+        apiget("/api/block/pools", {}, function(data){
+            let percts = [];
+            let keys = {};
+            for(var a in data.curr){
+                keys[a] = true
+            }
+            for(var a in data.prev){
+                keys[a] = true
+            }
+            for(var a in keys) {
+                let ks = a.split(':')
+                let n1 = data.curr[a] || 0;
+                let n2 = data.prev[a] || 0;
+                percts.push({
+                    name: ks[0],
+                    adr: ks[1]||'',
+                    n1, n2,
+                    count: n1+n2,
+                    per:(parseFloat(n1+n2) / 4032.0 * 100).toFixed(2),
+                    chgp: ((parseFloat(n1-n2)/2016.0) * 100).toFixed(2)
+                })
+            }
+            percts.sort(function(a,b){
+                return b.count - a.count
+            })
+            let maxw = parseFloat((percts[0]||{}).count||100)
+            for(var i in percts) {
+                let li = percts[i];
+                li.width = parseFloat(li.count) / maxw
+            }
+            // console.log(percts)
+            t.percts = percts
+        })
+    }
+}, function(){
+    this.queryStats()
+});

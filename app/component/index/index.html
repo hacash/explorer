@@ -142,47 +142,6 @@
 </div>
 
 
-<!----------- diamond bidding ------------->
-
-<a name="hacdvs"></a>
-<div id="diabid" class="mtable mbfix" >
-    <div class="container">
-        <div class="wrap">
-            <h1 class="pt">
-                [:=
-                    lang.main.diamond_mining_period ||
-                    "序号 {{number}} 钻石实时竞价："
-                :]
-            </h1>
-            <div class="con" v-if="txs.length>0">
-                <table>
-                    <tr class="hd">
-                        <th class="">#</th>
-                        <th>[:=lang.main.diamond_value || "钻石字面值":]</th>
-                        <th class="hd">[:=lang.main.diamond_reward_address || "奖励地址":]</th>
-                        <th>[:=lang.main.diamond_tx_hx || "交易哈希":]</th>
-                        <th>[:=lang.main.diamond_fee_address || "竞价地址":]</th>
-                        <th>[:=lang.main.diamond_fee_up || "当前出价":]</th>
-                    </tr>
-                    
-                    <tr class="row" v-if="txs.length" v-for="(li, i) in txs">
-                        <td class="t1 i">{{i+1}}</td>
-                        <td class="t2 diamond">{{li.name}}</td>
-                        <td class="t3 addr hd"><a target="_blank" :title="li.belong" :href="'/address/'+li.belong">{{li.belong.substring(0,13)}}...</a></td>
-                        <td class="t4 hx">{{li.tx}}</td>
-                        <td class="t6 addr f"><a target="_blank" :title="li.bid" :href="'/address/'+li.bid">{{li.bid.substring(0,9)}}...</a></td>
-                        <td class="t5 fee">ㄜ{{li.fee}}</td>
-                    </tr>
-                </table>
-            </div>
-            <div v-if="txs.length===0">
-                <p class="notyet">[:=lang.main.diamond_none || "暂无 ~":]</p>
-            </div>
-        </div>
-
-    </div>
-</div>
-
 
 <!----------- latest diamond minted ------------->
 
@@ -236,6 +195,49 @@
 </div>
 
 
+
+<!----------- diamond bidding ------------->
+
+<a name="hacdvs"></a>
+<div id="diabid" class="mtable mbfix" >
+    <div class="container">
+        <div class="wrap">
+            <h1 class="pt">
+                [:=
+                    lang.main.diamond_mining_period ||
+                    "序号 {{number}} 钻石实时竞价："
+                :]
+            </h1>
+            <div class="con" v-if="txs.length>0">
+                <table>
+                    <tr class="hd">
+                        <th class="">#</th>
+                        <th>[:=lang.main.diamond_value || "钻石字面值":]</th>
+                        <th class="hd">[:=lang.main.diamond_reward_address || "奖励地址":]</th>
+                        <th>[:=lang.main.diamond_tx_hx || "交易哈希":]</th>
+                        <th>[:=lang.main.diamond_fee_address || "竞价地址":]</th>
+                        <th>[:=lang.main.diamond_fee_up || "当前出价":]</th>
+                    </tr>
+                    
+                    <tr class="row" v-if="txs.length" v-for="(li, i) in txs">
+                        <td class="t1 i">{{i+1}}</td>
+                        <td class="t2 diamond">{{li.name}}</td>
+                        <td class="t3 addr hd"><a target="_blank" :title="li.belong" :href="'/address/'+li.belong">{{li.belong.substring(0,13)}}...</a></td>
+                        <td class="t4 hx">{{li.tx}}</td>
+                        <td class="t6 addr f"><a target="_blank" :title="li.bid" :href="'/address/'+li.bid">{{li.bid.substring(0,9)}}...</a></td>
+                        <td class="t5 fee">ㄜ{{li.fee}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div v-if="txs.length===0">
+                <p class="notyet">[:=lang.main.diamond_none || "暂无 ~":]</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
 <!----------- block fork check ------------->
 
 
@@ -249,6 +251,83 @@
             </h1>
             <div class="con">
 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------- pool percent ------------->
+
+
+<div id="poolct" class="mtable mbfix" >
+    <div class="container">
+        <div class="wrap">
+            <h1 class="pt">[:=lang.main.plct_ttl || "最近两周区块播报方排名":]</h1>
+            <div class="con">
+                <div class="con">
+                    <table>
+                        <tr class="hd">
+                            <th>#</th>
+                            <th>[:=lang.main.plct_name || "播报方":]</th>
+                            <th>[:=lang.main.plct_adr || "地址":]</th>
+                            <th>[:=lang.main.plct_blkn || "区块数":]</th>
+                            <th>[:=lang.main.plct_hsrt || "算力占比":]</th>
+                            <th>[:=lang.main.plct_chg || "升降变化":]</th>
+                        </tr>
+                        <tr :class="(d.name=='unknown'?'ukn':'') + ' row'" v-for="(d,i) in percts">
+                            <td class="i">{{i+1}}</td>
+                            <td class="name">{{d.name}}</td>
+                            <td class="adr">{{d.adr}}...</td>
+                            <td class="pbw"><div class="pcbar">
+                                <b v-if="d.width>=0.5" :style="'width:'+(d.width*100)+'%'">{{d.count}} ({{d.n2}},{{d.n1}})</b>
+                                <div v-else><b :style="'width:'+(d.width*100)+'%'"></b><span>{{d.count}} ({{d.n2}},{{d.n1}})</span></div>
+                            </div></td>
+                            <td class="per">{{d.per}}%</td>
+                            <td :class="'per ' + (d.chgp<0?'psub':'padd')">{{d.chgp>=0?'⇧':'⇣'}} {{d.chgp==0?'0.01':d.chgp}}%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------- all blocks ------------->
+
+
+<div id="blocks" class="mtable mbfix" >
+    <div class="container">
+        <div class="wrap">
+            <h1 class="pt">
+                [:=lang.main.block_last || "最新出块":]
+                <!-- <span class="tv">{{last_cuttime}}s [:=lang.main.block_auto_update || "自动更新":]</span> -->
+            </h1>
+            <div class="con">
+                <table>
+                    <tr class="hd">
+                        <th>[:=lang.main.block_height || "高度":]</th>
+                        <th>[:=lang.main.block_hash || "哈希":]</th>
+                        <th>[:=lang.main.block_trs_num || "交易数":]</th>
+                        <th>[:=lang.main.block_miner_name || "播报方":]</th>
+                        <th>[:=lang.main.block_reward_address || "奖励地址":]</th>
+                        <th class="mbn">[:=lang.main.block_reward_amt || "区块奖励":]</th>
+                        <th>[:=lang.main.block_time || "时间":]</th>
+                    </tr>
+                    <tr class="row" v-for="one in blocks">
+                        <td class="t1 hei">{{one.height}}</td>
+                        <td class="t2 gray dts hx"><a target="_blank" :title="one.hash" :href="'/block/'+one.hash">{{one.hash.substring(0,22)+'...'+one.hash.substring(60)}}</a></td>
+                        <td class="t3">{{one.txs}}</td>
+                        <td class="t5 sienna">{{one.msg=='unknown'?'':one.msg}}</td>
+                        <td class="t7 gray dts"><a target="_blank" :title="one.miner" :href="'/address/'+one.miner">{{one.miner.substr(0,13)+'...'}}</a></td>
+                        <td class="t6">ㄜ{{one.reward}}</td>
+                        <td class="t8 gray">{{formatDate(new Date(one.time*1000), 'MM-dd hh:mm:ss').replace('','')}}</td>
+                    </tr>
+                </table>
+                <div class="pmore">
+                    <a class="button" @click="queryBlks">[:=lang.main.block_show_more || "查看更多":]</a>
+                </div>
             </div>
         </div>
     </div>
