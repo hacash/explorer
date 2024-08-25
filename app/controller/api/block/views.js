@@ -48,7 +48,7 @@ module.exports = async function(cnf, ctx){
         // console.log(lidt)
         res = datautil.list_to_table(lidt.list, ret_table_keys);
         // console.log(res)
-        ctx.cache.set(ccku, res, 100); // cache 100s
+        ctx.cache.set(ccku, res, 45); // cache 45s
         ctx.apiData( res )
 
     }catch(e) {

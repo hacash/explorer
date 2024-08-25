@@ -1,4 +1,11 @@
 
+
+// data callback
+let allNoticeTotalSupply = [];
+
+
+
+
 /********************** top search **********************/
 
  
@@ -132,6 +139,10 @@ function showCoinbasePaceChart(that, cbh, rwd, circ, burn) {
         apiget("/api/total/supply", {
         }, function(data){
             t.d = data
+            // 
+            for(let i in allNoticeTotalSupply){
+                allNoticeTotalSupply[i](data);
+            }
             // show Chart
             showCoinbasePaceChart(
                 t, data.latest_height, 
@@ -441,12 +452,65 @@ apiget("/api/block/recents", {}, function(data){
 
 
 
+/********************** all coin transfer **********************/
+
+
+
+;VueCreateAppCommon('tsfs', {
+    transfers: [],
+    page: 0,
+    limit: 20,
+},{
+    queryLogs() {
+        let t = this;
+        t.page += 1;
+        let params = {
+            page: t.page,
+            limit: t.limit,
+        }
+        if(t.page == 1) {
+            params.page1 = true // use cache
+        }
+        let rlamtwid = function(ty, amt) {
+            if(ty == 1){
+                let a = parseFloat(amt) / 100000000.0
+                return ['ㄜ' + a, a + '%']
+            }else if(ty == 2){
+                let pr = parseFloat(amt)/1000000.0;
+                return [amt + ' SAT', pr + '%']
+            }else if(ty == 3){
+                let pr = parseFloat(amt);
+                return [amt + ' HACD', pr + '%']
+            }
+            return [amt, '']
+        }
+        apiget("/api/actlogs/cointrs", params, function(data){
+            let addrs = data.addrs
+            , list = data.list;
+            for(let i in list ){
+                let li = list[i]
+                li[1] = addrs[li[1]+'']
+                li[2] = addrs[li[2]+'']
+                let amtwd = rlamtwid(li[3], li[4])
+                li[3] = amtwd[0] // amout
+                li[4] = amtwd[1] // percent
+            }
+            t.transfers = t.transfers.concat(list)
+        })
+    }
+}, function() {
+    // auto load first page
+    this.queryLogs()
+})
+
+
+
 /********************** miner pool stats **********************/
 
 
 
 ;VueCreateAppCommon('poolct', {
-    percts: [],
+    percts: null,
 },{
     queryStats() {
         let t = this;
@@ -485,5 +549,87 @@ apiget("/api/block/recents", {}, function(data){
         })
     }
 }, function(){
-    this.queryStats()
+    // this.queryStats()
 });
+
+
+
+
+
+
+
+/********************** ranking top **********************/
+
+
+
+;let vueRankingApp = VueCreateAppCommon('ranking', {
+    tabn: "",
+    dtcaches: {},
+    list: null,
+    actives: null,
+    supply: {},
+},{
+    queryActive() {
+        let t = this;
+        /*
+            secnum:  Uint4
+            newadr:  Uint4 // new address
+            txs:     Uint4
+            trszhu:  Uint4
+            trssat:  Uint4
+            trsdia:  Uint4
+            mvzhu:   Uint8 // HAC: ZHU
+            mvsat:   Uint8 // SAT
+            mvdia:   Uint3 // DIAMOND
+        */
+        apiget("/api/ranking/active", {}, function(data){
+            let list = data.list;
+            let actvs = [];
+            for(let i in list){
+                let one = list[i];
+                actvs.push(one);
+            }
+            t.actives = actvs;
+        });
+    },
+    selectTop(coin) {
+        // alert(coin)
+        let t = this;
+        t.tabn = coin
+        if(t.dtcaches[coin]){
+            return t.list = t.dtcaches[coin]
+        }
+        let splkey = {HAC: 'current_circulation', HACD: 'minted_diamond', BTC: 'transferred_bitcoin'}
+        apiget("/api/ranking/top100", {
+            coin: coin,
+        }, function(data){
+            if(data.list || data.list.length>0){
+                let items = []
+                for(let i in data.list){
+                    let li = data.list[i]
+                    , per = li[1] / (t.supply[splkey[coin]] || 1) * 100;
+                    items.push({
+                        num: parseInt(i)+1,
+                        addr: li[0],
+                        amount: coin=='HACD' ? li[1] : li[1].toFixed(2),
+                        percent: per.toFixed(2),
+                    })
+                }
+                t.list = items;
+                t.dtcaches[coin] = items
+            }else{
+                t.list = [];
+                t.dtcaches[coin] = [] // btc
+            }
+        })
+    },
+}, function(){
+
+    let t = this;
+    allNoticeTotalSupply.push(function(data){
+        t.supply = data;
+        // t.selectTop('HAC')
+        // t.queryActive()
+    })
+});
+

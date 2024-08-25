@@ -257,42 +257,6 @@
 </div>
 
 
-<!----------- pool percent ------------->
-
-
-<div id="poolct" class="mtable mbfix" >
-    <div class="container">
-        <div class="wrap">
-            <h1 class="pt">[:=lang.main.plct_ttl || "最近两周区块播报方排名":]</h1>
-            <div class="con">
-                <div class="con">
-                    <table>
-                        <tr class="hd">
-                            <th>#</th>
-                            <th>[:=lang.main.plct_name || "播报方":]</th>
-                            <th>[:=lang.main.plct_adr || "地址":]</th>
-                            <th>[:=lang.main.plct_blkn || "区块数":]</th>
-                            <th>[:=lang.main.plct_hsrt || "算力占比":]</th>
-                            <th>[:=lang.main.plct_chg || "升降变化":]</th>
-                        </tr>
-                        <tr :class="(d.name=='unknown'?'ukn':'') + ' row'" v-for="(d,i) in percts">
-                            <td class="i">{{i+1}}</td>
-                            <td class="name">{{d.name}}</td>
-                            <td class="adr">{{d.adr}}...</td>
-                            <td class="pbw"><div class="pcbar">
-                                <b v-if="d.width>=0.5" :style="'width:'+(d.width*100)+'%'">{{d.count}} ({{d.n2}},{{d.n1}})</b>
-                                <div v-else><b :style="'width:'+(d.width*100)+'%'"></b><span>{{d.count}} ({{d.n2}},{{d.n1}})</span></div>
-                            </div></td>
-                            <td class="per">{{d.per}}%</td>
-                            <td :class="'per ' + (d.chgp<0?'psub':'padd')">{{d.chgp>=0?'⇧':'⇣'}} {{d.chgp==0?'0.01':d.chgp}}%</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <!----------- all blocks ------------->
 
@@ -328,6 +292,153 @@
                 <div class="pmore">
                     <a class="button" @click="queryBlks">[:=lang.main.block_show_more || "查看更多":]</a>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------- all coin transfers ------------->
+
+
+<div id="tsfs" class="mtable mbfix" >
+    <div class="container">
+        <div class="wrap">
+            <h1 class="pt">[:=lang.main.trs_last || "最近转账":]</h1>
+            <div class="con">
+                <table>
+                    <tr class="hd">
+                        <th>[:=lang.main.trs_block_height || "区块高度":]</th>
+                        <th>[:=lang.main.trs_from || "From地址":]</th>
+                        <th>[:=lang.main.trs_to || "To地址":]</th>
+                        <th>[:=lang.main.trs_amount || "金额":]</th>
+                    </tr>
+                    <tr class="row" v-for="one in transfers">
+                        <td class="t0"><a target="_blank" :href="'/block/'+one[0]">{{one[0]}}</a></td>
+                        <td class="t1"><a target="_blank" :href="'/address/'+one[1]">{{one[1]}}</a></td>
+                        <td class="t2"><a target="_blank" :href="'/address/'+one[2]">{{one[2]}}</a></td>
+                        <td class="t3 amtw"><b :class="{hacd: one[3].indexOf('HACD')>-1, sat: one[3].indexOf('SAT')>-1}">{{one[3]}}</b><div class="per" :style="{width:one[4]}"></div></td>
+                    </tr>
+                </table>
+                <div class="pmore">
+                    <a class="button" @click="queryLogs">[:=lang.main.trs_show_more || "查看更多":]</a>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<!----------- pool percent ------------->
+
+
+<div id="poolct" class="mtable mbfix" >
+    <div class="container">
+        <div class="wrap">
+            <h1 class="pt">[:=lang.main.plct_ttl || "最近两周区块播报方排名":]</h1>
+            <div class="con">
+
+                <div class="pmore" v-if="!percts">
+                    <a class="button" @click="queryStats">[:=lang.main.plct_showbtn:]</a>
+                </div>
+
+                <table v-if="percts">
+                    <tr class="hd">
+                        <th>#</th>
+                        <th>[:=lang.main.plct_name || "播报方":]</th>
+                        <th>[:=lang.main.plct_adr || "地址":]</th>
+                        <th>[:=lang.main.plct_blkn || "区块数":]</th>
+                        <th>[:=lang.main.plct_hsrt || "算力占比":]</th>
+                        <th>[:=lang.main.plct_chg || "升降变化":]</th>
+                    </tr>
+                    <tr :class="(d.name=='unknown'?'ukn':'') + ' row'" v-for="(d,i) in percts">
+                        <td class="i">{{i+1}}</td>
+                        <td class="name">{{d.name}}</td>
+                        <td class="adr">{{d.adr}}...</td>
+                        <td class="pbw"><div class="pcbar">
+                            <b v-if="d.width>=0.5" :style="'width:'+(d.width*100)+'%'">{{d.count}} ({{d.n2}},{{d.n1}})</b>
+                            <div v-else><b :style="'width:'+(d.width*100)+'%'"></b><span>{{d.count}} ({{d.n2}},{{d.n1}})</span></div>
+                        </div></td>
+                        <td class="per">{{d.per}}%</td>
+                        <td :class="'per ' + (d.chgp<0?'psub':'padd')">{{d.chgp>=0?'⇧':'⇣'}} {{d.chgp==0?'0.01':d.chgp}}%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------- ranking top active ------------->
+
+
+
+<a name="holders"></a>
+<div id="ranking" class="mtable">
+    <div class="container">
+        <div class="wrap">
+            <h1 class="pt">[:=lang.main.rk_title || "链上数据统计":]</h1>
+            <div class="con">
+
+                <div class="pmore" v-if="!actives">
+                    <a class="button actvbtn " @click="queryActive">[:=lang.main.rk_chain_active:]</a>
+                </div>
+
+                <div class="dtshow" v-if="actives">
+                    <div class="box t2">
+                        <table>
+                            <tr>
+                                <th>Height</th>
+                                <th>New Addr</th>
+                                <th>Total Txs</th>
+                                <th>HAC Trs Stats</th>
+                                <th>HACD Trs Stats</th>
+                                <th>BTC Trs Stats</th>
+                            </tr>
+                            <tr v-for="a in actives">
+                                <td class="hei">{{a[0]*2000-2000}} ~</td>
+                                <td>{{a[1]}}</td>
+                                <td>{{a[2]}}</td>
+                                <td class="lvbx">
+                                    <div><label>Amount:</label>{{a[4].toFixed(2)}}</div>
+                                    <div><label>Turnover:</label><i>{{a[3]}}</i> <b>{{(a[4]/supply.current_circulation*100).toFixed(2)}}%</b></div>
+                                </td>
+                                <td class="lvbx">
+                                    <div><label>Amount:</label>{{a[8].toFixed(2)}}</div>
+                                    <div><label>Turnover:</label><i>{{a[7]}}</i> <b>{{(a[8]/supply.minted_diamond*100).toFixed(2)}}%</b></div>
+                                </td>
+                                <td class="lvbx">
+                                    <div><label>Amount:</label>{{a[6]}}</div>
+                                    <div><label>Turnover:</label><i>{{a[5]}}</i> <b>{{(a[6]/(supply.transferred_bitcoin||1)*100).toFixed(2)}}%</b></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+                <button class="tab t1" v-bind:class="{active: tabn=='hacash'}" @click="selectTop('HAC')">[:=lang.main.rk_tab_hacash:]</button>
+                <button class="tab t2" v-bind:class="{active: tabn=='diamond'}"  @click="selectTop('HACD')">[:=lang.main.rk_tab_diamond:]</button>
+                <button class="tab t3" v-bind:class="{active: tabn=='bitcoin'}"  @click="selectTop('BTC')">[:=lang.main.rk_tab_bitcoin:]</button>
+
+                <div v-if="list && list.length==0">
+                    <p style="color: #999;">- empty -</p>
+                </div>
+
+                <table class="rktable" v-if="list && list.length > 0">
+                    <tr>
+                        <th>#</th>
+                        <th>Address</th>
+                        <th>Balance</th>
+                        <th>Percent</th>
+                    </tr>
+                    <tr class="row" v-for="li in list">
+                        <td class="n">{{li.num}}</td>
+                        <td class="adr"><a class="addr" target="_blank" :href="'/address/'+li.addr">{{li.addr}}</a></td>
+                        <td class="amt">{{li.amount}} <i class="unit">{{tabn}}</i></td>
+                        <td class="pc">{{li.percent}}%</td>
+                    </tr>
+                </table>
+
             </div>
         </div>
     </div>

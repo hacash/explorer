@@ -5,5 +5,6 @@ module.exports = {
     watch_restart_timeout: 0,
 
     fullnode_api_url: 'http://127.0.0.1:8081',
+    hascan_api_url: 'http://127.0.0.1:8087',
     
 }

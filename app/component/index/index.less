@@ -37,16 +37,16 @@ div.pmore{
     text-align: center;
     .button{
         display: inline-block;
-        background: cadetblue;
-        color: #fff;
-        font-size: 12px;
+        color: cadetblue;
+        font-size: 14px;
         line-height: 14px;
         height: 14px;
-        padding: 6px 18px;
+        padding: 8px 20px;
         border-radius: 4px;
         cursor: pointer;
+        border: 1px solid cadetblue;
         &:hover{
-            box-shadow: 1px 1px 8px #bbb;
+            box-shadow: 1px 1px 8px cadetblue;
         }
         span {
             font-size: 12px;
@@ -887,6 +887,237 @@ div.pmore{
     }
 }
 
+/* all transfers */
+
+#tsfs {
+    .refresh{
+        display: block;
+        float: right;
+        color: dodgerblue;
+        &:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+    .con{
+        table{
+            td{
+                border-bottom: 1px solid #00000011;
+            }
+        }
+    }
+    td {
+        padding: 10px 15px;
+    }
+    td.t1, td.t2 {
+        text-align: left;
+    }
+    tr .t0 a{ 
+        color: steelblue;
+    }
+    tr .t1 a{ color: tan; }
+    tr .t2 a{ color: darkseagreen; }
+    tr .t3 b{
+        display: block;
+        float: right;
+        padding: 0px 3px;
+        border-radius: 4px;
+        // background: #fff; 
+        // border: 1px cadetblue solid;
+        color: cadetblue; 
+        font-weight: bold;
+        &.hacd {
+            color: #55afff;
+        }
+        &.sat {
+            color: #afa95d;
+        }
+    }
+    tr .t4{ color: #999; }
+    td.amtw {
+        position: relative;
+        b {
+            position: relative;
+            z-index: 2;
+        }
+        div.per {
+            z-index: 1;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 0%;
+            max-width: 100% !important;
+            height: 100%;
+            background-color: #00000011;
+        }
+    }
+}
+
+
+/* ranking top 100 */
+
+
+#ranking {
+    .dtshow {
+        overflow-x: auto;
+        .box {
+            margin: 0 40px 40px;
+            text-align: center;
+        }
+        table {
+            display: table !important;
+            width: 100% !important;
+            // max-width: 500px !important;
+            margin: auto;
+            border-collapse:  collapse !important;
+            border: 1px solid #3299bb80 !important; 
+            tr:nth-child(even) {
+                background-color: #a0cdcd22;
+            }
+            td {
+                border: 1px solid #3299bb80 !important;
+                padding: 5px 10px;
+                color: #333;
+                font-size: 14px;
+                text-align: center;
+            }
+            td.l {
+                text-align: left;
+            }
+            td.ct {
+                text-align: center;
+                color: #999;
+            }
+            td.hei {
+                color: #aaa;
+
+            }
+            tr.hd {
+                background-color: #66c2e044;
+                td {
+                    text-align: center;
+                    color: #33788f;
+                    font-weight: bold;
+                    padding: 10px;
+
+                }
+            }
+            td.lvbx {
+                padding: 0;
+                * {
+                    font-size: 14px;
+                }
+                div {
+                    position: relative;
+                    border-top: 1px dashed #3299bb80;
+                    padding: 5px;
+                    margin: 0 5px;
+                    min-width: 120px;
+                    text-align: right;
+                    b {
+                        color: darkgoldenrod;
+                    }
+                    i {
+                        color: #aaa;
+                    }
+                }
+                div:first-child {
+                    border: none;
+                }
+                label {
+                    position: absolute;
+                    display: none;
+                    left: 5px;
+                    top: 9px;
+                    font-size: 10px;
+                    color: #aaa;
+                }
+            }
+            tr:hover {
+                td.lvbx label {
+                    display: block;
+                }
+            }
+        }
+    }
+    .rktable {
+        margin-top: 20px;
+        a.addr {
+            color: darkseagreen;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        td.n {
+            color: #899;
+        }
+        td.pc {
+            color: peru;
+        }
+        td.adr {
+            text-align: left;
+        }
+        td.amt {
+            text-align: right;
+        }
+        i.unit {
+            color: #999;
+        }
+    }
+    button.tab{
+        line-height: 32px;
+        height: 32px;
+        margin: 10px;
+        padding: 0 20px;
+        font-size: 14px;
+        border-radius: 6px;
+        font-weight: normal;
+        cursor: pointer;
+        opacity: 0.8;
+        background-color: #ffffff33;
+        border: 1px #fff solid;
+        &:hover{
+            opacity: 1;
+            text-decoration: underline;
+        }
+        &.active{
+            opacity: 1;
+        }
+        &.t1 {
+            border-color: mediumseagreen;
+            color: mediumseagreen;
+        }
+        &.t2 {
+            border-color: dodgerblue;
+            color: dodgerblue;
+        }
+        &.t3 {
+            border-color: goldenrod;
+            color: goldenrod;
+        }
+        &.t1.active {
+            background-color: mediumseagreen;
+            color: #fff;
+            font-weight: bold;
+        }
+        &.t2.active {
+            background-color: dodgerblue;
+            color: #fff;
+            font-weight: bold;
+        }
+        &.t3.active {
+            background-color: goldenrod;
+            color: #fff;
+            font-weight: bold;
+        }
+    }
+    .actvbtn {
+        display: block;
+        margin: auto;
+        width: 73.6%;
+    }
+}
 
 
 
@@ -1155,6 +1386,50 @@ div.pmore{
                 }
             }
         }
+    }
+
+
+    #tsfs{
+        .wrap{
+            .con{
+                table{
+                    tr.row{
+                        height: 75px;
+                    }
+                    .t1{ top: 10px; left: 10px; }
+                    .t2{ top: 26px; left: 10px; }
+                    .t0{ top: 46px; left: auto; right: 95px; color: lightsteelblue; }
+                    .t3{ top: 46px; left: 10px; position: absolute !important; .per {display: none !important;} }
+                    .t4{ top: 46px; left: auto; right: 15px; }
+                }
+            }
+        }
+    }
+
+
+
+    #ranking {
+        .dtshow {
+            .box {
+                margin: 0 5px 20px;
+            }
+            table {
+                td {
+                    padding: 5px !important;
+                    width: auto !important;
+                }
+
+            }
+        }
+        .rktable {
+            a.addr {
+                line-height: 12px;
+                width: 130px;
+                word-break: break-all;
+                display: block;
+            }
+        }
+
     }
     
 

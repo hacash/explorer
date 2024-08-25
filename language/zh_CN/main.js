@@ -74,6 +74,7 @@ module.exports = {
     rk_tab_hacash: "查看 HAC 持仓前 100 名",
     rk_tab_diamond: "查看 HACD 持仓前 100 名",
     rk_tab_bitcoin: "查看 BTC 持仓前 100 名",
+    rk_chain_active: "查看近 25 周链上活跃数据",
 
     ldv_title: "最近挖出钻石的外观",
     ldv_check: "查看",
@@ -81,6 +82,7 @@ module.exports = {
     ldv_more: "查看更多钻石图像",
 
     plct_ttl:  "近两周区块播报方排名",
+    plct_showbtn: "点击查看",
     plct_name: "播报方",
     plct_adr:  "地址",
     plct_blkn: "挖出区块数",

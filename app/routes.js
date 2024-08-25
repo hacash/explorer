@@ -12,6 +12,10 @@ module.exports = {
     '/api/block/views': 'api/block/views',
     '/api/block/pools': 'api/block/pools',
     // 'POST:/api/data/save': 'api/data/save',
+    '/api/ranking/active': 'api/ranking/active',
+    '/api/ranking/top100': 'api/ranking/top100',
+    //
+    '/api/actlogs/cointrs': 'api/actlogs/cointrs',
 
 }
     

@@ -74,6 +74,7 @@ module.exports = {
     rk_tab_hacash: "Show Top 100 HAC Addresses",
     rk_tab_diamond: "Show Top 100 HACD Addresses",
     rk_tab_bitcoin: "Show Top 100 BTC Addresses",
+    rk_chain_active: "Show Last 25 Weeks Chain Statistics",
 
     ldv_title: "Recent HACD Appearance",
     ldv_check: "Check",
@@ -82,6 +83,7 @@ module.exports = {
 
 
     plct_ttl:  "Ranking of Miner Hashrate in the Last Two Weeks",
+    plct_showbtn: "Show Data",
     plct_name: "Miner",
     plct_adr:  "Address",
     plct_blkn: "Block Count",
