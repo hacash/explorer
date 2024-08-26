@@ -2,6 +2,7 @@ module.exports = {
 
     // page view
     '/': 'VIEW:index',
+    '/address/:addr': 'VIEW:address',
 
     // api
     '/api/total/supply': 'api/total/supply',

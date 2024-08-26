@@ -1,0 +1,205 @@
+
+#address{
+    .fmtnote {
+        height: 16px;
+        width: 16px;
+        display: inline-block;
+        text-align: center;
+        border-radius: 100px;
+        background: #999;
+        color: #fff;
+        font-size: 14px;
+        line-height: 16px;
+        margin-left: 10px;
+        &:hover {
+            background: chocolate;
+        }
+    }
+    .cfmtip {
+        margin-top: 20px;
+        background-color: #eedba2;
+        padding: 10px 12px;
+        border-radius: 4px;
+        color: chocolate;
+    }
+    .info{
+        .li{
+            // width: 100px;
+            font-size: 12px;
+            color: #999;
+            line-height: 30px;
+            b{
+                // float: right;
+                color: #000;
+                font-size: 13px;
+                padding-left: 10px;
+            }
+        }
+    }
+    .btn{
+        background-color: steelblue;
+        padding: 0 12px;
+        height: 36px;
+        line-height: 36px;
+        color: #fff;
+        font-size: 14px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .alldmdns {
+        font-family: 'Courier New', Courier, monospace;
+        i {
+            display: inline-block;
+            font-family: inherit;
+            font-size: 14px;
+        }
+    }
+    .ckdms {
+        margin: 0 0 20px 0;
+        label {
+            display: block;
+            font-size: 13px;
+            color: #777;
+            margin: 0 0 2px 5px;
+        }
+        input, button {
+            line-height: 32px;
+            padding: 0 10px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 14px;
+            width: 50%;
+        }
+        button {
+            width: auto;
+            margin-left: 10px;
+        }
+    }
+    .transfers, .channel{
+        .hdtt i{
+            font-size: 12px;
+            color: #aaa;
+        }
+        .ttp{
+            padding-bottom: 18px;
+            label{
+                padding: 10px;
+                cursor: pointer;
+                margin-right: 10px;
+                border-radius: 4px;
+                background: #ffffff44;
+                &:hover{
+                    background: #fff;
+                }
+            }
+        }
+        .datas{
+            div.row{
+                padding: 10px 0;
+            }
+            label{
+                color: #aaa;
+                display: inline-block;
+                width: 40px;
+                text-align: right;
+            }
+            p{
+                display: inline-block;
+            }
+            b{
+                color: #333;
+                display: inline-block;
+                margin-right: 12px;
+                margin-left: 5px;
+                u{
+                    // background: lightcyan;
+                    color: darkolivegreen;
+                    // font-weight: bold;
+                    border-radius: 4px;
+                    padding: 0 2px;
+                    border: 1px #aaa dashed;
+                }
+            }
+            .type {
+                color: cadetblue;
+            }
+            .block {
+                color: dodgerblue;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+            .addr {
+                color: dodgerblue;
+            }
+            .id {
+                color: mediumseagreen;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+            .hacd {
+                color: #55afff;
+            }
+            .sat {
+                color: #afa95d;
+            }
+        }
+        .more{
+            text-align: center;
+            padding: 10px 0;
+            button{
+                display: inline-block;
+                background: cadetblue;
+                color: #fff;
+                font-size: 12px;
+                line-height: 26px;
+                height: 26px;
+                padding: 0 20px;
+                border-radius: 4px;
+                cursor: pointer;
+                &:hover{
+                    box-shadow: 1px 1px 8px #bbb;
+                }
+            }
+        }
+        .ok{
+            text-align: center;
+            font-size: 12px;
+            color: #bbb;
+
+        }
+    }
+    .channel{
+        .datas{
+            p label{
+                width: auto;
+            }
+        }
+
+    }
+}
+
+
+
+
+@media screen and (max-width: 512px) {
+
+#address{
+    .transfers{
+        .datas{
+            p{
+                display: block;
+            }
+        }
+    }
+    .channel{
+        .datas{
+            p{
+                display: block;
+            }
+        }
+    }
+}
+
+}

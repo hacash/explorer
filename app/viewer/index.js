@@ -15,7 +15,7 @@ exports.datas = async function(cnf, ctx)
 {
     return {
         dvhip: ctx.cookies.get("dvhip")||undefined,
-        title: "Hacash Blockchain Explorer"
+        title: null,
     }
 }
 
