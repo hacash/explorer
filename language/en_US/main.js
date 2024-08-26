@@ -83,7 +83,7 @@ module.exports = {
 
 
     plct_ttl:  "Ranking of Miner Hashrate in the Last Two Weeks",
-    plct_showbtn: "Show Data",
+    plct_showbtn: "Show Ranking of Hashrate",
     plct_name: "Miner",
     plct_adr:  "Address",
     plct_blkn: "Block Count",

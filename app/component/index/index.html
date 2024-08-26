@@ -328,6 +328,50 @@
     </div>    
 </div>
 
+
+
+
+<!----------- atcion operate ------------->
+
+
+
+<div id="actopts" class="mtable mbfix" >
+    <div class="container">
+        <div class="wrap">
+            <h1 class="pt">[:=lang.main.oal_last || "最近金融操作":]</h1>
+            <div class="con">
+                <table v-if="logs && logs.length > 0">
+                    <tr class="hd">
+                        <th>[:=lang.main.oal_block_height || "区块":]</th>
+                        <th>[:=lang.main.oal_ty || "操作类型":]</th>
+                        <th>[:=lang.main.oal_data_id || "数据id":]</th>
+                        <th class="thwd">[:=lang.main.oal_addr || "地址":]</th>
+                        <th class="thwd">[:=lang.main.oal_notes || "详情数据":]</th>
+                    </tr>
+                    <tr class="row" v-for="one in logs">
+                        <td class="t0"><a target="_blank" :href="'/block/'+one[0]">{{one[0]}}</a></td>
+                        <td class="t1"><b :class="{open: one[3].indexOf('open')!=-1,close: one[3].indexOf('close')!=-1}">{{one[3]}}</b></td>
+                        <td class="t2"><a target="_blank" :href="one[6]">{{one[4]}}</a></td>
+                        <td class="t3">
+                            <a class="a1" v-if="one[1].length>30" target="_blank" :href="'/address/'+one[1]">{{one[1]}}</a><br/>
+                            <a class="a2" v-if="one[2].length>30" target="_blank" :href="'/address/'+one[2]">{{one[2]}}</a></td>
+                        <td class="t5">{{one[5]}}</td>
+                    </tr>
+                </table>
+
+                <div class="pmore" v-show="showMoreBtn">
+                    <a class="button" @click="queryLogs">
+                        <span v-show="firstMore">[:=lang.main.oal_show || "查看":]</span>
+                        <span v-show="!firstMore">[:=lang.main.oal_show_more || "查看更多":]</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+
+
 <!----------- pool percent ------------->
 
 

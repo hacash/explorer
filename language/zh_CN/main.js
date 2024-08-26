@@ -82,7 +82,7 @@ module.exports = {
     ldv_more: "查看更多钻石图像",
 
     plct_ttl:  "近两周区块播报方排名",
-    plct_showbtn: "点击查看",
+    plct_showbtn: "点击查看算力占比统计",
     plct_name: "播报方",
     plct_adr:  "地址",
     plct_blkn: "挖出区块数",

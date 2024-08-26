@@ -954,6 +954,65 @@ div.pmore{
 }
 
 
+/* all actions logs */
+
+
+#actopts {
+    .con{
+        table{
+            td{
+            }
+        }
+    }
+    tr {
+        .t0 a {
+            color: steelblue;
+        }
+        .t1 b{ 
+            display: inline-block;
+            color: darkslategrey;
+            width: 55px;
+            font-size: 12px;
+            line-height: 12px;
+            word-break: break-word;
+            &.open {
+                color: mediumseagreen;
+            }
+            &.close {
+                color: darkgoldenrod;
+            }
+        }
+        .t2 a{
+            color: darkseagreen;
+            font-size: 12px;
+            line-height: 12px;
+            width: 120px;
+            display: inline-block;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        .t3 a{
+            display: inline-block;
+            word-break: break-word;
+            font-size: 12px;
+            color: slategray;
+            width: 260px;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        .t5 {
+            max-width: 200px;
+        }
+        .t6 {
+            color: #999;
+        }
+    }
+
+}
+
+
 /* ranking top 100 */
 
 
@@ -1395,12 +1454,54 @@ div.pmore{
                 table{
                     tr.row{
                         height: 75px;
+                        min-width: 300px;
                     }
                     .t1{ top: 10px; left: 10px; }
                     .t2{ top: 26px; left: 10px; }
-                    .t0{ top: 46px; left: auto; right: 95px; color: lightsteelblue; }
+                    .t0{ top: 46px; left: auto; right: 10px; color: lightsteelblue; }
                     .t3{ top: 46px; left: 10px; position: absolute !important; .per {display: none !important;} }
                     .t4{ top: 46px; left: auto; right: 15px; }
+                }
+            }
+        }
+    }
+
+    #actopts{
+        .wrap{
+            .con{
+                table{
+                    tr.row{
+                        min-height: 115px;
+                        height: auto;
+                        a, b {
+                            font-size: 12px;
+                            line-height: 12px;
+                        }
+                    }
+                    th.thwd {
+                        min-width: 75px;
+                    }
+                    td {
+                        display: block !important;
+                        text-align: left !important;
+                    }
+                    .t0{ top: 10px; left: 10px; }
+                    .t2{ top: 10px; left: 70px; }
+                    .t6{ top: 80px; right: 10px; left: auto; }
+                    .t1{ top: 10px; right: 10px; left: auto; }
+                    .t4{ top: 26px; left: 10px; }
+                    
+                    .t3, .t5 {
+                        width: auto !important;
+                        margin-right: 80px !important;
+                        position: static !important;
+                        padding: 10px;
+                    }
+                    .t3 {
+                        margin-top: 40px;
+                        padding-bottom: 0;
+                    }
+    
                 }
             }
         }

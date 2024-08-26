@@ -505,6 +505,48 @@ apiget("/api/block/recents", {}, function(data){
 
 
 
+;VueCreateAppCommon('actopts', {
+    logs: [],
+    showMoreBtn: true,
+    firstMore: true,
+    page: 0,
+    limit: 20,
+}, {
+    geTarIdJumpUrl(ty, id) {
+        if( ty == 1 || ty == 2 ){
+            return `/channel/${id}`
+        }
+        return '#'
+    },
+    queryLogs(){
+        var t = this
+        t.page++
+        t.firstMore = false
+        const optns = {'1': 'channel open', '2': 'channel close'}
+        apiget("/api/actlogs/fiopts", {
+            page: t.page,
+            limit: t.limit,
+        }, function(data){
+            let addrs = data.addrs
+            , list = data.list;
+            for(let i in list ){
+                let li = list[i]
+                li[1] = addrs[li[1]+''] || ''
+                li[2] = addrs[li[2]+''] || ''
+                li.push(t.geTarIdJumpUrl(li[3], li[4])) // 6
+                li[3] = optns[li[3]] || '~'
+            }
+            t.logs = t.logs.concat(list)
+        })
+    },
+}, function(){
+    // this.queryLogs()
+})
+
+
+
+
+
 /********************** miner pool stats **********************/
 
 

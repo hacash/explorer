@@ -16,6 +16,7 @@ module.exports = {
     '/api/ranking/top100': 'api/ranking/top100',
     //
     '/api/actlogs/cointrs': 'api/actlogs/cointrs',
+    '/api/actlogs/fiopts': 'api/actlogs/fiopts',
 
 }
     
