@@ -1,0 +1,178 @@
+
+
+<div id="trs" class="ppage" >
+    <div class="container">
+        <p class="crumb">
+            <a href="/">[:=lang.common.index_page || "首页":]</a>
+            <i>/</i>
+            <span>[:=lang.transaction.transaction || "交易":] - [:=hx:]</span>
+        </p>
+        [:if(this.trsinfo){:]
+        <div class="pcard block">
+            <h3 class="hdtt">[:=lang.transaction.belong_block || "所属区块":]</h3>
+            <div class="content">
+                <p class="row r1"><label>[:=lang.transaction.block_height || "区块高度":]:</label><b><a class="height" href="/block/[:=trsinfo.block.height:]" target="_blank">[:=trsinfo.block.height:]</a></p>
+                <p class="row"><label>[:=lang.transaction.timestamp || "时间戳":]:</label><b>
+                    [:=trsinfo.block.timestamp:]
+                    <i class="time">（{{formatDate(new Date([:=trsinfo.block.timestamp:]*1000), 'yyyy-MM-dd hh:mm:ss')}}）</i>
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="pcard info">
+            <h3 class="hdtt">[:=lang.transaction.trs_intro || "交易概要":]</h3>
+            <div class="content">
+                <p class="row r1"><label>[:=lang.transaction.trs_type || "类型":]: </label><b>[:=trsinfo.type:]</b></p>
+                <p class="row"><label>[:=lang.transaction.trs_hash || "哈希":]: </label><b class="hx">[:=hx:]</b></p>
+                <p class="row"><label>[:=lang.transaction.trs_main_address || "主地址":]: </label><a target="_blank" href="/address/[:=trsinfo.main_address:]">[:=trsinfo.main_address:]</a></p>
+                <p class="row"><label>[:=lang.transaction.trs_fee || "手续费":]: </label><b>ㄜ[:=toThousands(trsinfo.fee):]</b></p>
+                <p class="row"><label>[:=lang.transaction.trs_fee_miner_got || "手续费（矿工获得）":]: </label><b>ㄜ[:=toThousands(trsinfo.fee_got):]</b></p>
+                <p class="row"><label>[:=lang.transaction.timestamp || "时间戳":]: </label><b>
+                    [:=trsinfo.timestamp:]
+                    <i class="time">（{{formatDate(new Date([:=trsinfo.timestamp:]*1000), 'yyyy-MM-dd hh:mm:ss')}}）</i>
+                    </b>
+                </p>
+                <p class="row"><label>Action Count：</label><b>[:=trsinfo.action:]</b></p>
+            </div>
+        </div>
+        <div class="pcard actions">
+            <h3 class="hdtt">❖ Actions</h3>
+            <div class="content">
+            [: for(var i in trsinfo.actions){ var one=trsinfo.actions[i]; var k=one.kind; :]
+            [: if(k==1 || k==13 || k==14){ :]
+                <p class="row r[:=(++i):]">
+                    <span class="kind">[[:=lang.transaction.act_hac_trs || "HAC转账":]]</span>
+                    <label>[:=lang.transaction.act_payment_address || "支付地址":]: </label>
+                    [: if(one.from && one.from!=trsinfo.main_address){ :]
+                    <a target="_blank" href="/address/[:=one.from:]">[:=one.from:]</a> 
+                    [: }else{ :]
+                    <span>MainAddress</span> 
+                    [: } :]
+                    <label>[:=lang.transaction.act_received_address || "收款地址":]: </label>
+                    [: if(one.to && one.to!=trsinfo.main_address){ :]
+                    <a target="_blank" href="/address/[:=one.to:]">[:=one.to:]</a> 
+                    [: }else{ :]
+                    <span>MainAddress</span> 
+                    [: } :]
+                    <label>[:=lang.transaction.act_amount || "金额":]: </label>
+                    <b>ㄜ[:=toThousands(one.hacash):]</b> 
+                </p>
+
+            [: }else if(k==9 || k==10 || k==11){ :]
+                <p class="row r[:=(++i):]">
+                    <span class="kind">[[:=lang.transaction.act_sat_trs || "Satoshi转账":]]</span>
+                    <label>[:=lang.transaction.act_payment_address || "支付地址":]: </label>
+                    [: if(one.from && one.from!=trsinfo.main_address){ :]
+                    <a target="_blank" href="/address/[:=one.from:]">[:=one.from:]</a> 
+                    [: }else{ :]
+                    <span>MainAddress</span> 
+                    [: } :]
+                    <label>[:=lang.transaction.act_received_address || "收款地址":]: </label>
+                    [: if(one.to && one.to!=trsinfo.main_address){ :]
+                    <a target="_blank" href="/address/[:=one.to:]">[:=one.to:]</a> 
+                    [: }else{ :]
+                    <span>MainAddress</span> 
+                    [: } :]
+                    <label>[:=lang.transaction.act_amount || "金额":]: </label>
+                    <b>[:=toThousands(one.satoshi):] SAT</b> 
+                </p>
+
+            [: }else if(k==5 || k==6 || k==7 || k==8){ :]
+                <p class="row r[:=(++i):]">
+                    <span class="kind">[[:=lang.transaction.act_transfer_diamond || "转移钻石":]]</span>
+                    <label>[:=lang.transaction.act_count || "数量":]: </label>[:=one.diamond:]
+                    <label>[:=lang.transaction.act_diamond_value || "字面值":]: </label><a target="_blank" href="/diamond/[:=one.diamonds:]">[:=one.diamonds:]</a> 
+                    <label>[:=lang.transaction.act_diamond_from_address || "From 地址":]: </label>
+                    [: if(one.from && one.from!=trsinfo.main_address){ :]
+                    <a target="_blank" href="/address/[:=one.from:]">[:=one.from:]</a> 
+                    [: }else{ :]
+                    <span>MainAddress</span> 
+                    [: } :]
+                    <label>[:=lang.transaction.act_diamond_to_address || "To 地址":]: </label>
+                    [: if(one.to && one.from!=trsinfo.main_address){ :]
+                    <a target="_blank" href="/address/[:=one.to:]">[:=one.to:]</a> 
+                    [: }else{ :]
+                    <span>MainAddress</span> 
+                    [: } :]
+                </p>
+            [: }else if(k==9){ :]
+                <p class="row r[:=(++i):]">
+                    <span class="kind">[[:=lang.transaction.act_lockbls_create || "线性锁仓合约创建":]]</span>
+                    <label>[:=lang.transaction.act_lockbls_id || "锁仓合约地址":]: </label><a target="_blank" href="/lockbls/[:=one.lockbls_id:]">[:=one.lockbls_id:]</a>
+                    <label>[:=lang.transaction.act_lockbls_create_amount || "锁入金额":]: </label><b>[:=one.amount:]</b>  
+                </p>
+
+            [: }else if(k==10){ :]
+                <p class="row r[:=(++i):]">
+                    <span class="kind">[[:=lang.transaction.act_lockbls_release || "锁仓释放":]]</span>
+                    <label>[:=lang.transaction.act_lockbls_id || "锁仓合约地址":]: </label><a target="_blank" href="/lockbls/[:=one.lockbls_id:]">[:=one.lockbls_id:]</a>
+                    <label>[:=lang.transaction.act_lockbls_release_amount || "释放金额":]: </label><b>[:=one.amount:]</b>  
+                </p>
+
+            [: }else if(k==2){ :]
+                <p class="row r[:=(++i):]">
+                    <span class="kind">[[:=lang.transaction.act_open_channel || "开启结算通道":]]</span>
+                    <label>[:=lang.transaction.act_channel_id || "通道id":]: </label><a target="_blank" href="/channel/[:=one.channel_id:]">[:=one.channel_id:]</a>
+                    <label>[:=lang.transaction.act_addr || "地址":] 1: </label><a target="_blank" href="/address/[:=one.left_addr:]">[:=one.left_addr:]</a> 
+                    <label>[:=lang.transaction.act_amt || "金额":] 1: </label><b>[:=one.left_amt:]</b> 
+                    <label>[:=lang.transaction.act_addr || "地址":] 2: </label><a target="_blank" href="/address/[:=one.right_addr:]">[:=one.right_addr:]</a> 
+                    <label>[:=lang.transaction.act_amt || "金额":] 2: </label><b>[:=one.right_amt:]</b> 
+                </p>
+            [: }else if(k==3 || k==12 || k==21){ :]
+                <p class="row r[:=(++i):]">
+                    <span class="kind">[[:=lang.transaction.act_close_channel || "关闭结算通道":]]</span>
+                    <label>[:=lang.transaction.act_channel_id || "通道id":]:</label><a target="_blank" href="/channel/[:=one.channel_id:]">[:=one.channel_id:]</a>
+                </p>
+            [: }else if(k==4){ :]
+                <p class="row r[:=(++i):]">
+                    <span class="kind">[[:=lang.transaction.act_mining_diamond || "挖出钻石":]]</span>
+                    <label>[:=lang.transaction.act_diamond_value || "字面值":]: </label><a target="_blank" href="/diamond/[:=one.name:]">[:=one.name:]</a> 
+                    <label>[:=lang.transaction.act_diamond_reward_address || "奖励地址":]: </label><a target="_blank" href="/address/[:=one.miner:]">[:=one.miner:]</a> 
+                </p>
+            [: }else if(k==35){ :]
+                <p class="row r[:=(++i):]">
+                    <span class="kind">[[:=lang.transaction.act_btcmove || "比特币转移":]]</span>
+                    <label>[:=lang.transaction.act_btcmove_trsno || "交易序号":]: </label><b>[:=one.trs_no:]</b>
+                    <label>[:=lang.transaction.act_btcmove_btcnum || "比特币数量":]: </label><b>[:=one.btc_num:]</b>
+                    <label>[:=lang.transaction.act_btcmove_hacsubsidy || "HAC 增发数量":]: </label><b>[:=one.hac_subsidy:]</b>
+                    <label>[:=lang.transaction.act_btcmove_lockbls || "锁仓合约地址":]: </label><a target="_blank" href="/lockbls/[:=one.lockbls_id:]">[:=one.lockbls_id:]</a> 
+                    <label>[:=lang.transaction.act_btcmove_address || "所属地址":]: </label><a target="_blank" href="/address/[:=one.address:]">[:=one.address:]</a> 
+                </p>
+            [: }else if(k==22 || k==23 || k==24 || k==27){ :]
+                <p class="row r[:=(++i):]">
+                    <span class="kind">[[:=lang.transaction.act_chanassert || "提交通道仲裁":]] kn: [:=k:]</span>
+                    <label>[:=lang.transaction.act_channel_id || "通道id":]: </label><a target="_blank" href="/channel/[:=one.channel_id:]">[:=one.channel_id:]</a>
+                    <label>[:=lang.transaction.act_chanassert_addr || "主张地址":]: </label><a target="_blank" href="/address/[:=one.assert_address:]">[:=one.assert_address:]</a> 
+                    <label>[:=lang.transaction.act_chanassert_billno || "对账序号":]: </label><b>[:=one.bill_number:]</b>
+                </p>
+                [: }else if(k==20){ :]
+                    <p class="row r[:=(++i):]">
+                        <label>Submit Height Limit: </label>([:=one.start_height:], [:=one.end_height:])
+                    </p>
+                [: }else if(k==30){ :]
+                    <p class="row r[:=(++i):]">
+                        <label>Test/Fork chain ID: </label>[:=one.chain_id:]
+                    </p>
+            [: }else if(k==32 || k==33){ :]
+                <p class="row r[:=(++i):]">
+                    <span class="kind">[[:=lang.transaction.inscription_opt || "HACD 铭文操作":]] kn: [:=k:]</span>
+                    [: if(k == 32) { :]
+                    <label>[:=lang.transaction.inscription_opt_write || "铭刻":]: </label><b>[:=one.inscription:]</b>
+                    [: }else{ :]
+                    <label>[:=lang.transaction.inscription_opt_clean || "清除":]</label>
+                    [: } :]
+                    <label>HACD: </label>[:=one.names:]
+                </p>
+            [: }else{ :]
+                <p class="row r[:=(++i):] other">[kind=[:=k:]] [:=lang.transaction.act_other || "其它种类":] action</p>
+            [: } :]
+            [: } :]
+            </div>
+        </div>
+        [:}else{:]
+        <div class="notfind">
+            <p>[:=lang.transaction.notfind || "对不起，找不到要查询的交易":]</p>
+        </div>
+        [:}:]
+    </div>
+</div>

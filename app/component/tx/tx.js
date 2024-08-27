@@ -1,0 +1,8 @@
+
+
+;VueCreateAppCommon('trs', {
+    
+},{
+    toThousands,
+    formatDate,
+});

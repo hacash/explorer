@@ -1,0 +1,108 @@
+
+<script src="/jslib/diamondgene.min.js?v=1"></script>
+<script src="/jslib/diamondsvgimg.min.js?v=1"></script>
+<script src="/jslib/sha3.min.js?v=1"></script>
+<script src="/jslib/diamondbrilliance.min.js?v=1"></script>
+<script src="/jslib/diamondlifegame.min.js?v=1"></script>
+
+
+<div class="pagewrap">
+
+
+<div class="dvhipck">
+    <div class="btns" title="Toggle HACD visualization standard">
+        <a dvhip="5" class="hipit h5 f [:=(!this.dvhip || this.dvhip==5)?'active':'':]">HIP-5</a>
+        <a dvhip="8" class="hipit h8   [:=this.dvhip==8?'active':'':]">HIP-8</a>
+        <a dvhip="9" class="hipit h9 e [:=this.dvhip==9?'active':'':]">HIP-9</a>
+    </div>
+    [:if(this.dvhip==8){:]
+    <div class="browsertip">
+        <p>[:=lang.common.hip8drawtip:]</p>
+    </div>    
+    [:}:]
+</div>
+
+
+
+[: if(this.dianames){ :]
+
+    <div style="word-break: break-all;line-height: 20px;display: block;float: none;padding: 20px;color: #666;">View [:=diamonds.length:] diamonds: [:=dianames:]</div>
+
+    <div class="list" >[:for(var i in diamonds){ var one=diamonds[i]; :]<a 
+        class="diaitem" href="/diamond/[:=one.name:]" target="_blank">
+            <div class="svg" lgene="[:=one.life_gene:]" dianm="[:=one.name:]"></div>
+            [:if(this.show_info){:]<div class="info"><b>[:=one.name:]</b><span>#[:=one.number:]</span>[:if(this.show_fee){:]<br/><span>fee: [:=one.bid_fee:]</span>[:}:]</div>[:}:]
+    </a>[:}:]</div>
+
+[: }else{ :]
+
+    <div class="topnav">
+        <div class="jump">
+            <span>[:=lang.diaviews.p_limit:] [:=p.limit:], [:=lang.diaviews.p_maxpage:] [:=p.maxpage:], [:=lang.diaviews.p_curpage:] [:=p.page:]</span>
+        </div>
+
+        <div class="move">
+            [: if(p.page>1){ :]
+            <a href="/diamond-views/1">⇤</a>
+            <a href="/diamond-views/[:=p.page-1:]">‹ [:=lang.diaviews.btn_prev:]</a>
+            [: } :]
+            [: if(p.page < p.maxpage){ :]
+            <a href="/diamond-views/[:=parseInt(p.page)+1:]">[:=lang.diaviews.btn_next:] ›</a>
+            <a href="/diamond-views/[:=p.maxpage:]">⇥</a>
+            [: } :]
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="list" >[:for(var i in diamonds){ var one=diamonds[i]; :]<a 
+        class="diaitem" href="/diamond/[:=one.name:]" target="_blank">
+            <div class="svg" lgene="[:=one.life_gene:]" dianm="[:=one.name:]"></div>
+            [:if(this.show_info){:]<div class="info"><b>[:=one.name:]</b><span>#[:=one.number:]</span>[:if(this.show_fee){:]<br/><span>fee: ㄜ[:=toThousands(one.bid_fee):]</span>[:}:]</div>[:}:]
+    </a>[:}:]</div>
+
+
+    <div class="topnav">
+
+        <div class="move">
+            [: if(p.page>1){ :]
+            <a href="/diamond-views/1">⇤</a>
+            <a href="/diamond-views/[:=p.page-1:]">‹ [:=lang.diaviews.btn_prev:]</a>
+            [: } :]
+            [: if(p.page < p.maxpage){ :]
+            <a href="/diamond-views/[:=parseInt(p.page)+1:]">[:=lang.diaviews.btn_next:] ›</a>
+            <a href="/diamond-views/[:=p.maxpage:]">⇥</a>
+            [: } :]
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+
+
+[: } :]
+
+</div>
+
+[:if(this.dvhip==5){:]
+
+<div id="colors">
+    <div class="item i0">W</div>
+    <div class="item i1">T</div>
+    <div class="item i2">Y</div>
+    <div class="item i3">U</div>
+    <div class="item i4">I</div>
+    <div class="item i5">A</div>
+    <div class="item i6">H</div>
+    <div class="item i7">X</div>
+    <div class="item i8">V</div>
+    <div class="item i9">M</div>
+    <div class="item i10">E</div>
+    <div class="item i11">K</div>
+    <div class="item i12">B</div>
+    <div class="item i13">S</div>
+    <div class="item i14">Z</div>
+    <div class="item i15">N</div>
+</div>
+
+
+[: } :]

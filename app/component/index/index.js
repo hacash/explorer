@@ -289,7 +289,7 @@ function drawHashrateCharts(idname, data, theme){
     checkDias() {
         var ds = this.scdiastr;
         if(ds){
-            window.open("/diamond/views?name=" + ds)
+            window.open("/diamond-views?name=" + ds)
         }
     },
     latest6() {
@@ -309,7 +309,7 @@ function drawHashrateCharts(idname, data, theme){
             , visual_gene = DiamondLifeGeneConvertVisualGene(one.life_gene, one.name)
             ;
             li.setAttribute("href", '/diamond/' + one.name)
-            more.setAttribute("href", '/diamond/views')
+            more.setAttribute("href", '/diamond-views')
             // dvhip = 5
             var diapic = CreateDiamondImageTagSVG(visual_gene, 140)
             // dvhip = 8

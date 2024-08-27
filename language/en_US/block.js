@@ -6,8 +6,8 @@ module.exports = {
     height: "Height",
     hash: "Hash",
     mrklroot: "Mrkl Root",
-    prevhash: "Prev Block Hash",
-    difficulty: "Difficulty Target",
+    prevhash: "Prev Hash",
+    difficulty: "Difficulty",
     nonce: "Nonce",
     time: "Time",
     reward: "Reward Amount",
@@ -18,7 +18,7 @@ module.exports = {
     txlist: "Tx List",
 
 
-    notfind: "Sorry，Not find.",
+    notfind: "Sorry, Not find.",
 
 
 }

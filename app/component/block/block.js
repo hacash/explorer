@@ -1,0 +1,7 @@
+
+
+;VueCreateAppCommon('block', {
+    
+},{
+    formatDate,
+});

@@ -1,0 +1,46 @@
+
+<div id="channel" class="ppage" >
+    <div class="container">
+        <p class="crumb"><a href="/">[:=lang.common.index_page || "首页":]</a><i>/</i><span>[:=lang.channel.channel || "结算通道":] - [:=chid:]</span></p>
+        [:if(this.channel){:]
+        <div class="pcard info">
+            <h3 class="hdtt">↹ [:=lang.channel.channel_info || "通道详情":]</h3>
+            <div class="content">
+                <p class="row"><label>ID: </label><b>[:=chid:]</b></p>
+                [: var csary = {
+                    "0": lang.channel.stat_openning, 
+                    "1": lang.channel.stat_challenge, 
+                    "2": lang.channel.stat_closed, 
+                    "3": lang.channel.stat_finalclosed, 
+                };  :]
+                <p class="row"><label>[:=lang.channel.stat || "状态":]: </label><b class='stat s[:=channel.status:]'>[:=csary[channel.status] :]</b></p>
+                <p class="row"><label>[:=lang.channel.left_addr || "左地址":]: </label><a target="_blank" href="/address/[:=channel.left.address:]">[:=channel.left_address:]</a></p>
+                <p class="row"><label>[:=lang.channel.left_amt || "左金额HAC":]: </label><b class="amt">[:=channel.left.hacash:]</b></p>
+                <p class="row"><label>[:=lang.channel.left_sat || "左比特币SAT":]: </label><b class="amt">[:=channel.left.satoshi:]</b></p>
+                <p class="row"><label>[:=lang.channel.right_addr || "右地址":]: </label><a target="_blank" href="/address/[:=channel.right.address:]">[:=channel.right_address:]</a></p>
+                <p class="row"><label>[:=lang.channel.right_amt || "右金额HAC":]: </label><b class="amt">[:=channel.right.hacash:]</b></p>
+                <p class="row"><label>[:=lang.channel.right_sat || "右比特币SAT":]: </label><b class="amt">[:=channel.right.satoshi:]</b></p>
+                <p class="row"><label>[:=lang.channel.reuse_version || "重用版本号":]: </label><b>[:=channel.reuse_version:]</b></p>
+                <p class="row"><label>[:=lang.channel.open_hei || "开启高度":]: </label><a class="hei" target="_blank" href="/block/[:=channel.belong_height:]">[:=channel.belong_height:]</a></p>
+                <p class="row"><label>[:=lang.channel.lock_block || "仲裁锁定区块数":]: </label><b>[:=channel.lock_block:]</b></p>
+                <p class="row"><label>[:=lang.channel.interest_attribution || "利息归属":]: </label><b>[:=channel.interest_attribution:]</b></p>
+                [: if(channel.status == 1) { :]
+                    <p class="row aps"><label>[:=lang.channel.challenge_height || "仲裁发起区块高度":]: </label><b>[:=channel.challenge_height:]</b></p>
+                    <p class="row aps"><label>[:=lang.channel.assert_address || "仲裁主张地址":]: </label><a target="_blank" href="/address/[:=channel.assert_address:]">[:=channel.assert_address:]</a></p>
+                    <p class="row aps"><label>[:=lang.channel.assert_bill_number || "主张对账流水号":]: </label><b>[:=channel.assert_bill_number:]</b></p>
+                    <p class="row aps"><label>[:=lang.channel.assert_amount || "主张金额":]: </label><b class="amt">[:=channel.assert_hacash:]</b></p>
+                    <p class="row aps"><label>[:=lang.channel.assert_satoshi || "主张SAT":]: </label><b class="amt">[:=channel.assert_satoshi:]</b></p>
+                [: } :]
+                [: if(channel.distribution) { :]
+                    <p class="row fla"><label>[:=lang.channel.distribution || "关闭时分配":]: </label><b>[:=channel.distribution:]</b></p>
+                [: } :]
+                
+            </div>
+        </div>
+        [:}else{:]
+        <div class="notfind">
+            <p>[:=lang.channel.notfind || "对不起，通道暂不存在":]</p>
+        </div>
+        [:}:]
+    </div>
+</div>

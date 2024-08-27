@@ -1,0 +1,130 @@
+
+<script src="/jslib/diamondgene.min.js?v=1"></script>
+<script src="/jslib/diamondsvgimg.min.js?v=1"></script>
+<script src="/jslib/sha3.min.js?v=1"></script>
+<script src="/jslib/diamondbrilliance.min.js?v=1"></script>
+<script src="/jslib/diamondlifegame.min.js?v=1"></script>
+
+<script>
+    let dia_name = "[:=(diamond||{}).name:]"
+    , dia_life_gene = "[:=(diamond||{}).life_gene:]"
+    , dia_number = "[:=(diamond||{}).number:]"
+    ;
+</script>
+
+<div id="diamond" class="ppage"   >
+    <div class="container">
+        <p class="crumb"><a href="/">[:=lang.common.index_page || "首页":]</a><i>/</i><span>[:=lang.diamond.diamond || "钻石":] - [:=diaid:]</span></p>
+        [:if(this.diamond){:]
+        
+        <div class="pcard info">
+            <h3 class="hdtt">❂ [:=lang.diamond.diamond_info || "钻石详情":]</h3>
+            <div class="content">
+                <p class="row first"><label>[:=lang.diamond.value || "字面值":]: </label><b class="name">[:=diamond.name:]</b></p>
+                <p class="row"><label>[:=lang.diamond.number || "号码值":]: </label><b class="number">[:=diamond.number:]</b></p>
+                <p class="row"><label>[:=lang.diamond.belong_address || "当前所属地址":]: </label><a class="addr" target="_blank" href="/address/[:=diamond.belong:]">[:=diamond.belong:]</a></p>
+                <p class="row"><label>[:=lang.diamond.miner_address || "矿工地址":]: </label><a class="addr" target="_blank" href="/address/[:=diamond.miner:]">[:=diamond.miner:]</a></p>
+                <p class="row"><label>[:=lang.diamond.fee_offer || "竞价手续费":]: </label><b class="amt">ㄜ[:=toThousands(diamond.bid_fee):]</b></p>
+                <p class="row"><label>[:=lang.diamond.burn_price || "平均竞价价格":]: </label><b class="amt">[:=toThousands(diamond.average_bid_burn):] HAC</b></p>
+                <p class="row"><label>[:=lang.diamond.block_height || "产生区块高度":]: </label><b>[:=diamond.born.height:]</b></p>
+                <p class="row"><label>[:=lang.diamond.block_hash || "产生区块哈希":]: </label><a target="_blank" href="/block/[:=diamond.born.hash:]"><b class="hx">[:=diamond.born.hash:]</b></a></p>
+                <p class="row"><label>[:=lang.diamond.prev_block_hash || "上次区块哈希":]: </label><a target="_blank" href="/block/[:=diamond.prev_hash:]"><b class="hx">[:=diamond.prev_hash:]</b></a></p>
+                <p class="row"><label>[:=lang.diamond.life_gene || "生命基因":]: </label>[:=diamond.life_gene:]</p>
+                <p class="row"><label>[:=lang.diamond.visual_gene || "可视化基因":]: </label>[:=diamond.visual_gene:]</p>
+                <div class="row"><label>[:=lang.diamond.inscription || "铭文":]: </label>
+                    [: var inss = diamond.inscriptions; :]
+                    [: if(inss && inss.length > 0){ :]
+                    <ul id="inswrap">
+                    [:for(var i in inss){ var ins = inss[i]; :]
+                    <li><i>[:=i+1:]</i><b>[:=ins:]</b></li>
+                    [:}:]
+                    </ul>
+                    [:}else{:]
+                    <i style="color: #aaa;">None</i>
+                    [:}:]
+                </div>
+                <div class="row">
+                    <label>[:=lang.diamond.visual_hip5 || "HIP-5 可视化":]:</label>
+                    <div class="diapicwrap">
+
+                        <div class="dnnv top"><span>Hacash Diamond - HACD</span></div>
+                        <div id="diaimg" life_gene="[:=diamond.life_gene:]" dia_name="[:=diamond.name:]" savefilename="[:=diamond.name:]_[:=diamond.number:]">
+                            
+                        </div>
+                        <div class="dnnv"><b class="n1">[:=diamond.name:]</b><span class="n2">#[:=diamond.number:]</span></div>
+
+                    </div>
+
+                    <div id="showbigimg" class="vbtn"><b>[:=lang.diamond.showbigimg || "查看大图":] ››</b><div></div></div>
+                    <div id="downloadsvg" class="vbtn"><b>[:=lang.diamond.downloadsvg || "下载SVG格式图片":] ››</b><div></div></div>
+                    
+                
+                </div>
+
+                <div class="row">
+                    <label>[:=lang.diamond.visual_hip8 || "HIP-8 可视化":]:</label>
+
+
+                    <div class="dvhipck">
+                        <div class="browsertip">
+                            <p>[:=lang.common.hip8drawtip:]</p>
+                        </div>
+                    </div>
+
+                    <div class="hip8wrap">
+                        <div id="hip8img" life_gene="[:=diamond.life_gene:]" dia_name="[:=diamond.name:]"></div>
+                    </div>
+                    <div id="showbighip8" class="vbtn"><b>[:=lang.diamond.showbigimg || "查看大图":] ››</b><div></div></div>
+                </div>
+
+                <div class="row">
+                    <label>[:=lang.diamond.visual_hip9 || "HIP-9 可视化":]:</label>
+
+                    <div class="hip9wrap">
+                        <div id="hip9img" life_gene="[:=diamond.life_gene:]" dia_name="[:=diamond.name:]"></div>
+                        <div id="playlg" class="pbtn" title="[:=lang.diamond.playlifegame:]">▶</div>
+                    </div>
+                    <div id="playlgbtn" class="vbtn"><b>▶ [:=lang.diamond.playlifegame || "开始生命游戏":]</b><div></div></div>
+                </div>
+
+                <div class="row">
+                    <label>[:=lang.diamond.cdttl:]</label>
+                    <div id="card">
+
+                        <div class="cdit">
+                            <div class="cdcon">
+                                <div class="ibg"></div>
+                                <div class="ldz"></div>
+                                <div class="img"></div>
+                                <div class="oh h8"></div>
+                                <div class="oh h9"></div>
+                                <div class="meta">
+                                    <div class="blk">···[:=diamond.born.hash.slice(-20):]<br/>BORN BLOCK: <b>[:=diamond.born.height:]</b></div>
+                                    <div class="clb"></div>
+                                    <div class="num">[:=diamond.number:]</div>
+                                    <div class="dn">[:=diamond.name:]</div>
+                                    <p class="lgn">LIFE GENES</p>
+                                    <p class="lg"></p>
+                                    <div class="vg"></div>
+                                    <p class="gmn">LIFE GAME CODE</p>
+                                    <p class="bid">BID: ㄜ[:=diamond.bid_fee:]<br/>[:=diamond.miner.substr(0, 12):]···</p>
+                                    <div class="cll"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <p class="cdtip">[:=lang.diamond.cdtip:]</p>
+
+                </div>
+
+            </div>
+        </div>
+        [:}else{:]
+        <div class="notfind">
+            <p>[:=lang.diamond.notfind || "对不起，钻石暂不存在":]</p>
+        </div>
+        [:}:]
+    </div>
+</div>

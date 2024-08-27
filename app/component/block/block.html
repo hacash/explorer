@@ -1,0 +1,48 @@
+
+<div id="block" class="ppage" >
+    <div class="container">
+        <p class="crumb"><a href="/">[:=lang.common.index_page || "首页":]</a><i>/</i><span>[:=lang.block.block || "区块":] - [:=blkid:]</span></p>
+        [:if(this.block_intro){:]
+        <div class="pcard info">
+            <h3 class="hdtt">[:=lang.block.block_intro || "区块概要":]</h3>
+            <div class="content">
+                <p class="row r1"><label>[:=lang.block.height || "高度":]: </label><b>[:=block_intro.height:]</b></p>
+                <p class="row"><label>[:=lang.block.hash || "哈希值":]: </label><b class="hx">[:=block_intro.hash:]</b></p>
+                <p class="row"><label>[:=lang.block.mrklroot || "默克尔根":]: </label><b class="hx">[:=block_intro.mrklroot:]</b></p>
+                <p class="row"><label>[:=lang.block.prevhash || "上一区块":]: </label><b class="hx"><a href="/block/[:=block_intro.prevhash:]">[:=block_intro.prevhash:]</a></b></p>
+                <p class="row"><label>[:=lang.block.difficulty || "难度目标":]: </label><b>[:=block_intro.difficulty:]</b></p>
+                <p class="row"><label>[:=lang.block.nonce || "随机数":]: </label><b>[:=block_intro.nonce:]</b></p>
+                <p class="row"><label>[:=lang.block.time || "时间戳":]: </label><b>
+                    [:=block_intro.timestamp:]
+                    <i class="time">（{{formatDate(new Date([:=block_intro.timestamp:]*1000), 'yyyy-MM-dd hh:mm:ss')}}）</i>
+                    </b>
+                </p>
+                <p class="row"><label>[:=lang.block.rwdmsg || "Coinbase消息":]: </label>[:if(block_intro.message){:]<b style="color: sienna;">[:=block_intro.message:]</b>[:}else{:]<b style="color: gray;">unknown</b>[:}:]</p>
+                <p class="row"><label>[:=lang.block.reward || "区块奖励":]: </label><b>ㄜ[:=block_intro.reward:]</b></p>
+                <p class="row"><label>[:=lang.block.rwdaddr || "奖励地址":]: </label><a class="addr" target="_blank" href="/address/[:=block_intro.miner:]">[:=block_intro.miner:]</a></p>
+                <p class="row"><label>[:=lang.block.txcount || "交易数量":]: </label><b>[:=block_intro.transaction:]</b></p>
+            </div>
+        </div>
+        <div class="pcard trslist">
+            <h3 class="hdtt">⇆ [:=lang.block.txlist || "交易列表":]</h3>
+            [: var hxs = block_intro.tx_hash_list; :]
+            <div class="content">
+            [: if(hxs.length>0){ :]
+            [: for(var i in hxs){ var one = hxs[i]; :]
+                <p class="row"><label>[:=(++i):]</label><a target="_blank" href="/tx/[:=one:]">[:=one:]</a></p>
+            [:}:]
+            [:}else{:]
+                <p class="row r1"><b>- none -</b></p>
+            [:}:]
+            </div>
+        </div>
+        [:}else{:]
+        <div class="notfind">
+            <p>[:=lang.block.notfind || "对不起，找不到要查询的区块":]</p>
+        </div>
+        [:}:]
+    </div>
+</div>
+
+
+

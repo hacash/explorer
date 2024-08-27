@@ -3,6 +3,14 @@ module.exports = {
     // page view
     '/': 'VIEW:index',
     '/address/:addr': 'VIEW:address',
+    '/block/:blkid': 'VIEW:block',
+    '/tx/:hx': 'VIEW:tx',
+    '/diamond/:diaid': 'VIEW:diamond',
+    '/channel/:chid': 'VIEW:channel',
+    '/diamond-views/:page': 'VIEW:diaviews',
+    '/diamond-views': 'VIEW:diaviews',
+    
+
 
     // api
     '/api/account/balance': 'api/account/balance',

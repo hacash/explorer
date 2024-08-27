@@ -118,7 +118,7 @@
     chdmsvsl: function(){
         let dms = this.ckvdmnas.replace(/[^WTYUIAHXVMEKBSZN\,]+/ig, "")
         dms = dms.replace(/^\,+|\,+$/ig, '')
-        window.open('/diaviews?dianames='+dms)
+        window.open('/diamond-views?dianames='+dms)
     },
 
     geTarIdJumpUrl(ty, id) {
