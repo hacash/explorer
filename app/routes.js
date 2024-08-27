@@ -5,6 +5,8 @@ module.exports = {
     '/address/:addr': 'VIEW:address',
 
     // api
+    '/api/account/balance': 'api/account/balance',
+    //
     '/api/total/supply': 'api/total/supply',
     '/api/hashrate/charts': 'api/hashrate/charts',
     '/api/diamond/bidding': 'api/diamond/bidding',

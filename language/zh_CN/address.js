@@ -7,6 +7,8 @@ module.exports = {
     btc_amt: "BTC 余额",
     dia_amt: "钻石 余额",
     miner_dia_num: "挖出钻石数量",
+    miner_blk_rwd: "共获得区块奖励",
+    miner_fee_use: "消耗HAC费用",
 
     trsamt: "转账",
     notcoinbase: "不含Coinbase",

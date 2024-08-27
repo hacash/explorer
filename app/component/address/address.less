@@ -1,5 +1,12 @@
 
 #address{
+
+    .info .content {
+        display: flex;
+        justify-content: space-between;
+        .wbox {
+        }
+    }
     .fmtnote {
         height: 16px;
         width: 16px;
@@ -63,6 +70,7 @@
             margin: 0 0 2px 5px;
         }
         input, button {
+            display: inline-block;
             line-height: 32px;
             padding: 0 10px;
             border: 1px solid #bbb;
@@ -75,7 +83,7 @@
             margin-left: 10px;
         }
     }
-    .transfers, .channel{
+    .cointrs, .optlogs{
         .hdtt i{
             font-size: 12px;
             color: #aaa;
@@ -84,21 +92,37 @@
             padding-bottom: 18px;
             label{
                 padding: 10px;
-                cursor: pointer;
-                margin-right: 10px;
-                border-radius: 4px;
-                background: #ffffff44;
+                i {
+                    display: inline-block;
+                    height: 15px;
+                    line-height: 15px;
+                    cursor: pointer;
+                    margin: 0;
+                    margin-right: 10px;
+                    border-radius: 4px;
+                    background: #ffffff44;
+                    vertical-align: middle;
+                }
+                input {
+                    vertical-align: middle;
+                    display: inline-block;
+                    margin: 0;
+                    margin-right: 4px;
+                    height: 15px;
+                    line-height: 15px;
+                }
                 &:hover{
                     background: #fff;
                 }
             }
         }
         .datas{
+            margin: auto;
+            border-collapse: collapse;
             div.row{
                 padding: 10px 0;
             }
             label{
-                color: #aaa;
                 display: inline-block;
                 width: 40px;
                 text-align: right;
@@ -112,6 +136,7 @@
                 margin-right: 12px;
                 margin-left: 5px;
                 u{
+                    font-size: inherit;
                     // background: lightcyan;
                     color: darkolivegreen;
                     // font-weight: bold;
@@ -124,7 +149,7 @@
                 color: cadetblue;
             }
             .block {
-                color: dodgerblue;
+                color: cadetblue;
                 &:hover{
                     text-decoration: underline;
                 }
@@ -138,11 +163,27 @@
                     text-decoration: underline;
                 }
             }
+            .hac {
+            }
             .hacd {
                 color: #55afff;
             }
             .sat {
                 color: #afa95d;
+            }
+            tr {
+            }
+            th, td {
+                padding: 5px;
+            }
+            td {
+                border-top: 1px dashed #88888844;
+            }
+            td.amt {
+                text-align: right;
+                b {
+                    font-size: 15px;
+                }
             }
         }
         .more{
@@ -170,10 +211,11 @@
 
         }
     }
-    .channel{
+    .optlogs{
         .datas{
             p label{
                 width: auto;
+                margin-left: 10px;
             }
         }
 
@@ -186,14 +228,40 @@
 @media screen and (max-width: 512px) {
 
 #address{
-    .transfers{
+    .info {
+        .content {
+            display: block;
+            .wbox {
+                display: block;
+
+            }
+        }
+    }
+    .cointrs{
         .datas{
             p{
                 display: block;
             }
         }
+        .content {
+            table, tr, td {
+                display: block;
+            }
+            th{
+                display: none;
+            }
+            td{
+                border: none;
+                b {
+                    margin: 0;
+                }
+            }
+            td.amt {
+                text-align: left;
+            }
+        }
     }
-    .channel{
+    .optlos{
         .datas{
             p{
                 display: block;

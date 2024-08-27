@@ -1,84 +1,97 @@
+<script>
+     var address = "[:=address:]";
+</script>
 
-
-<div id="address" class="ppage" ref="address" data-address="[:=address:]" >
+<div id="address" class="ppage" >
     <div class="container">
         <p class="crumb"><a href="/">[:=lang.common.index_page || "首页":]</a><i>/</i><span>[:=lang.address.address || "地址":] - [:=address:]</span></p>
         <div class="pcard info">
             <h3 class="hdtt">[:=lang.address.address_intro || "概要":]</h3>
             <div class="content">
-                <p class="li">[:=lang.address.hac_amt || "HAC 余额":]: <b>ㄜ[:=bls.hacash:]</b> <a class="fmtnote" href="https://hacash.org/HAC-unit?amount=[:=bls.hacash:]" target="_blank">?</a></p>
-                <p class="li">[:=lang.address.btc_amt || "BTC 余额":]: <b>[:=bls.satoshi:]</b> SAT (satoshi)</p>
-                <p class="li">[:=lang.address.dia_amt || "钻石数量":]: <b>[:=bls.diamond:]</b></p>
-                <p class="linx"></p>
-                <p class="li">[:=lang.address.miner_dia_num || "挖出钻石数量":]: <b>[:=cnt.minted_diamond:]</b></p>
-                <p class="li">[:=lang.address.miner_blk_rwd || "共获得区块奖励":]: <b>[:=cnt.block_reward:]</b></p>
-                <p class="li">[:=lang.address.miner_fee_use || "消耗HAC费用":]: <b>[:=cnt.used_fee.toFixed(4):]</b></p>
+                <div class="wbox">
+                    <p class="li">[:=lang.address.hac_amt || "HAC 余额":]: <b>ㄜ[:=toThousands(bls.hacash):]</b> <a class="fmtnote" href="https://hacash.org/HAC-unit?amount=[:=bls.hacash:]" target="_blank">?</a></p>
+                    <p class="li">[:=lang.address.btc_amt || "BTC 余额":]: <b>[:=toThousands(bls.satoshi):]</b> SAT (satoshi)</p>
+                    <p class="li">[:=lang.address.dia_amt || "钻石数量":]: <b>[:=toThousands(bls.diamond):]</b> HACD</p>
+                </div>
+                <div class="wbox">
+                    <p class="li">[:=lang.address.miner_dia_num || "挖出钻石数量":]: <b>[:=toThousands(cnt.minted_diamond):]</b> HACD</p>
+                    <p class="li">[:=lang.address.miner_blk_rwd || "共获得区块奖励":]: <b>ㄜ[:=toThousands(cnt.block_reward):]</b></p>
+                    <p class="li">[:=lang.address.miner_fee_use || "消耗HAC费用":]: <b>ㄜ[:=toThousands(cnt.used_fee.toFixed(4)):]</b>
+                    </p>
+                </div>
             </div>
         </div>
 
+        [: if(bls.diamond > 0){ :]
+            <div class="pcard diamond">
+                <h3 class="hdtt">❂ [:=lang.address.dia_check || "钻石":]</h3>
+                <div class="content">
+                    <div class="ckdms" v-if="all_diamond_names">
+                        <label>[:=lang.address.check_diamonds_visual || "查看钻石可视化":]:</label>
+                        <input v-model="ckvdmnas" placeholder="HACD Names with comma separated, max 200" />
+                        <button @click="chdmsvsl">[:=lang.address.check || "查看":]</button>
+                    </div>
+                    <button @click="alldiamondnames" class="btn" v-if="all_diamond_names==''">[:=lang.address.check_all_diamond_names || "查看所有钻石名称":]</button>
+                    <p class="alldmdns" v-if="all_diamond_names" style="word-break: break-all;" v-html="all_diamond_names"></p>
+                </div>
+            </div>
+        [: } :]
+            
         <div class="cfmtip">[:=lang.common.confirm_tip:]</div>
 
-        <div class="pcard transfers">
+        <div class="pcard cointrs">
             <h3 class="hdtt">⇌ [:=lang.address.trsamt || "转账":] <i> ([:=lang.address.notcoinbase || "不含Coinbase":])</i></h3>
             <div class="content">
                 <div class="ttp">
-                    <label><input @click="dotrstype" name="trstype" v-model='trstype' type="radio" value="all" checked />[:=lang.address.all || "全部":]</label> 
-                    <label><input @click="dotrstype" name="trstype" v-model='trstype' type="radio" value="in" />[:=lang.address.in || "收款":]</label> 
-                    <label><input @click="dotrstype" name="trstype" v-model='trstype' type="radio" value="out" />[:=lang.address.out || "付款":]</label> 
+                    <label><input @click="dotrstype" name="trstype" v-model='trstype' type="radio" value="all" checked /><i>[:=lang.address.all || "全部":]</i></label> 
+                    <label><input @click="dotrstype" name="trstype" v-model='trstype' type="radio" value="in" /><i>[:=lang.address.in || "收款":]</i></label> 
+                    <label><input @click="dotrstype" name="trstype" v-model='trstype' type="radio" value="out" /><i>[:=lang.address.out || "付款":]</i></label> 
                 </div>
-                <div class="datas">
-                    <div :class="{row:1,r0:i==0}" v-for="(one, i) in cointrs">
-                        <p><label>[:=lang.address.block || "区块":]：</label> <a class="block" target="_blank" :href="'/block/'+one[0]">{{one[0]}}</a></p>
-                        <p><label>[:=lang.address.from || "From":]：</label><b v-html="one[1]"></b></p>
-                        <p><label>[:=lang.address.to || "To":]： </label><b v-html="one[2]"></b></p>
-                        <p><label>[:=lang.address.amount || "数额":]：</label><b :class="{amt: 1, hacd: one[3].indexOf('HACD')>-1, sat: one[3].indexOf('SAT')>-1}">{{one[3]}}</b></p>
-                    </div>
-                </div>
-                <div class="ok" v-show="(!trsifmore)&&transfers">- [:=lang.address.load_ok || "加载完毕":] -</div>
+                <table class="datas" cellspacing="0" v-if="cointrs">
+                    <tr>
+                        <th><label>[:=lang.address.block || "区块":]</label> </th>
+                        <th><label>[:=lang.address.from || "From":]</label></th>
+                        <th><label>[:=lang.address.to || "To":]</label></th>
+                        <th><label>[:=lang.address.amount || "数额":]</label></th>
+                    </tr>
+                    <tr :class="{row:1,r0:i==0}" v-for="(one, i) in cointrs">
+                        <td><a class="block" target="_blank" :href="'/block/'+one[0]">{{one[0]}}</a></td>
+                        <td><b v-html="one[1]"></b></td>
+                        <td><b v-html="one[2]"></b></td>
+                        <td class="amt"><b :class="{amt: 1, hacd: one[3].indexOf('HACD')>-1, sat: one[3].indexOf('SAT')>-1}">{{one[3]}}</b></td>
+                    </tr>
+                </table>
+                <div class="ok" v-show="(!trsifmore)&&cointrs">- [:=lang.address.load_ok || "加载完毕":] -</div>
                 <div class="more" v-show="trsifmore">
                     <button @click="domoretrs">[:=lang.address.show_more || "查看更多":]</button>
                 </div>
                 <button @click="domoretrs" class="btn" v-if="trsfirstbtn">[:=lang.address.show_trs_btn || "查看转账记录":]</button>
             </div>
         </div>
-
-
-        [: if(bls.diamond > 0){ :]
-        <div class="pcard diamond" v-if="ranking_api_url">
-            <h3 class="hdtt">❂ [:=lang.address.dia_check || "钻石":]</h3>
-            <div class="content">
-                <div class="ckdms" v-if="all_diamond_names">
-                    <label>[:=lang.address.check_diamonds_visual || "查看钻石可视化":]:</label>
-                    <input v-model="ckvdmnas" placeholder="HACD Names with comma separated, max 200" />
-                    <button @click="chdmsvsl">[:=lang.address.check || "查看":]</button>
-                </div>
-                <button @click="alldiamondnames" class="btn" v-if="all_diamond_names==''">[:=lang.address.check_all_diamond_names || "查看所有钻石名称":]</button>
-                <p class="alldmdns" v-if="all_diamond_names" style="word-break: break-all;" v-html="all_diamond_names"></p>
             
-            </div>
-        </div>
-        [: } :]
-
-        <div class="pcard channel">
+        <div class="pcard optlogs">
             <h3 class="hdtt">↔ [:=lang.address.cha_check || "操作记录":]</h3>
             <div class="content">
                 <div class="datas">
                     <div :class="{row:1,r0:i==0}" v-for="(one, i) in optlogs">
-                        <p><label>[:=lang.address.cha_type || "类型":]: </label> <b :class="{type: 1, open: one[1].indexOf('open')!=-1,close: one[1].indexOf('close')!=-1}">{{one[1]}}</b></p>
                         <p><label>[:=lang.address.block || "区块":]: </label> <a class="block" target="_blank" :href="'/block/'+one[0]">{{one[0]}}</a></p>
-                        <p><label>[:=lang.address.id || "ID":]: </label> <a class="id" target="_blank" :href="'/'+getTarIdJumpUrl(one[1])+'/'+one[2]">{{one[2]}}</a> </p>
-                        <p><label>[:=lang.address.addr || "地址":]1: </label> <b v-html="one[3]"></b></p>
-                        <p><label>[:=lang.address.addr || "地址":]2: </label> <b v-html="one[4]"></b></p>
+                        <p><label>[:=lang.address.cha_type || "类型":]: </label> <b :class="{type: 1, open: one[3].indexOf('open')!=-1,close: one[3].indexOf('close')!=-1}">{{one[3]}}</b></p>
+                        <p><label>[:=lang.address.id || "ID":]: </label> <a class="id" target="_blank" :href="'/'+geTarIdJumpUrl(one[3], one[4])">{{one[4]}}</a> </p>
+                        <p><label>[:=lang.address.addr || "地址":]1: </label> <b v-html="one[1]"></b></p>
+                        <p><label>[:=lang.address.addr || "地址":]2: </label> <b v-html="one[2]"></b></p>
                         <p><label>[:=lang.address.cha_notes || "详情数据":]: </label> <span class="notes">{{one[5]}}</span></p>
                     </div>
                 </div>
-                <div class="ok" v-show="(!colifmore)&&operateactionlogs">- [:=lang.address.load_ok || "加载完毕":] -</div>
+                <div class="ok" v-show="(!colifmore)&&optlogs">- [:=lang.address.load_ok || "加载完毕":] -</div>
                 <div class="more" v-show="colifmore">
-                    <button @click="loadoperateactionlogs">[:=lang.address.show_more || "查看更多":]</button>
+                    <button @click="optlogs">[:=lang.address.show_more || "查看更多":]</button>
                 </div>
-                <button @click="loadoperateactionlogs" class="btn" v-if="colfirstbtn">[:=lang.address.check_operate_action_logs || "查看金融操作记录":]</button>
+                <button @click="loadoptlogs" class="btn" v-if="colfirstbtn">[:=lang.address.check_operate_action_logs || "查看金融操作记录":]</button>
             </div>
         </div>
+        
+
 
     </div>
 </div>
+
