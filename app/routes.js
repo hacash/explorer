@@ -29,5 +29,10 @@ module.exports = {
     '/api/actlogs/cointrs': 'api/actlogs/cointrs',
     '/api/actlogs/fiopts': 'api/actlogs/fiopts',
 
+    // raw data
+    '/api/total/current_circulation_number': 'api/total/current_circulation_number',
+    '/api/total/hacd_circulation_number': 'api/total/hacd_circulation_number',
+    '/api/total/total_reward_number': 'api/total/total_reward_number',
+
 }
     

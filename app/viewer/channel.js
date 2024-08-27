@@ -28,7 +28,7 @@ exports.datas = async function(cnf, ctx)
     }
     let chobj = await fullnode.query('channel', qps);
     // console.log(diaobj)
-    if(!chobj || !chobj.name) {
+    if(!chobj || !chobj.id) {
         chobj = null // not find
     }
 
