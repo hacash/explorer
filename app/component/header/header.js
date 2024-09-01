@@ -28,7 +28,7 @@ function doHeaderSearch(ss) {
                 window.open('/diamond/'+ss)
             }else if(ss.length >= 6 + 1 + 6){
                 // alert("钻石列表")
-                window.open('/diamond-views?dianames='+ss)
+                window.open('/diamond-views?name='+ss)
             }
         }else if( ss[0]=="#" && parseInt(ss.substr(1)) > 0){
             // alert("钻石序号")

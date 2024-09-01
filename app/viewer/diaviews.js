@@ -20,7 +20,7 @@ exports.components = [
 exports.datas = async function(cnf, ctx)
 {
     let q = ctx.query || {};
-    let dianames = q.dianames || ''
+    let dianames = q.name || ''
     let page = (ctx.params||{}).page || 1;
 
     let limit = 200;
