@@ -575,7 +575,7 @@ apiget("/api/block/recents", {}, function(data){
                     n1, n2,
                     count: n1+n2,
                     per:(parseFloat(n1+n2) / 4032.0 * 100).toFixed(2),
-                    chgp: ((parseFloat(n1-n2)/2016.0) * 100).toFixed(2)
+                    chgp: ((parseFloat(n1-n2)/4032.0) * 100).toFixed(2)
                 })
             }
             percts.sort(function(a,b){

@@ -25,9 +25,9 @@ exports.datas = async function(cnf, ctx)
     // params
     let qps = {
         hash: hx,
-        actions: true,
+        action: true,
     }
-    let txdesc = await fullnode.query('transaction/desc', qps);
+    let txdesc = await fullnode.query('transaction', qps);
     // console.log(txdesc)
     if(!txdesc || !txdesc.block) {
         txdesc = null // not find
