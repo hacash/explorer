@@ -65,7 +65,7 @@
             return amt
         }
         apiget("/api/actlogs/cointrs", params, function(data){
-            let list = data.list
+            let list = data.list || []
             , addrs = data.addrs
             , myaddr = t.address.substr(0,7) + '…'
             , my =  '<u class="my" title="'+t.address+'">'+myaddr+'</u>'
@@ -138,11 +138,11 @@
             page: that.colpage,
             limit: that.collimit,
         }, function(data){
-            let list = data.list
+            let list = data.list || []
             , addrs = data.addrs
             , myaddr = that.address.substr(0,7) + '…'
             , my =  '<u class="my" title="'+that.address+'">'+myaddr+'</u>'
-            console.log(data)
+            // console.log(data)
             for(let i in list){
                 let li = list[i]
                 li[1] = addrs[li[1]+'']

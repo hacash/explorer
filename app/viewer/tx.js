@@ -38,6 +38,13 @@ exports.datas = async function(cnf, ctx)
         title: hx + " - Tx",
         toThousands: number.toThousands,
         trsinfo: txdesc,
+        splitdias(ds) {
+            let res = [];
+            for(let i=0;i<ds.length; i+=6) {
+                res.push(ds.substring(i, i+6))
+            }
+            return res.join(', ')
+        }
     }
 
     return pdata;

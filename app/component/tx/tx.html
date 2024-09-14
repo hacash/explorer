@@ -81,7 +81,11 @@
                 <p class="row r[:=(++i):]">
                     <span class="kind">[[:=lang.transaction.act_transfer_diamond || "转移钻石":]]</span>
                     <label>[:=lang.transaction.act_count || "数量":]: </label>[:=one.diamond:]
+                    [: if(one.diamond == 1 ){:]
                     <label>[:=lang.transaction.act_diamond_value || "字面值":]: </label><a target="_blank" href="/diamond/[:=one.diamonds:]">[:=one.diamonds:]</a> 
+                    [: }else{ :]
+                    <label>[:=lang.transaction.act_diamond_value || "字面值":]: </label><a target="_blank" href="/diamond-views?name=[:=one.diamonds:]">[:=splitdias(one.diamonds):]</a>  
+                    [: } :]
                     <label>[:=lang.transaction.act_diamond_from_address || "From 地址":]: </label>
                     [: if(one.from && one.from!=trsinfo.main_address){ :]
                     <a target="_blank" href="/address/[:=one.from:]">[:=one.from:]</a> 
@@ -89,7 +93,7 @@
                     <span>MainAddress</span> 
                     [: } :]
                     <label>[:=lang.transaction.act_diamond_to_address || "To 地址":]: </label>
-                    [: if(one.to && one.from!=trsinfo.main_address){ :]
+                    [: if(one.to && one.to!=trsinfo.main_address){ :]
                     <a target="_blank" href="/address/[:=one.to:]">[:=one.to:]</a> 
                     [: }else{ :]
                     <span>MainAddress</span> 
