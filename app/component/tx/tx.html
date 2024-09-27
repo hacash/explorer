@@ -161,11 +161,11 @@
                 <p class="row r[:=(++i):]">
                     <span class="kind">[[:=lang.transaction.inscription_opt || "HACD 铭文操作":]] kn: [:=k:]</span>
                     [: if(k == 32) { :]
-                    <label>[:=lang.transaction.inscription_opt_write || "铭刻":]: </label><b>[:=one.inscription:]</b>
+                    <label>[:=lang.transaction.inscription_opt_write || "铭刻":]: </label><b>[:=one.engraved_content:]</b>
                     [: }else{ :]
                     <label>[:=lang.transaction.inscription_opt_clean || "清除":]</label>
                     [: } :]
-                    <label>HACD: </label>[:=one.names:]
+                    <label>HACD: </label>[:=one.diamonds:]
                 </p>
             [: }else{ :]
                 <p class="row r[:=(++i):] other">[kind=[:=k:]] [:=lang.transaction.act_other || "其它种类":] action</p>
