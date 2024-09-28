@@ -24,13 +24,14 @@ exports.datas = async function(cnf, ctx)
     let address = ctx.params.addr;
     let cntobj = await hascan.query('address/count', {address});
     let blkobj = await fullnode.query('balance', {address});
+    let have = blkobj && blkobj.list && blkobj.list.length;
 
     let pdata = {
         address,
         title: address+ " - Address",
         toThousands: number.toThousands,
-        bls: blkobj.list[0] || {},
-        cnt: cntobj.list[0] || {},
+        bls: have ? blkobj.list[0] : {},
+        cnt: have ? cntobj.list[0] : {},
     }
     // console.log(pdata)
 
