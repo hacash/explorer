@@ -22,16 +22,17 @@ exports.datas = async function(cnf, ctx)
 {
 
     let address = ctx.params.addr;
-    let cntobj = await hascan.query('address/count', {address});
     let blkobj = await fullnode.query('balance', {address});
-    let have = blkobj && blkobj.list && blkobj.list.length;
+    let cntobj = await hascan.query('address/count', {address});
+    let have1 = blkobj && blkobj.list && blkobj.list.length;
+    let have2 = cntobj && cntobj.list && cntobj.list.length;
 
     let pdata = {
         address,
         title: address+ " - Address",
         toThousands: number.toThousands,
-        bls: have ? blkobj.list[0] : {},
-        cnt: have ? cntobj.list[0] : {},
+        bls: have1 ? blkobj.list[0] : {},
+        cnt: have2 ? cntobj.list[0] : {},
     }
     // console.log(pdata)
 
