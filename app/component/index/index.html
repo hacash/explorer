@@ -394,7 +394,7 @@
                         <th>[:=lang.main.plct_hsrt || "算力占比":]</th>
                         <th>[:=lang.main.plct_chg || "升降变化":]</th>
                     </tr>
-                    <tr :class="(d.name=='unknown'?'ukn':'') + ' row'" v-for="(d,i) in percts">
+                    <tr :class="(d.name?'':'ukn ') + 'row'" v-for="(d,i) in percts">
                         <td class="i">{{i+1}}</td>
                         <td class="name">{{d.name}}</td>
                         <td class="adr">{{d.adr}}...</td>

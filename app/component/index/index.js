@@ -569,6 +569,9 @@ apiget("/api/block/recents", {}, function(data){
                 let ks = a.split(':')
                 let n1 = data.curr[a] || 0;
                 let n2 = data.prev[a] || 0;
+                if(ks[0] == 'unknown'){
+                    ks[0] = '' // drop unknown
+                }
                 percts.push({
                     name: ks[0],
                     adr: ks[1]||'',
