@@ -36,7 +36,7 @@
                     [: if(inss && inss.length > 0){ :]
                     <ul id="inswrap">
                     [:for(var i in inss){ var ins = inss[i]; :]
-                    <li><i>[:=i+1:]</i><b>[:=ins:]</b></li>
+                    <li><i>[:=parseInt(i)+1:]</i><b>[:=ins:]</b></li>
                     [:}:]
                     </ul>
                     [:}else{:]

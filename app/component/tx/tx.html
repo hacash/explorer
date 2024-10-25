@@ -165,7 +165,7 @@
                     [: }else{ :]
                     <label>[:=lang.transaction.inscription_opt_clean || "清除":]</label>
                     [: } :]
-                    <label>HACD: </label>[:=one.diamonds:]
+                    <label>HACD: </label>[:=splitdias(one.diamonds):]
                 </p>
             [: }else{ :]
                 <p class="row r[:=(++i):] other">[kind=[:=k:]] [:=lang.transaction.act_other || "其它种类":] action</p>
