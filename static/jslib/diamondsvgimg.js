@@ -717,10 +717,11 @@ window.CreateDiamondImageTagSVG = CreateDiamondImageTagSVG;
  * 满屏查看大图
  */
 function closeDiamondImageFullShow(e){
-    document.getElementById("diabigshow").remove();
+    $id("diabigshow").remove();
     e.stopPropagation();
     return false;
 }
+window.closeDiamondImageFullShow = closeDiamondImageFullShow;
 function CreateDiamondImageTagSVGFullShow(imgstuffhex) {
 
     var wiw = window.innerWidth
@@ -731,11 +732,11 @@ function CreateDiamondImageTagSVGFullShow(imgstuffhex) {
     }
     // svg tag
     wih -= 40
-    var picon = CreateDiamondImageTagSVG(0, imgstuffhex, wih)
+    var picon = CreateDiamondImageTagSVG(imgstuffhex, wih)
 
     var html = `<div id="diabigshow" style="position: fixed; z-index: 9999; left: 0; top: 0; background: #ffffff66; width: 100%; height: 100%; text-align: center;">
         <div style="display: inline-block; position: relative; margin-top: 20px; background: #ffffff; box-shadow: 2px 2px 12px #00000099; border-radius: 10px;">
-            <div class="close" onclick="closeDiamondImageFullShow(event)" style="position: absolute; border-radius: 10px; cursor: pointer; right: 6px; top: 6px; font-size: 40px; height: 40px; width: 40px; line-height: 40px; background: #ddd;">✕</div>
+            <div class="close" onclick="closeDiamondImageFullShow(event)" style="position: absolute; color: #000; border-radius: 10px; cursor: pointer; right: 6px; top: 6px; font-size: 40px; height: 40px; width: 40px; line-height: 40px; background: #ddd;">✕</div>
             `+ picon +`
         </div>
     </div>` 

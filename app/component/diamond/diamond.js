@@ -205,6 +205,7 @@ function doSaveFile(value, type, name) {
 
     // 查看高清大图
     function showbigpic(){
+        console.log("showbigpic", vgstr)
         sbp.getElementsByTagName("div")[0].innerHTML = CreateDiamondImageTagSVGFullShow(vgstr)
     }
     sbp.onclick = showbigpic
@@ -212,7 +213,7 @@ function doSaveFile(value, type, name) {
 
     // 下载SVG格式图片
     function downloadsvg(){
-        let fn = diaimg.getAttribute("savefilename")
+        let fn = $attr(diaimg, "savefilename")
         , svgcon = diaimg.getElementsByTagName("svg")[0].innerHTML
         , filecon = '<?xml version="1.0" encoding="utf-8"?><!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="125 100 500 500" xml:space="preserve"> <style type="text/css"> .st16 { fill: none; stroke: #F5E1DA; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 10; } </style>' + svgcon + '</svg>';
         doSaveFile(filecon, "image/svg+xml", fn+".svg")
