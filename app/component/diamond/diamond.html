@@ -36,7 +36,7 @@
                     [: if(inss && inss.length > 0){ :]
                     <ul id="inswrap">
                     [:for(var i in inss){ var ins = inss[i]; :]
-                    <li><i>[:=parseInt(i)+1:]</i><b>[:=ins:]</b></li>
+                    <li><i>[:=parseInt(i)+1:]</i><b class="ins">[:=ins:]</b></li>
                     [:}:]
                     </ul>
                     [:}else{:]
@@ -89,7 +89,7 @@
 
                 <div class="row">
                     <label>[:=lang.diamond.cdttl:]</label>
-                    <div id="card">
+                    <div id="card" class="">
 
                         <div class="cdit">
                             <div class="cdcon">
@@ -114,6 +114,8 @@
                         </div>
 
                     </div>
+
+                    <div id="showbigcard" class="vbtn"><b>[:=lang.diamond.showbigimg || "查看大图":] ››</b><div></div></div>
                     
                     <p class="cdtip">[:=lang.diamond.cdtip:]</p>
 
