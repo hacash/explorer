@@ -69,7 +69,7 @@ function showCoinbasePaceChart(that, cbh, rwd, circ, burn) {
             ch = h
             chtt += h
             // console.log("spxd:", i)
-            var spxd = 100*10000*(parseInt(i)-4) + 600000
+            var spxd = 600000 + 100*10000*1
             reduce_days = parseInt((spxd - cbh) / 288) + 1
         }
         bs.push('<b class="h'+h+cla+'"><i>'+h+'</i></b>')
