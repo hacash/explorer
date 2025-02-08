@@ -24,7 +24,7 @@
 
 
 
-[: if(this.dianames){ :]
+[: if(this.dianames && this.diamonds && this.diamonds.length>0){ :]
 
     <div style="word-break: break-all;line-height: 20px;display: block;float: none;padding: 20px;color: #666;">View [:=diamonds.length:] diamonds: [:=dianames:]</div>
 

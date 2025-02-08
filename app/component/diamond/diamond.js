@@ -25,6 +25,7 @@ let lgene = dia_life_gene
     }
 
     let card = $id('card')
+    , showbig = $id('showbigcard')
     , cdcon = $clas(card, 'cdcon')
     , ibg = $clas(card, 'ibg')
     , img = $clas(card, 'img')
@@ -131,8 +132,6 @@ let lgene = dia_life_gene
         var(--diacl-16), var(--diacl2-16) 
         )`
 
-
-
     // font
     /*
     setTimeout(function(){
@@ -143,6 +142,21 @@ let lgene = dia_life_gene
         document.body.appendChild(ftst)
     }, 12);
     */
+
+    let fullbig_cn = 'fullbig'
+    showbig.onclick = function(){
+        card.classList.add(fullbig_cn)
+        let s1 = parseFloat(window.innerWidth) / 800.0
+        let s2 = parseFloat(window.innerHeight) / 500.0
+        if(s1 > s2){
+            s1 = s2
+        }
+        $clas(card, "cdit").style.transform = `scale(${s1})`
+    }
+    card.onclick = function() {
+        card.classList.remove(fullbig_cn)
+        $clas(card, "cdit").style.transform = `scale(1)`
+    }
 
 })();
 
@@ -178,12 +192,12 @@ function doSaveFile(value, type, name) {
 // HIP-5
 ;(function(){
 
-    let diaimg = document.getElementById("diaimg")
-    let sbp = document.getElementById("showbigimg")
-    let dlsvg = document.getElementById("downloadsvg")
+    let diaimg = $id("diaimg")
+    , sbp = $id("showbigimg")
+    , dlsvg = $id("downloadsvg")
     
-    let lgene = diaimg.getAttribute("life_gene")
-    , dianm = diaimg.getAttribute("dia_name")
+    let lgene = $attr(diaimg, "life_gene")
+    , dianm = $attr(diaimg, "dia_name")
     , vgstr = DiamondLifeGeneConvertVisualGene(lgene, dianm)
     let svgtag = CreateDiamondImageTagSVG(vgstr, 600)
 
@@ -191,6 +205,7 @@ function doSaveFile(value, type, name) {
 
     // 查看高清大图
     function showbigpic(){
+        console.log("showbigpic", vgstr)
         sbp.getElementsByTagName("div")[0].innerHTML = CreateDiamondImageTagSVGFullShow(vgstr)
     }
     sbp.onclick = showbigpic
@@ -198,7 +213,7 @@ function doSaveFile(value, type, name) {
 
     // 下载SVG格式图片
     function downloadsvg(){
-        let fn = diaimg.getAttribute("savefilename")
+        let fn = $attr(diaimg, "savefilename")
         , svgcon = diaimg.getElementsByTagName("svg")[0].innerHTML
         , filecon = '<?xml version="1.0" encoding="utf-8"?><!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="125 100 500 500" xml:space="preserve"> <style type="text/css"> .st16 { fill: none; stroke: #F5E1DA; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 10; } </style>' + svgcon + '</svg>';
         doSaveFile(filecon, "image/svg+xml", fn+".svg")
@@ -210,9 +225,9 @@ function doSaveFile(value, type, name) {
 // HIP-8
 ;(function(){
 
-    let diaimg = document.getElementById("hip8img")
-    , lgene = diaimg.getAttribute("life_gene")
-    , dianm = diaimg.getAttribute("dia_name")
+    let diaimg = $id("hip8img")
+    , lgene = $attr(diaimg, "life_gene")
+    , dianm = $attr(diaimg, "dia_name")
     , vgstr = DiamondLifeGeneConvertVisualGene(lgene, dianm)
     , backcl = theme == 2 ? 'black' : 'white'
     , svgtag = CreateDiamondBrillianceSVG(vgstr, 800, backcl)
@@ -238,8 +253,8 @@ function doSaveFile(value, type, name) {
 // HIP-9
 ;(function(){
 
-    let diaimg = document.getElementById("hip9img")
-    , lgene = diaimg.getAttribute("life_gene")
+    let diaimg = $id("hip9img")
+    , lgene = $attr(diaimg, "life_gene")
     , backcl = theme == 2 ? 'black' : 'white'
     , lifgameobj = CreateLifeGameInitialSVG(lgene, 800, backcl, true) // not border
     , lgsvgtag = lifgameobj[0]
@@ -248,9 +263,9 @@ function doSaveFile(value, type, name) {
 
     diaimg.innerHTML = lgsvgtag;
 
-    let playlg1 = document.getElementById("playlg")
-    , playlg2 = document.getElementById("playlgbtn")
-    , hip9wrap = document.getElementsByClassName("hip9wrap")[0]
+    let playlg1 = $id("playlg")
+    , playlg2 = $id("playlgbtn")
+    , hip9wrap = $clas("hip9wrap")
     , playLifeGame = function() {
         diaimg.style.background = lgcnf.background||'none'
         playlg1.style.display = 'none'

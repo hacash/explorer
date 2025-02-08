@@ -25,9 +25,9 @@ exports.datas = async function(cnf, ctx)
     // params
     let qps = {
         hash: hx,
-        actions: true,
+        action: true,
     }
-    let txdesc = await fullnode.query('transaction/desc', qps);
+    let txdesc = await fullnode.query('transaction', qps);
     // console.log(txdesc)
     if(!txdesc || !txdesc.block) {
         txdesc = null // not find
@@ -38,6 +38,13 @@ exports.datas = async function(cnf, ctx)
         title: hx + " - Tx",
         toThousands: number.toThousands,
         trsinfo: txdesc,
+        splitdias(ds) {
+            let res = [];
+            for(let i=0;i<ds.length; i+=6) {
+                res.push(ds.substring(i, i+6))
+            }
+            return res.join(', ')
+        }
     }
 
     return pdata;

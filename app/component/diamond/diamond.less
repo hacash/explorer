@@ -53,7 +53,29 @@
 }
 
 #card {
-    padding: 30px 0 20px 0; 
+    margin: 50px 0;
+    padding: 0; 
+    min-height: 500px;
+
+    &.fullbig {
+        padding: 0;
+        .cdit {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin: 0;
+            margin-left: -400px;
+            margin-top: -250px;
+            padding: 0;
+            transform: scale(1);
+            transform-origin: center;
+        }
+        .cdcon {
+            margin: 0;
+            border-radius: 0;
+        }
+    }
+
     .cdit {
     }
 
@@ -324,6 +346,9 @@
                 border-top: 1px peru solid;
                 padding-left: 3px;
             }
+            b.ins {
+                color: #000;
+            }
             b.amt {
                 color: cadetblue;
             }
@@ -412,11 +437,11 @@
         margin-top: 5px;
         top: -22px;
         // background: #0001;
-        background-image: linear-gradient(to right, #0001, #0000);
+        background-image: linear-gradient(to right, #9993, #0000);
         display: flex;
     }
     li:hover {
-        background: #0001;
+        background: #9993;
     }
     i,b {
         padding: 5px;
@@ -424,7 +449,7 @@
         line-height: 20px;
     }
     i {
-        background-color: #0001;
+        background-color: #9993;
         color: #fff;
         font-weight: bold;
     }
@@ -510,7 +535,7 @@
         padding: 10px 0;
         max-width: 768px;
         color: darkgreen;
-        background: #c6d6d6;
+        background: #66999933;
         opacity: 0;
     }
     .lgcvs {
@@ -549,6 +574,14 @@
 
 .cdtip {
     margin: 20px; text-align: center; color: #666; font-size: 18px;
+}
+
+
+.dark {
+    #inswrap li b.ins {
+        color: #fff !important;
+    }
+    
 }
 
 

@@ -2,7 +2,7 @@
      var address = "[:=address:]";
 </script>
 
-<div id="address" class="ppage" >
+<div id="address" class="ppage" v-cloak>
     <div class="container">
         <p class="crumb"><a href="/">[:=lang.common.index_page || "首页":]</a><i>/</i><span>[:=lang.address.address || "地址":] - [:=address:]</span></p>
         <div class="pcard info">
@@ -14,9 +14,9 @@
                     <p class="li">[:=lang.address.dia_amt || "钻石数量":]: <b>[:=toThousands(bls.diamond):]</b> HACD</p>
                 </div>
                 <div class="wbox">
-                    <p class="li">[:=lang.address.miner_dia_num || "挖出钻石数量":]: <b>[:=toThousands(cnt.minted_diamond):]</b> HACD</p>
-                    <p class="li">[:=lang.address.miner_blk_rwd || "共获得区块奖励":]: <b>ㄜ[:=toThousands(cnt.block_reward):]</b></p>
-                    <p class="li">[:=lang.address.miner_fee_use || "消耗HAC费用":]: <b>ㄜ[:=toThousands(cnt.used_fee.toFixed(4)):]</b>
+                    <p class="li">[:=lang.address.miner_dia_num || "挖出钻石数量":]: <b>[:=toThousands(cnt.minted_diamond||0):]</b> HACD</p>
+                    <p class="li">[:=lang.address.miner_blk_rwd || "共获得区块奖励":]: <b>ㄜ[:=toThousands(cnt.block_reward||0):]</b></p>
+                    <p class="li">[:=lang.address.miner_fee_use || "消耗HAC费用":]: <b>ㄜ[:=toThousands((cnt.used_fee||0.0).toFixed(4)):]</b>
                     </p>
                 </div>
             </div>

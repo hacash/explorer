@@ -569,13 +569,16 @@ apiget("/api/block/recents", {}, function(data){
                 let ks = a.split(':')
                 let n1 = data.curr[a] || 0;
                 let n2 = data.prev[a] || 0;
+                if(ks[0] == 'unknown'){
+                    ks[0] = '' // drop unknown
+                }
                 percts.push({
                     name: ks[0],
                     adr: ks[1]||'',
                     n1, n2,
                     count: n1+n2,
                     per:(parseFloat(n1+n2) / 4032.0 * 100).toFixed(2),
-                    chgp: ((parseFloat(n1-n2)/2016.0) * 100).toFixed(2)
+                    chgp: ((parseFloat(n1-n2)/4032.0) * 100).toFixed(2)
                 })
             }
             percts.sort(function(a,b){

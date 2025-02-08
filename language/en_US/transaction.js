@@ -47,7 +47,7 @@ module.exports = {
     act_lockbls_create: "HAC lock create",
     act_lockbls_create_amount: "Lock amount",
 
-    inscription_opt: "HACD inscription operate",
+    inscription_opt: "HACD inscription",
     inscription_opt_write: "Write",
     inscription_opt_clean: "Clean",
 

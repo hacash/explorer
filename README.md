@@ -1,2 +1,2 @@
-# explorer2
-Hacash explorer with rust node
+# explorer
+Hacash explorer

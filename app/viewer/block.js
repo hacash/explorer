@@ -20,6 +20,20 @@ exports.components = [
 
 exports.datas = async function(cnf, ctx)
 {
+
+    /*for(let i=519240; ;i++) {
+        if(i%1000 == 0){
+            console.log(i)
+        }
+        let data = await fullnode.query('diamond/engrave', {height: i, tx_hash: true});
+        let l = data.list.length;
+        if(l==0){
+            continue
+        }
+        //
+        console.log(i, data.list)
+    }*/
+    
     // 
     let blkid = ctx.params.blkid;
     // params
