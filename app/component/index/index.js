@@ -272,10 +272,23 @@ function drawHashrateCharts(idname, data, theme){
         apiget("/api/diamond/bidding", {
         }, function(data){
             // console.log(data)
-            t.txs = table_to_list(data)
+            t.txs = t.dropSames(table_to_list(data))
             t.number = data.number
         })
     },
+    dropSames: function(txs) {
+        let maps = {}
+        let ntxs = []
+        for(let i in txs) {
+            let li = txs[i]
+            , n = li.name;
+            if(!maps[n]) {
+                maps[n] = true
+                ntxs.push(li)
+            }
+        }
+        return ntxs
+    }
 }, function(){
     this.queryBids();
 })
