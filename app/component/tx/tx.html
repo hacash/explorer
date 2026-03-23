@@ -8,6 +8,19 @@
             <span>[:=lang.transaction.transaction || "交易":] - [:=hx:]</span>
         </p>
         [:if(this.trsinfo){:]
+        [: if(trsinfo.pending){ :]
+        <div class="pcard block">
+            <h3 class="hdtt">[:=lang.transaction.belong_block || "所属区块":]</h3>
+            <div class="content">
+                <p class="row r1"><label>Status:</label><b>Pending</b></p>
+                <p class="row"><label>[:=lang.transaction.timestamp || "时间戳":]:</label><b>
+                    [:=trsinfo.timestamp:]
+                    <i class="time">（{{formatDate(new Date([:=trsinfo.timestamp:]*1000), 'yyyy-MM-dd hh:mm:ss')}}）</i>
+                    </b>
+                </p>
+            </div>
+        </div>
+        [: }else{ :]
         <div class="pcard block">
             <h3 class="hdtt">[:=lang.transaction.belong_block || "所属区块":]</h3>
             <div class="content">
@@ -19,6 +32,7 @@
                 </p>
             </div>
         </div>
+        [: } :]
         <div class="pcard info">
             <h3 class="hdtt">[:=lang.transaction.trs_intro || "交易概要":]</h3>
             <div class="content">
@@ -58,7 +72,7 @@
                     <b>ㄜ[:=toThousands(one.hacash):]</b> 
                 </p>
 
-            [: }else if(k==9 || k==10 || k==11){ :]
+            [: }else if((k==9 || k==10 || k==11 || k==12) && one.satoshi!=undefined){ :]
                 <p class="row r[:=(++i):]">
                     <span class="kind">[[:=lang.transaction.act_sat_trs || "Satoshi转账":]]</span>
                     <label>[:=lang.transaction.act_payment_address || "支付地址":]: </label>
@@ -122,7 +136,7 @@
                     <label>[:=lang.transaction.act_addr || "地址":] 2: </label><a target="_blank" href="/address/[:=one.right_addr:]">[:=one.right_addr:]</a> 
                     <label>[:=lang.transaction.act_amt || "金额":] 2: </label><b>[:=one.right_amt:]</b> 
                 </p>
-            [: }else if(k==3 || k==12 || k==21){ :]
+            [: }else if(k==3 || (k==12 && one.channel_id)){ :]
                 <p class="row r[:=(++i):]">
                     <span class="kind">[[:=lang.transaction.act_close_channel || "关闭结算通道":]]</span>
                     <label>[:=lang.transaction.act_channel_id || "通道id":]:</label><a target="_blank" href="/channel/[:=one.channel_id:]">[:=one.channel_id:]</a>
@@ -149,9 +163,9 @@
                     <label>[:=lang.transaction.act_chanassert_addr || "主张地址":]: </label><a target="_blank" href="/address/[:=one.assert_address:]">[:=one.assert_address:]</a> 
                     <label>[:=lang.transaction.act_chanassert_billno || "对账序号":]: </label><b>[:=one.bill_number:]</b>
                 </p>
-                [: }else if(k==20){ :]
+                [: }else if(k==20 || k==29){ :]
                     <p class="row r[:=(++i):]">
-                        <label>Submit Height Limit: </label>([:=one.start_height:], [:=one.end_height:])
+                        <label>Submit Height Limit: </label>([:=one.start_height||one.start:], [:=one.end_height||one.end:])
                     </p>
                 [: }else if(k==30){ :]
                     <p class="row r[:=(++i):]">

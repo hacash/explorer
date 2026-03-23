@@ -65,9 +65,12 @@ async function queryRecentBlocks() {
         // test
         // blocks = testblocks()
     }catch(e){
+        console.log("queryRecentBlocks Error:")
+        console.log(e)
         return []
     }
     if(!blocks.length) {
+        console.log("queryRecentBlocks empty.")
         return []
     }
 
