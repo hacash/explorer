@@ -5,12 +5,13 @@ const supply = koappx.model('supply');
 module.exports = async function(cnf, ctx){
 
     let data = await supply.query(ctx);
-    let total = '22000000.0';
-    if(data.block_reward) {
-        total = parseFloat(data.block_reward) + parseFloat(data.channel_interest)
+    let total = Number(data.block_reward) + Number(data.channel_interest);
+    if(data.ret || !Number.isFinite(total)) {
+        ctx.res.statusCode = 503;
+        ctx.res.end('');
+        return;
     }
-    
-    ctx.res.end( total+'' )
+
+    ctx.res.end(total+'')
     
 }
-    

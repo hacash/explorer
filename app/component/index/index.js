@@ -157,6 +157,50 @@ function showCoinbasePaceChart(that, cbh, rwd, circ, burn) {
 });
 
 
+/********************** Istanbul ecosystem **********************/
+
+;VueCreateAppCommon('ecosystem', {
+    loaded: false,
+    d: {},
+    assets: [],
+    contracts: [],
+}, {
+    toThousands,
+    formatHac(value) {
+        return toThousands(parseFloat(value || 0).toFixed(2));
+    },
+    shortAddress(value) {
+        if(!value) return '-';
+        return value.length > 14 ? value.substring(0, 7) + '...' + value.substring(value.length - 5) : value;
+    },
+    upgradeStatus() {
+        const activationHeight = 765432;
+        const height = parseInt(this.d.latest_height || 0);
+        if(height < activationHeight) {
+            return 'Activates at #' + activationHeight;
+        }
+        return toThousands(height - activationHeight) + ' blocks since activation';
+    },
+    queryOverview() {
+        let t = this;
+        apiget('/api/ecosystem/overview', {}, function(data){
+            t.d = data.supply || {};
+            t.assets = (data.assets && data.assets.list || []).map(function(asset){
+                asset.issuer = data.assets.addrs && data.assets.addrs[asset.issuer_aid + ''] || '';
+                return asset;
+            });
+            t.contracts = (data.contracts && data.contracts.list || []).map(function(contract){
+                contract.deployer = data.contracts.addrs && data.contracts.addrs[contract.deployer_aid + ''] || '';
+                return contract;
+            });
+            t.loaded = true;
+        });
+    },
+}, function(){
+    this.queryOverview();
+});
+
+
 
 
 /********************** hashrate **********************/
@@ -362,7 +406,7 @@ function drawRecentBlocks(recent_blocks){
                 <p>${rct.txs}</p>-->
                 <p class="b">${rct.msg}</p>
                 <p class="m">${rct.miner}</p>
-                <p class="t">${formatDate(new Date(rct.arrive*1000), 'hh:mm:ss')}</p>
+                <p class="t">${formatDate(new Date(rct.display_time*1000), 'hh:mm:ss')}</p>
             </div></div></div>${right}</div>`;
     };
 
@@ -565,49 +609,86 @@ apiget("/api/block/recents", {}, function(data){
 
 
 ;VueCreateAppCommon('poolct', {
-    percts: null,
+    periods: null,
+    latestHeight: 0,
 },{
     queryStats() {
         let t = this;
         apiget("/api/block/pools", {}, function(data){
-            let percts = [];
-            let keys = {};
-            for(var a in data.curr){
-                keys[a] = true
-            }
-            for(var a in data.prev){
-                keys[a] = true
-            }
-            for(var a in keys) {
-                let ks = a.split(':')
-                let n1 = data.curr[a] || 0;
-                let n2 = data.prev[a] || 0;
-                if(ks[0] == 'unknown'){
-                    ks[0] = '' // drop unknown
+            const coolColors = ['#9fddc4', '#8ed8d0', '#91dcec', '#a4ccf0', '#9bbbe3', '#b1b9e7', '#87cec0', '#ace5dc'];
+            const warmColors = ['#f4c5aa', '#f4d29a', '#f3e29e', '#f3b9ad', '#edbfce', '#f0c7a8', '#efaeb0', '#f4d6bb'];
+            const labels = {'1d': '1 Day', '7d': '7 Days', '30d': '30 Days'};
+            const order = {'1d': 0, '7d': 1, '30d': 2};
+            t.latestHeight = data.latest_height || 0;
+            t.periods = (data.periods || []).slice().sort(function(left, right){
+                const leftOrder = order[left.key] === undefined ? 99 : order[left.key];
+                const rightOrder = order[right.key] === undefined ? 99 : order[right.key];
+                return leftOrder - rightOrder;
+            }).map(function(period){
+                let total = period.total || 0;
+                let items = (period.list || []).map(function(item){
+                    let label = item.name || item.miner.substring(0, 10) + '...';
+                    let percent = total ? item.count / total * 100 : 0;
+                    let colors = percent > 10 ? coolColors : warmColors;
+                    return {
+                        label,
+                        miner: item.miner,
+                        count: item.count,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        percent: percent.toFixed(1),
+                    };
+                });
+                let shown = items.reduce(function(sum, item){ return sum + item.count }, 0);
+                if(total > shown) {
+                    let count = total - shown;
+                    let percent = count / total * 100;
+                    let colors = percent > 10 ? coolColors : warmColors;
+                    items.push({
+                        label: 'Other',
+                        miner: '',
+                        count,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        percent: percent.toFixed(1),
+                    });
                 }
-                percts.push({
-                    name: ks[0],
-                    adr: ks[1]||'',
-                    n1, n2,
-                    count: n1+n2,
-                    per:(parseFloat(n1+n2) / 4032.0 * 100).toFixed(2),
-                    chgp: ((parseFloat(n1-n2)/4032.0) * 100).toFixed(2)
-                })
-            }
-            percts.sort(function(a,b){
-                return b.count - a.count
-            })
-            let maxw = parseFloat((percts[0]||{}).count||100)
-            for(var i in percts) {
-                let li = percts[i];
-                li.width = parseFloat(li.count) / maxw
-            }
-            // console.log(percts)
-            t.percts = percts
+                return {key: period.key, label: labels[period.key] || period.key, total, items};
+            });
+            setTimeout(function(){ t.drawCharts() }, 0);
         })
-    }
+    },
+    drawCharts() {
+        for(let i in this.periods || []) {
+            let period = this.periods[i];
+            let canvas = $id('pool-pie-' + period.key);
+            if(!canvas || !period.total) continue;
+            let context = canvas.getContext('2d');
+            let center = canvas.width / 2;
+            let radius = center - 6;
+            let start = -Math.PI / 2;
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            for(let k in period.items) {
+                let item = period.items[k];
+                let end = start + Math.PI * 2 * item.count / period.total;
+                context.beginPath();
+                context.moveTo(center, center);
+                context.arc(center, center, radius, start, end);
+                context.closePath();
+                context.fillStyle = item.color;
+                context.fill();
+                start = end;
+            }
+            context.beginPath();
+            context.arc(center, center, 27, 0, Math.PI * 2);
+            context.fillStyle = '#ffffff';
+            context.fill();
+            context.fillStyle = '#43515a';
+            context.font = 'bold 12px sans-serif';
+            context.textAlign = 'center';
+            context.fillText(period.total, center, center + 5);
+        }
+    },
 }, function(){
-    // this.queryStats()
+    this.queryStats()
 });
 
 
@@ -690,4 +771,3 @@ apiget("/api/block/recents", {}, function(data){
         // t.queryActive()
     })
 });
-

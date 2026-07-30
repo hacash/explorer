@@ -84,7 +84,7 @@
                 </div>
                 <div class="ok" v-show="(!colifmore)&&optlogs">- [:=lang.address.load_ok || "加载完毕":] -</div>
                 <div class="more" v-show="colifmore">
-                    <button @click="optlogs">[:=lang.address.show_more || "查看更多":]</button>
+                    <button @click="loadoptlogs">[:=lang.address.show_more || "查看更多":]</button>
                 </div>
                 <button @click="loadoptlogs" class="btn" v-if="colfirstbtn">[:=lang.address.check_operate_action_logs || "查看金融操作记录":]</button>
             </div>
@@ -94,4 +94,3 @@
 
     </div>
 </div>
-

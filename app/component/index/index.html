@@ -116,27 +116,50 @@
 </div>
 
 
-<!----------- hashtate ------------->
+<!----------- Istanbul ecosystem ------------->
 
-
-<div id="dfcts"  class="mtable mbfix" v-cloak>
+<div id="ecosystem" class="mtable mbfix" v-cloak>
     <div class="container">
         <div class="wrap">
-            <div class="tt">
-                [:=
-                    lang.main.hash_power_title || 
-                    "<p>全网目标哈希率：<b>{{tg_hs}}</b>， 实时哈希率：<b>{{rt_hs}}</b>，近200天算力相对波动：</p>"
-                :]
+            <h1 class="pt">Istanbul Upgrade Ecosystem <span class="tv">{{upgradeStatus()}}</span></h1>
+            <div class="con" v-if="loaded">
+                <div class="eco-summary">
+                    <div><label>Assets Issued</label><b>{{toThousands(d.created_asset || 0)}}</b><small>assets</small></div>
+                    <div><label>Asset Protocol Burn</label><b>{{formatHac(d.burned_asset_issue)}}</b><small>HAC</small></div>
+                    <div><label>Contracts Deployed</label><b>{{toThousands(d.contract_deploy_count || 0)}}</b><small>contracts</small></div>
+                    <div><label>Contract Updates</label><b>{{toThousands(d.contract_update_count || 0)}}</b><small>updates</small></div>
+                    <div><label>Contract Metered Bytes</label><b>{{toThousands(d.contract_charge_bytes_total || 0)}}</b><small>bytes</small></div>
+                    <div><label>Contract Protocol Burn</label><b>{{formatHac(d.burned_contract_protocol_cost)}}</b><small>HAC</small></div>
+                </div>
+                <div class="eco-lists">
+                    <section>
+                        <h2>Latest Assets</h2>
+                        <table v-if="assets.length">
+                            <tr v-for="asset in assets" :key="asset.serial">
+                                <td><b>{{asset.ticket}}</b><span>{{asset.name}}</span></td>
+                                <td>#{{asset.serial}}</td>
+                                <td>{{asset.supply}}</td>
+                                <td><a :href="'/address/'+asset.issuer" :title="asset.issuer">{{shortAddress(asset.issuer)}}</a></td>
+                                <td>#{{asset.height}}</td>
+                            </tr>
+                        </table>
+                        <p class="empty" v-else>No indexed assets yet</p>
+                    </section>
+                    <section class="eco-contracts">
+                        <h2>Latest Contracts</h2>
+                        <table v-if="contracts.length">
+                            <tr v-for="contract in contracts" :key="contract.address">
+                                <td><a :href="'/address/'+contract.address" :title="contract.address">{{shortAddress(contract.address)}}</a></td>
+                                <td>{{contract.code_size}} bytes</td>
+                                <td><a :href="'/address/'+contract.deployer" :title="contract.deployer">{{shortAddress(contract.deployer)}}</a></td>
+                                <td>#{{contract.height}}</td>
+                            </tr>
+                        </table>
+                        <p class="empty" v-else>No indexed contracts yet</p>
+                    </section>
+                </div>
             </div>
-            <canvas class="dfctshow" id="dfcts_canvas">
-                Your browser does not support canvas tag.
-            </canvas>
-        </div>
-        <div class="wrap">
-            <div class="tt">[:=lang.main.hash_power_title_all || "历史总波动曲线" :]</div>
-            <canvas class="dfctshow" id="dfcts_canvas_all">
-                Your browser does not support canvas tag.
-            </canvas>
+            <div class="con loading" v-else>Loading...</div>
         </div>
     </div>
 </div>
@@ -234,6 +257,61 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+
+<!----------- hashtate ------------->
+
+
+<div id="dfcts"  class="mtable mbfix" v-cloak>
+    <div class="container">
+        <div class="wrap">
+            <div class="tt">
+                [:=
+                    lang.main.hash_power_title || 
+                    "<p>全网目标哈希率：<b>{{tg_hs}}</b>， 实时哈希率：<b>{{rt_hs}}</b>，近200天算力相对波动：</p>"
+                :]
+            </div>
+            <canvas class="dfctshow" id="dfcts_canvas">
+                Your browser does not support canvas tag.
+            </canvas>
+        </div>
+        <div class="wrap">
+            <div class="tt">[:=lang.main.hash_power_title_all || "历史总波动曲线" :]</div>
+            <canvas class="dfctshow" id="dfcts_canvas_all">
+                Your browser does not support canvas tag.
+            </canvas>
+        </div>
+    </div>
+</div>
+
+
+<!----------- pool percent ------------->
+
+
+<div id="poolct" class="mtable mbfix" v-cloak>
+    <div class="container">
+        <div class="wrap">
+            <h1 class="pt">Mining Pool Distribution <span class="tv" v-if="latestHeight">#{{latestHeight}}</span></h1>
+            <div class="con">
+                <div class="poolcharts" v-if="periods">
+                    <section class="poolchart" v-for="period in periods" :key="period.key">
+                        <h2>{{period.label}}</h2>
+                        <canvas :id="'pool-pie-'+period.key" width="120" height="120"></canvas>
+                        <p class="total">{{period.total}} blocks</p>
+                        <ol>
+                            <li v-for="(item, index) in period.items" :key="item.label">
+                                <i :style="'background-color:'+item.color"></i>
+                                <span :title="item.miner">{{item.label}}</span>
+                                <b>{{item.count}} &middot; {{item.percent}}%</b>
+                            </li>
+                        </ol>
+                    </section>
+                </div>
+                <div class="poolloading" v-else>Loading...</div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -370,46 +448,6 @@
     </div>    
 </div>
 
-
-
-<!----------- pool percent ------------->
-
-
-<div id="poolct" class="mtable mbfix" v-cloak>
-    <div class="container">
-        <div class="wrap">
-            <h1 class="pt">[:=lang.main.plct_ttl || "最近两周区块播报方排名":]</h1>
-            <div class="con">
-
-                <div class="pmore" v-if="!percts">
-                    <a class="button" @click="queryStats">[:=lang.main.plct_showbtn:]</a>
-                </div>
-
-                <table v-if="percts">
-                    <tr class="hd">
-                        <th>#</th>
-                        <th>[:=lang.main.plct_name || "播报方":]</th>
-                        <th>[:=lang.main.plct_adr || "地址":]</th>
-                        <th>[:=lang.main.plct_blkn || "区块数":]</th>
-                        <th>[:=lang.main.plct_hsrt || "算力占比":]</th>
-                        <th>[:=lang.main.plct_chg || "升降变化":]</th>
-                    </tr>
-                    <tr :class="(d.name?'':'ukn ') + 'row'" v-for="(d,i) in percts">
-                        <td class="i">{{i+1}}</td>
-                        <td class="name">{{d.name}}</td>
-                        <td class="adr">{{d.adr}}...</td>
-                        <td class="pbw"><div class="pcbar">
-                            <b v-if="d.width>=0.5" :style="'width:'+(d.width*100)+'%'">{{d.count}} ({{d.n2}},{{d.n1}})</b>
-                            <div v-else><b :style="'width:'+(d.width*100)+'%'"></b><span>{{d.count}} ({{d.n2}},{{d.n1}})</span></div>
-                        </div></td>
-                        <td class="per">{{d.per}}%</td>
-                        <td :class="'per ' + (d.chgp<0?'psub':'padd')">{{d.chgp>=0?'⇧':'⇣'}} {{d.chgp==0?'0.01':d.chgp}}%</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!----------- ranking top active ------------->

@@ -9,28 +9,42 @@ exports.json = function(url, querys, opts) {
         qsstr = "?" + querystring.stringify(querys)
     }
     opts = opts || {}
-    let http_obj = opts.https ? https : http
+    let request_url = url + qsstr
+    let http_obj = request_url.startsWith("https:") ? https : http
+    let timeout = opts.timeout || 8000
+    let max_bytes = opts.max_bytes || 4 * 1024 * 1024
     return new Promise( (ok, err) => {
-        // console.log(url + qsstr)
-        http_obj.get(url + qsstr, (res) => {
+        let done = false
+        let finish = function(fn, data) {
+            if(done) return
+            done = true
+            fn(data)
+        }
+        let req = http_obj.get(request_url, {timeout}, (res) => {
             var str = ''
+            let size = 0
             res.on('data', (part) => {
-                var sstr = part.toString()
-                str += sstr
-                // console.log(sstr)
+                size += part.length
+                if(size > max_bytes) {
+                    req.destroy(new Error("upstream response too large"))
+                    return
+                }
+                str += part.toString()
             })
             res.on('end', () =>  {
+                if(res.statusCode < 200 || res.statusCode >= 300) {
+                    finish(err, new Error("upstream status " + res.statusCode))
+                    return
+                }
                 try{
-                    // console.log(str)
                     var data = JSON.parse(str)
-                    // console.log(data)
-                    ok(data)
+                    finish(ok, data)
                 }catch(e){
-                    // console.log(e)
-                    // console.log(str.substr(0, 260))
-                    err("res str is not json: "+str)
+                    finish(err, new Error("upstream response is not json"))
                 }
             })
         })
+        req.on('timeout', () => req.destroy(new Error("upstream request timeout")))
+        req.on('error', (e) => finish(err, e))
     })
 }

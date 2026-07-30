@@ -1,6 +1,5 @@
 const fs = require("fs")
 const fullnode = require("./fullnode.js")
-const pool = require("./pool.js")
 
 
 
@@ -72,12 +71,11 @@ async function queryRecentBlocks() {
         return []
     }
 
-    pool.update_recent(blocks); // update pool stats
-
     for(let i in blocks) {
         let li = blocks[i];
         blocks[i].msg = li.message
         blocks[i].miner = li.miner.substring(0, 9)+'...'
+        blocks[i].display_time = li.arrive || li.time
         blocks[i].hx = li.hash.substring(26, 32)
         blocks[i].prev = li.prev.substring(26, 32)
         delete blocks[i].time

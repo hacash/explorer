@@ -5,7 +5,7 @@ const datautil = koappx.util('datas');
 const number = koappx.util('number');
 
 
-    
+
 exports.components = [
     'html',
     'header',
@@ -21,9 +21,10 @@ exports.datas = async function(cnf, ctx)
 {
     let q = ctx.query || {};
     let dianames = q.name || ''
-    let page = (ctx.params||{}).page || 1;
-
-    let limit = 200;
+    let page = parseInt((ctx.params||{}).page || q.page || 1);
+    let limit = parseInt(q.limit || 200);
+    page = Number.isSafeInteger(page) && page > 0 ? page : 1;
+    limit = Number.isSafeInteger(limit) && limit > 0 ? Math.min(limit, 200) : 200;
     let params = {
         limit, page, desc: true,
     }
@@ -46,7 +47,7 @@ exports.datas = async function(cnf, ctx)
         p: {
             page: page,
             limit: limit,
-            maxpage: parseInt(latest_number / limit) + 1,
+            maxpage: dianames.length >= 6 ? 1 : Math.max(1, Math.ceil(latest_number / limit)),
         },
         curdianum: latest_number,
         dianames: dianames,
@@ -55,5 +56,3 @@ exports.datas = async function(cnf, ctx)
 
     return pdata;
 }
-
-    

@@ -161,7 +161,7 @@
             }
             that.optlogs = that.optlogs.concat(list)
             // more
-            that.colifmore = data.length == that.collimit ? true : false
+            that.colifmore = list.length == that.collimit
         })
     },
 
@@ -169,4 +169,3 @@
     this.init()
     // this.domoretrs()
 });
-

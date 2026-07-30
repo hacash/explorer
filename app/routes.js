@@ -16,6 +16,7 @@ module.exports = {
     '/api/account/balance': 'api/account/balance',
     //
     '/api/total/supply': 'api/total/supply',
+    '/api/ecosystem/overview': 'api/ecosystem/overview',
     '/api/hashrate/charts': 'api/hashrate/charts',
     '/api/diamond/bidding': 'api/diamond/bidding',
     '/api/diamond/views': 'api/diamond/views',

@@ -6,9 +6,12 @@ module.exports = async function(cnf, ctx){
 
     let data = await supply.query(ctx);
     let md = data.minted_diamond;
-    let item = md ? (md + '') : '16777216';
+    if(data.ret || md === undefined) {
+        ctx.res.statusCode = 503;
+        ctx.res.end('');
+        return;
+    }
 
-    ctx.res.end( item+'' )
-    
+    ctx.res.end(md+'')
+
 }
-    

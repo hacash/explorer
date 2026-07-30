@@ -1,16 +1,14 @@
-
-const pool = koappx.model('pool');
-
+const ecosystem = koappx.model('ecosystem');
 
 module.exports = async function(cnf, ctx){
     try {
-        let data = await pool.query(ctx);
+        const data = await ecosystem.query(ctx);
         if(data.ret) {
             ctx.apiError(data.err);
             return;
         }
-        ctx.apiData(data)
+        ctx.apiData(data);
     }catch(e) {
-        ctx.apiError(e)
+        ctx.apiError(e);
     }
 }

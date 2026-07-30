@@ -19,7 +19,7 @@ exports.query = async function(ctx) {
         ctx.cache.set(ck_supply, res, 300); // cache 5min
         return res
     }catch(e) {
-        return {ret: 1, err: e.to_string()}
+        return {ret: 1, err: e.toString()}
     }
 
 
