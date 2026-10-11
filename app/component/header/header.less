@@ -127,24 +127,25 @@
         padding-left: 14px;
         *{font-size: 14px;}
         a{
-            
+            color: var(--link, #3c78c2);
         }
         i{
             display: inline-block;
             padding: 0 10px;
-            color: #bbb;
+            color: var(--txt-faint, #bbb);
         }
         span{
-            color: #444;
+            color: var(--txt-main, #444);
             word-break: break-all;
         }
     }
     .pcard{
-        border: 1px solid #aaaaaa66;
-        border-radius: 4px;
+        border: 1px solid var(--ln, #aaaaaa66);
+        border-radius: var(--card-radius, 4px);
         margin-top: 20px;
         .row {
-            border-top: 1px dashed #88888844;
+            border-top: 1px dashed var(--ln-weak, #88888844);
+            color: var(--txt-main, inherit);
             word-break: break-all;
         }
         .row.r1, .row.first {
@@ -153,10 +154,10 @@
         .hdtt{
             padding: 5px 15px;
             border-radius: 5px 5px 0 0;
-            background: #afaf6c22;
-            color: #995;
+            background: var(--hdtt-bg, #afaf6c22);
+            color: var(--hdtt-tx, #995);
             // font-weight: bold;
-            font-size: 15px;
+            font-size: var(--fs-hdtt, 15px);
         }
         .content{
             padding: 16px 16px;
@@ -180,18 +181,18 @@
             display: block;
             float: left;
             padding: 6px 18px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--ln, #ddd);
             border-left: none;
-            color: #666;
+            color: var(--txt-sub, #666);
             font-weight: bold;
-            background-color: #eee;
+            background-color: var(--bg-soft, #eee);
         }
         a:hover {
-            background-color: #fff;
-            color: #222;
+            background-color: var(--bg-hover, #fff);
+            color: var(--txt-main, #222);
         }
         .f {
-            border-left: 1px solid #ddd;
+            border-left: 1px solid var(--ln, #ddd);
             border-radius: 6px 0 0 6px;
         }
         .e {

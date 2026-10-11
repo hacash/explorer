@@ -92,3 +92,104 @@ button {
 
 @mobile_width: 512px;
 
+
+/////////////////////////////////////////////////////////////
+//  Design tokens & common components
+//  All page-level cards / buttons / titles / tables share
+//  these variables, so the whole site reskins from here.
+/////////////////////////////////////////////////////////////
+
+:root {
+    // gray semi-transparent lines & fills: readable on both themes
+    --ln: rgba(125, 138, 150, 0.32);          // common border
+    --ln-weak: rgba(125, 138, 150, 0.16);     // light divider
+    --ln-strong: rgba(125, 138, 150, 0.5);
+    --bg-soft: rgba(125, 138, 150, 0.10);     // soft panel fill
+    --bg-softer: rgba(125, 138, 150, 0.05);
+    --bg-hover: rgba(125, 138, 150, 0.20);
+    --bg-card: #f3f4f7;                        // card wrapper fill
+    --bg-card-in: #ffffff;                     // card content surface
+    // text colors (theme dependent)
+    --txt-main: #3d4b54;
+    --txt-sub: #67757f;
+    --txt-dim: #84939d;
+    --txt-faint: #9aa8b1;
+    --link: #3c78c2;
+    --link-visited: #3c78c2;
+    --accent: #33728a;
+    --good: #3c8f4f;
+    --warn: #a8762a;
+    --bad: #b05252;
+    --hdtt-bg: rgba(175, 175, 108, 0.14);     // card title bar fill
+    --hdtt-tx: #8a8a5a;
+    --input-bg: #ffffffbb;
+    --input-tx: #333;
+    // fork-monitoring tiles: opaque so the timeline bar behind them
+    // cannot bleed through (semi-transparent fills would show it)
+    --fork-blk: #eeeeee;
+    --fork-blk-deep: #dddddd;
+    // sizing
+    --fs-main: 12px;
+    --fs-card-tt: 14px;
+    --fs-hdtt: 15px;
+    --fs-str: 13px;
+    --card-radius: 4px;
+}
+
+body.dark {
+    --txt-main: #dde5ea;
+    --txt-sub: #a8b6c0;
+    --txt-dim: #93a3ae;
+    --txt-faint: #7d8e99;
+    --link: #7ab1e8;
+    --link-visited: #7ab1e8;
+    --accent: #6cc3d8;
+    --good: #7ec98d;
+    --warn: #d8a35c;
+    --bad: #e08a8a;
+    --bg-card: #222222;
+    --bg-card-in: #333333;
+    --hdtt-tx: #b9b97e;
+    --input-bg: rgba(255, 255, 255, 0.12);
+    --input-tx: #e8eef2;
+    --fork-blk: #2b3136;
+    --fork-blk-deep: #22272b;
+}
+
+// ---- common components ----
+
+.gbtn {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 1px solid var(--ln);
+    border-radius: var(--card-radius);
+    background-color: var(--bg-soft);
+    color: var(--txt-sub);
+    font-size: var(--fs-str);
+    cursor: pointer;
+    &:hover {
+        background-color: var(--bg-hover);
+        color: var(--txt-main);
+    }
+    &.solid {
+        background-color: #8097b3;
+        border-color: #8097b3;
+        color: #fff;
+        font-weight: bold;
+        &:hover{
+            background-color: #5079bb;
+        }
+    }
+}
+
+.gtag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background-color: var(--bg-soft);
+    border: 1px solid var(--ln-weak);
+    color: var(--txt-dim);
+    font-size: 11px;
+}
+
+

@@ -1,3 +1,8 @@
+/* Black theme overrides.
+   Most surfaces now follow the CSS variables defined in app/component/html/html.less
+   (body.dark switches --txt-* / --bg-* / --ln-* automatically). Only the pieces
+   that still need a hard override live here. */
+
 html, body {
     background-color: #000;
 }
@@ -33,41 +38,6 @@ html, body {
 #blkrwd .burner .cp p {
     opacity: 1;
     color: #fff !important;
-}
-
-/* main */
-
-.mtable {
-
-}
-.mtable .wrap {
-    background-color: #222;
-}
-.mtable .wrap h1 {
-    color: #a8cfcf;
-}
-
-.mtable .wrap .con {
-    background-color: #333;
-}
-
-.mtable .wrap .con table th {
-    background: none;
-}
-
-.mtable .wrap .con table td {
-    color: #888;
-}
-
-/* page */
-
-
-.ppage .crumb span {
-    color: #999;
-}
-
-.pcard .row {
-    color: #ddd;
 }
 
 /* address */

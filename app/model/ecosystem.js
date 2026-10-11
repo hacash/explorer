@@ -11,10 +11,16 @@ exports.query = async function(ctx) {
         return cached;
     }
     if(!pendingQuery) {
+        // hascan-only routes degrade to empty sets when the node has no
+        // indexer attached (e.g. the defi localnet testnet fullnode).
+        const safe = q => q.catch(e => {
+            console.log('[ecosystem] indexer unavailable, empty fallback:', e && e.message || e)
+            return { ret: 0, addrs: {}, list: [] }
+        })
         pendingQuery = Promise.all([
             supply.query(ctx),
-            hascan.query('ecosystem/assets', {limit: 5}),
-            hascan.query('ecosystem/contracts', {limit: 5}),
+            safe(hascan.query('ecosystem/assets', {limit: 5})),
+            safe(hascan.query('ecosystem/contracts', {limit: 5})),
         ]).then(function(results){
             const [supplyData, assets, contracts] = results;
             if(supplyData.ret) {

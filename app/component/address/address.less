@@ -24,10 +24,11 @@
     }
     .cfmtip {
         margin-top: 20px;
-        background-color: #eedba2;
+        background-color: var(--bg-soft, #eedba2);
+        border: 1px solid var(--ln-weak, transparent);
         padding: 10px 12px;
-        border-radius: 4px;
-        color: chocolate;
+        border-radius: var(--card-radius, 4px);
+        color: var(--warn, chocolate);
     }
     .info{
         .li{
@@ -44,14 +45,18 @@
         }
     }
     .btn{
-        background-color: steelblue;
+        background-color: var(--bg-soft, steelblue);
+        border: 1px solid var(--ln, steelblue);
+        color: var(--link, #fff);
         padding: 0 12px;
         height: 36px;
-        line-height: 36px;
-        color: #fff;
+        line-height: 34px;
         font-size: 14px;
-        border-radius: 4px;
+        border-radius: var(--card-radius, 4px);
         cursor: pointer;
+        &:hover{
+            background-color: var(--bg-hover, steelblue);
+        }
     }
     .alldmdns {
         font-family: 'Courier New', Courier, monospace;
@@ -73,8 +78,10 @@
             display: inline-block;
             line-height: 32px;
             padding: 0 10px;
-            border: 1px solid #bbb;
+            border: 1px solid var(--ln, #bbb);
             border-radius: 6px;
+            background: var(--input-bg, none);
+            color: var(--input-tx, inherit);
             font-size: 14px;
             width: 50%;
         }
@@ -92,6 +99,7 @@
             padding-bottom: 18px;
             label{
                 padding: 10px;
+                color: var(--txt-sub, inherit);
                 i {
                     display: inline-block;
                     height: 15px;
@@ -99,8 +107,11 @@
                     cursor: pointer;
                     margin: 0;
                     margin-right: 10px;
-                    border-radius: 4px;
-                    background: #ffffff44;
+                    padding: 2px 8px;
+                    border-radius: var(--card-radius, 4px);
+                    background: var(--bg-soft, #ffffff44);
+                    border: 1px solid var(--ln-weak, transparent);
+                    color: var(--txt-main, #000);
                     vertical-align: middle;
                 }
                 input {
@@ -112,7 +123,7 @@
                     line-height: 15px;
                 }
                 &:hover{
-                    background: #fff;
+                    background: var(--bg-hover, #fff);
                 }
             }
         }
@@ -131,7 +142,7 @@
                 display: inline-block;
             }
             b{
-                color: #333;
+                color: var(--txt-main, #333);
                 display: inline-block;
                 margin-right: 12px;
                 margin-left: 5px;
@@ -177,7 +188,7 @@
                 padding: 5px;
             }
             td {
-                border-top: 1px dashed #88888844;
+                border-top: 1px dashed var(--ln-weak, #88888844);
             }
             td.amt {
                 text-align: right;
@@ -191,16 +202,18 @@
             padding: 10px 0;
             button{
                 display: inline-block;
-                background: cadetblue;
-                color: #fff;
+                background: var(--bg-softer, cadetblue);
+                border: 1px solid var(--ln, cadetblue);
+                color: var(--link, #fff);
                 font-size: 12px;
-                line-height: 26px;
+                line-height: 24px;
                 height: 26px;
                 padding: 0 20px;
-                border-radius: 4px;
+                border-radius: var(--card-radius, 4px);
                 cursor: pointer;
                 &:hover{
-                    box-shadow: 1px 1px 8px #bbb;
+                    background: var(--bg-hover, cadetblue);
+                    box-shadow: none;
                 }
             }
         }

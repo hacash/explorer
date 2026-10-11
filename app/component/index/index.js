@@ -677,11 +677,14 @@ apiget("/api/block/recents", {}, function(data){
                 context.fill();
                 start = end;
             }
+            let bstyle = getComputedStyle(document.body)
+            , diskcl = bstyle.getPropertyValue('--bg-soft').trim() || 'rgba(125,138,150,0.10)'
+            , piecl = bstyle.getPropertyValue('--txt-main').trim() || '#43515a';
             context.beginPath();
             context.arc(center, center, 27, 0, Math.PI * 2);
-            context.fillStyle = '#ffffff';
+            context.fillStyle = diskcl;
             context.fill();
-            context.fillStyle = '#43515a';
+            context.fillStyle = piecl;
             context.font = 'bold 12px sans-serif';
             context.textAlign = 'center';
             context.fillText(period.total, center, center + 5);
